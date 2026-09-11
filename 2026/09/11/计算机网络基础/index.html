@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2026/png/60138024/1784992280700-5cbe6eb6-1c47-4486-8f1d-de2209074c16.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2026/png/60138024/1784992306496-f82cc734-2ae0-44e4-a946-4b565508be22.png">
 <meta property="article:published_time" content="2026-09-11T11:44:00.000Z">
-<meta property="article:modified_time" content="2026-09-11T14:52:00.822Z">
+<meta property="article:modified_time" content="2026-09-11T15:24:05.881Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="网络安全">
 <meta property="article:tag" content="计算机网络">
@@ -343,7 +343,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          44k words
+          42k words
         
       </span>
     
@@ -354,7 +354,7 @@
         
         
         
-          364 mins
+          353 mins
         
       </span>
     
@@ -1924,7 +1924,7 @@ POP3 协议采用 **TCP 协议**进行通信，默认使用 **110 端口**；当
 <h2 id="1-7-物理层"><a href="#1-7-物理层" class="headerlink" title="1.7 物理层"></a>1.7 物理层</h2><p>物理层负责网络中<strong>最基础的数据传输</strong>，它解决的是：<strong>如何利用物理媒介，将二进制数据（0和1）转换成电信号、光信号或无线电信号进行传输。</strong></p>
 <p>简单来说：<strong>物理层负责“数据最终如何通过真实介质传出去”。</strong></p>
 <hr>
-<h3 id="1-7-1-物理层的主要作用"><a href="#1-7-1-物理层的主要作用" class="headerlink" title="** 1.7.1 物理层的主要作用  **"></a>** 1.7.1 物理层的主要作用  **</h3><p><strong>1. 比特流传输（Bit Transmission）</strong></p>
+<h3 id="1-7-1-物理层的主要作用"><a href="#1-7-1-物理层的主要作用" class="headerlink" title="1.7.1 物理层的主要作用"></a>1.7.1 物理层的主要作用</h3><p><strong>1. 比特流传输（Bit Transmission）</strong></p>
 <p>物理层传输的数据单位：<strong>比特（Bit）</strong></p>
 <p>也就是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">0 和 1<br></code></pre></td></tr></table></figure>
@@ -2030,18 +2030,16 @@ POP3 协议采用 **TCP 协议**进行通信，默认使用 **110 端口**；当
 <td><font style="color:rgb(68, 68, 68);">负责“怎么传”（物理传输）</font></td>
 </tr>
 </tbody></table>
-<p><font style="color:rgb(68, 68, 68);">我们以“你用电脑通过浏览器访问 </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);&quot;&gt;www.baidu.com&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);"> 并打开百度首页”为例，完整拆解 </font><strong><font style="color:rgb(68, 68, 68);">TCP&#x2F;IP 四层模型</font></strong><font style="color:rgb(68, 68, 68);">在实际场景中的协作流程——从你输入网址按下回车，到网页显示在屏幕上，每一层都在执行专属任务，且严格遵循“上层依赖下层、下层为上层服务”的逻辑。</font></p>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h3 id="2-1-1-访问网页的本质"><a href="#2-1-1-访问网页的本质" class="headerlink" title="2.1.1 访问网页的本质"></a><font style="color:rgb(68, 68, 68);">2.1.1 访问网页的本质</font></h3><p><font style="color:rgb(68, 68, 68);">访问百度首页，本质是“你的电脑（客户端）向百度的服务器（服务端）发送‘请求数据’，百度服务器接收后返回‘网页数据’（文字、图片、代码等），你的电脑接收并解析数据后显示网页”。整个过程需经过</font><strong><font style="color:rgb(68, 68, 68);">“客户端四层打包→网络传输→服务端四层解包→服务端四层打包→网络传输→客户端四层解包”</font></strong><font style="color:rgb(68, 68, 68);">六个关键阶段，我们分阶段拆解。</font></p>
-<p><font style="color:rgb(68, 68, 68);">当你输入 </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);&quot;&gt;www.baidu.com&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);"> 并按下回车，浏览器（如Chrome）会先触发“请求百度服务器”的指令，数据从 </font><strong><font style="color:rgb(68, 68, 68);">应用层</font></strong><font style="color:rgb(68, 68, 68);">开始向下传递，每经过一层就“加一层包装（头部信息）”，最终变成能在物理网络中传输的信号。</font></p>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h4 id="阶段一：客户端“请求报文”打包"><a href="#阶段一：客户端“请求报文”打包" class="headerlink" title="阶段一：客户端“请求报文”打包"></a><font style="color:rgb(68, 68, 68);">阶段一：客户端“请求报文”打包</font></h4><h5 id="应用层：-生成“访问网页的请求数据”"><a href="#应用层：-生成“访问网页的请求数据”" class="headerlink" title="应用层：****生成“访问网页的请求数据”"></a><strong>应用层：****<font style="color:rgb(68, 68, 68);">生成“访问网页的请求数据”</font></strong></h5><ul>
+<p><font style="color:rgb(68, 68, 68);">我们以“你用电脑通过浏览器访问 </font><code>www.baidu.com</code><font style="color:rgb(68, 68, 68);"> 并打开百度首页”为例，完整拆解 </font><strong><font style="color:rgb(68, 68, 68);">TCP&#x2F;IP 四层模型</font></strong><font style="color:rgb(68, 68, 68);">在实际场景中的协作流程——从你输入网址按下回车，到网页显示在屏幕上，每一层都在执行专属任务，且严格遵循“上层依赖下层、下层为上层服务”的逻辑。</font></p>
+<h3 id="2-1-1-访问网页的本质"><a href="#2-1-1-访问网页的本质" class="headerlink" title="2.1.1 访问网页的本质"></a>2.1.1 访问网页的本质</h3><p><font style="color:rgb(68, 68, 68);">访问百度首页，本质是“你的电脑（客户端）向百度的服务器（服务端）发送‘请求数据’，百度服务器接收后返回‘网页数据’（文字、图片、代码等），你的电脑接收并解析数据后显示网页”。整个过程需经过</font><strong><font style="color:rgb(68, 68, 68);">“客户端四层打包→网络传输→服务端四层解包→服务端四层打包→网络传输→客户端四层解包”</font></strong><font style="color:rgb(68, 68, 68);">六个关键阶段，我们分阶段拆解。</font></p>
+<p><font style="color:rgb(68, 68, 68);">当你输入 </font><code>www.baidu.com</code><font style="color:rgb(68, 68, 68);"> 并按下回车，浏览器（如Chrome）会先触发“请求百度服务器”的指令，数据从 </font><strong><font style="color:rgb(68, 68, 68);">应用层</font></strong><font style="color:rgb(68, 68, 68);">开始向下传递，每经过一层就“加一层包装（头部信息）”，最终变成能在物理网络中传输的信号。</font></p>
+<h4 id="阶段一：客户端“请求报文”打包"><a href="#阶段一：客户端“请求报文”打包" class="headerlink" title="阶段一：客户端“请求报文”打包"></a>阶段一：客户端“请求报文”打包</h4><h5 id="1-应用层：生成“访问网页的请求数据”"><a href="#1-应用层：生成“访问网页的请求数据”" class="headerlink" title="1.应用层：生成“访问网页的请求数据”"></a>1.应用层：生成“访问网页的请求数据”</font></h5><ul>
 <li><strong><font style="color:rgb(68, 68, 68);">任务</font></strong><font style="color:rgb(68, 68, 68);">：处理“用户需求”（访问百度首页），生成符合“网页访问协议”的数据。</font></li>
 <li><strong><font style="color:rgb(68, 68, 68);">具体操作</font></strong><font style="color:rgb(68, 68, 68);">：</font><ul>
 <li><font style="color:rgb(68, 68, 68);">浏览器最初需要将“访问百度”的需求，转换成</font><strong><font style="color:rgb(68, 68, 68);">HTTP协议</font></strong><font style="color:rgb(68, 68, 68);">（应用层核心协议，专门用于网页传输）的“请求报文”。</font></li>
 <li><font style="color:rgb(68, 68, 68);">这个请求报文包含关键信息：</font><ul>
-<li><font style="color:rgb(68, 68, 68);">请求方法：</font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;GET&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">（表示“获取数据”，即获取百度首页的HTML代码）；</font></li>
-<li><font style="color:rgb(68, 68, 68);">目标地址：</font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;www.baidu.com&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">（但应用层不认识域名，会先调用</font><font style="color:rgb(68, 68, 68);"> </font><strong><font style="color:rgb(68, 68, 68);">DNS协议</font></strong><font style="color:rgb(68, 68, 68);">把域名解析成百度服务器的</font><strong><font style="color:rgb(68, 68, 68);">IP地址</font></strong><font style="color:rgb(68, 68, 68);">，比如</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;180.101.49.11&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">——这一步是应用层的“前置任务”）；</font></li>
+<li><font style="color:rgb(68, 68, 68);">请求方法：</font><code>GET</code><font style="color:rgb(68, 68, 68);">（表示“获取数据”，即获取百度首页的HTML代码）；</font></li>
+<li><font style="color:rgb(68, 68, 68);">目标地址：</font><code>www.baidu.com</code><font style="color:rgb(68, 68, 68);">（但应用层不认识域名，会先调用</font><font style="color:rgb(68, 68, 68);"> </font><strong><font style="color:rgb(68, 68, 68);">DNS协议</font></strong><font style="color:rgb(68, 68, 68);">把域名解析成百度服务器的</font><strong><font style="color:rgb(68, 68, 68);">IP地址</font></strong><font style="color:rgb(68, 68, 68);">，比如</font><font style="color:rgb(68, 68, 68);"> </font><code>180.101.49.11</code><font style="color:rgb(68, 68, 68);">——这一步是应用层的“前置任务”）；</font></li>
 <li><font style="color:rgb(68, 68, 68);">请求头：包含浏览器类型（如Chrome）、协助的文件格式（如HTML、JPG）等；</font></li>
 <li><font style="color:rgb(68, 68, 68);">空行+请求体：访问首页无额外参数，请求体为空。</font></li>
 </ul>
@@ -2050,15 +2048,14 @@ POP3 协议采用 **TCP 协议**进行通信，默认使用 **110 端口**；当
 </li>
 <li><strong><font style="color:rgb(68, 68, 68);">输出</font></strong><font style="color:rgb(68, 68, 68);">：HTTP请求报文（应用层数据，还不能直接传输）。</font></li>
 </ul>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h5 id="2-传输层：给请求数据“加追踪规则（TCP头部）”"><a href="#2-传输层：给请求数据“加追踪规则（TCP头部）”" class="headerlink" title="2. 传输层：给请求数据“加追踪规则（TCP头部）”"></a><font style="color:rgb(68, 68, 68);">2. 传输层：给请求数据“加追踪规则（TCP头部）”</font></h5><ul>
+<h5 id="2-传输层：给请求数据“加追踪规则（TCP头部）”"><a href="#2-传输层：给请求数据“加追踪规则（TCP头部）”" class="headerlink" title="2. 传输层：给请求数据“加追踪规则（TCP头部）”"></a>2. 传输层：给请求数据“加追踪规则（TCP头部）”</h5><ul>
 <li><strong><font style="color:rgb(68, 68, 68);">任务</font></strong><font style="color:rgb(68, 68, 68);">：确保“应用层数据”能“可靠、有序”地传到百度服务器（因为网页数据不能丢包，否则页面会错乱），所以用</font><strong><font style="color:rgb(68, 68, 68);">TCP协议</font></strong><font style="color:rgb(68, 68, 68);"> </font><font style="color:rgb(68, 68, 68);">处理。</font></li>
 <li><strong><font style="color:rgb(68, 68, 68);">具体操作</font></strong><font style="color:rgb(68, 68, 68);">：</font><ul>
 <li><font style="color:rgb(68, 68, 68);">传输层接收应用层的HTTP请求报文后，先给它“加一个TCP头部”（相当于给包裹贴“追踪单”），头部包含：</font><ul>
-<li><font style="color:rgb(68, 68, 68);">源端口：你电脑浏览器的临时端口（如</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;54321&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">——每个应用的网络连接都有唯一端口，确保服务器返回的数据能准确回到Chrome，而不是微信）；</font></li>
-<li><font style="color:rgb(68, 68, 68);">目的端口：百度服务器的“HTTP服务端口”（默认</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;80&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">——服务器会监听</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;80&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);"> </font><font style="color:rgb(68, 68, 68);">端口，接收所有网页访问请求）；</font></li>
-<li><font style="color:rgb(68, 68, 68);">序列号：给数据分配唯一编号（如</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;12345&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">），确保服务器接收时能按顺序拼接（避免数据乱序）；</font></li>
-<li><font style="color:rgb(68, 68, 68);">确认号：初始为</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;0&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">（后续通信中用于“确认收到数据”）。</font></li>
+<li><font style="color:rgb(68, 68, 68);">源端口：你电脑浏览器的临时端口（如</font><font style="color:rgb(68, 68, 68);"> </font><code>54321</code><font style="color:rgb(68, 68, 68);">——每个应用的网络连接都有唯一端口，确保服务器返回的数据能准确回到Chrome，而不是微信）；</font></li>
+<li><font style="color:rgb(68, 68, 68);">目的端口：百度服务器的“HTTP服务端口”（默认</font><font style="color:rgb(68, 68, 68);"> </font><code>80</code><font style="color:rgb(68, 68, 68);">——服务器会监听</font><font style="color:rgb(68, 68, 68);"> </font><code>80</code><font style="color:rgb(68, 68, 68);"> </font><font style="color:rgb(68, 68, 68);">端口，接收所有网页访问请求）；</font></li>
+<li><font style="color:rgb(68, 68, 68);">序列号（Seq）：给数据分配唯一编号（如</font><font style="color:rgb(68, 68, 68);"> </font><code>12345</code><font style="color:rgb(68, 68, 68);">），确保服务器接收时能按顺序拼接（避免数据乱序）；</font></li>
+<li><font style="color:rgb(68, 68, 68);">确认号（Ack）：初始为</font><font style="color:rgb(68, 68, 68);"> </font><code>0</code><font style="color:rgb(68, 68, 68);">（后续通信中用于“确认收到数据”）。</font></li>
 </ul>
 </li>
 <li><font style="color:rgb(68, 68, 68);">若HTTP请求报文较大（比如带了复杂参数），传输层会将其拆分成多个“TCP段”（小数据包），每个段都加独立的TCP头部。</font></li>
@@ -2066,14 +2063,13 @@ POP3 协议采用 **TCP 协议**进行通信，默认使用 **110 端口**；当
 </li>
 <li><strong><font style="color:rgb(68, 68, 68);">输出</font></strong><font style="color:rgb(68, 68, 68);">：TCP段（TCP头部 + HTTP请求报文）。</font></li>
 </ul>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h5 id="3-网络层：给TCP段“加地址（IP头部）”，规划传输路线"><a href="#3-网络层：给TCP段“加地址（IP头部）”，规划传输路线" class="headerlink" title="3. 网络层：给TCP段“加地址（IP头部）”，规划传输路线"></a><font style="color:rgb(68, 68, 68);">3. 网络层：给TCP段“加地址（IP头部）”，规划传输路线</font></h5><ul>
+<h5 id="3-网络层：给TCP段“加地址（IP头部）”，规划传输路线"><a href="#3-网络层：给TCP段“加地址（IP头部）”，规划传输路线" class="headerlink" title="3. 网络层：给TCP段“加地址（IP头部）”，规划传输路线"></a>3. 网络层：给TCP段“加地址（IP头部）”，规划传输路线</h5><ul>
 <li><strong><font style="color:rgb(68, 68, 68);">任务</font></strong><font style="color:rgb(68, 68, 68);">：给“TCP段”加“目标地址”，并确定“从你的电脑到百度服务器”的传输路线。</font></li>
 <li><strong><font style="color:rgb(68, 68, 68);">具体操作</font></strong><font style="color:rgb(68, 68, 68);">：</font><ul>
 <li><font style="color:rgb(68, 68, 68);">网络层接收TCP段后，加一个</font><strong><font style="color:rgb(68, 68, 68);">IP头部</font></strong><font style="color:rgb(68, 68, 68);">（相当于给包裹贴“收件地址”），头部囊括：</font><ul>
-<li><font style="color:rgb(68, 68, 68);">源IP地址：你电脑的公网IP（如</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;113.207.56.78&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">——由你的运营商分配，是你电脑在互联网中的“身份证”）；</font></li>
-<li><font style="color:rgb(68, 68, 68);">目的IP地址：百度服务器的公网IP（如</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;180.101.49.11&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">——通过DNS解析得到）；</font></li>
-<li><font style="color:rgb(68, 68, 68);">生存时间（TTL）：限制数据包最多经过的路由器数量（如</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;64&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">，避免数据包在网络中无限循环）。</font></li>
+<li><font style="color:rgb(68, 68, 68);">源IP地址：你电脑的公网IP（如</font><font style="color:rgb(68, 68, 68);"> </font><code>113.207.56.78</code><font style="color:rgb(68, 68, 68);">——由你的运营商分配，是你电脑在互联网中的“身份证”）；</font></li>
+<li><font style="color:rgb(68, 68, 68);">目的IP地址：百度服务器的公网IP（如</font><font style="color:rgb(68, 68, 68);"> </font><code>180.101.49.11</code><font style="color:rgb(68, 68, 68);">——通过DNS解析得到）；</font></li>
+<li><font style="color:rgb(68, 68, 68);">生存时间（TTL）：限制数据包最多经过的路由器数量（如</font><font style="color:rgb(68, 68, 68);"> </font><code>64</code><font style="color:rgb(68, 68, 68);">，避免数据包在网络中无限循环）。</font></li>
 </ul>
 </li>
 <li><font style="color:rgb(68, 68, 68);">同时，网络层的</font><strong><font style="color:rgb(68, 68, 68);">路由器</font></strong><font style="color:rgb(68, 68, 68);">（你家路由器或运营商路由器）会通过“路由协议”（如BGP）规划路线：比如你的数据从“家→小区交换机→运营商机房→全国骨干网→百度服务器机房”。</font></li>
@@ -2081,12 +2077,11 @@ POP3 协议采用 **TCP 协议**进行通信，默认使用 **110 端口**；当
 </li>
 <li><strong><font style="color:rgb(68, 68, 68);">输出</font></strong><font style="color:rgb(68, 68, 68);">：IP数据包（IP头部 + TCP段）。</font></li>
 </ul>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h5 id="4-链路层：给IP数据包“加硬件地址（链路层头部）”，转成物理信号"><a href="#4-链路层：给IP数据包“加硬件地址（链路层头部）”，转成物理信号" class="headerlink" title="4. 链路层：给IP数据包“加硬件地址（链路层头部）”，转成物理信号"></a><font style="color:rgb(68, 68, 68);">4. 链路层：给IP数据包“加硬件地址（链路层头部）”，转成物理信号</font></h5><ul>
+<h5 id="4-链路层：给IP数据包“加硬件地址（链路层头部）”，转成物理信号"><a href="#4-链路层：给IP数据包“加硬件地址（链路层头部）”，转成物理信号" class="headerlink" title="4. 链路层：给IP数据包“加硬件地址（链路层头部）”，转成物理信号"></a>4. 链路层：给IP数据包“加硬件地址（链路层头部）”，转成物理信号</h5><ul>
 <li><strong><font style="color:rgb(68, 68, 68);">任务</font></strong><font style="color:rgb(68, 68, 68);">：将“IP数据包”转换成能在物理介质（网线、Wi-Fi）中传输的信号，并依据硬件设备转发。</font></li>
 <li><strong><font style="color:rgb(68, 68, 68);">具体操作</font></strong><font style="color:rgb(68, 68, 68);">：</font><ul>
 <li><font style="color:rgb(68, 68, 68);">链路层接收IP数据包后，加一个</font><strong><font style="color:rgb(68, 68, 68);">链路层头部</font></strong><font style="color:rgb(68, 68, 68);">（如以太网头部），含有：</font><ul>
-<li><font style="color:rgb(68, 68, 68);">源MAC地址：你电脑网卡的硬件地址（如</font><font style="color:rgb(68, 68, 68);"> </font><code>&lt;font style=&quot;color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);&quot;&gt;00:1A:2B:3C:4D:5E&lt;/font&gt;</code><font style="color:rgb(68, 68, 68);">——每个网卡的MAC地址全球唯一，是“设备的硬件身份证”）；</font></li>
+<li><font style="color:rgb(68, 68, 68);">源MAC地址：你电脑网卡的硬件地址（如</font><font style="color:rgb(68, 68, 68);"> </font><code>00:1A:2B:3C:4D:5E</code><font style="color:rgb(68, 68, 68);">——每个网卡的MAC地址全球唯一，是“设备的硬件身份证”）；</font></li>
 <li><font style="color:rgb(68, 68, 68);">目的MAC地址：下一跳设备的MAC地址（比如你家路由器的MAC地址——链路层只负责“相邻设备”的通信，不认识远隔千里的百度服务器，因而先传给路由器）。</font></li>
 </ul>
 </li>
@@ -2095,42 +2090,36 @@ POP3 协议采用 **TCP 协议**进行通信，默认使用 **110 端口**；当
 </li>
 <li><strong><font style="color:rgb(68, 68, 68);">输出</font></strong><font style="color:rgb(68, 68, 68);">：链路层帧（电信号&#x2F;无线电波形式）。</font></li>
 </ul>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h4 id="阶段二：网络传输"><a href="#阶段二：网络传输" class="headerlink" title="阶段二：网络传输"></a><font style="color:rgb(68, 68, 68);">阶段二：网络传输</font></h4><ul>
+<h4 id="阶段二：网络传输"><a href="#阶段二：网络传输" class="headerlink" title="阶段二：网络传输"></a>阶段二：网络传输</h4><ul>
 <li><font style="color:rgb(68, 68, 68);">你的电脑发送的“链路层帧”，会通过</font><strong><font style="color:rgb(68, 68, 68);">路由器层层转发</font></strong><font style="color:rgb(68, 68, 68);">：先到你家路由器，再到小区交换机，接着进入运营商的核心机房，通过“全国骨干网”（光纤）传输到百度服务器所在的机房，最后到达百度的路由器，再转发到百度的服务器。</font></li>
 <li><font style="color:rgb(68, 68, 68);">转发过程中，</font><strong><font style="color:rgb(68, 68, 68);">只有链路层的MAC地址会不断变化</font></strong><font style="color:rgb(68, 68, 68);">（每到一个路由器，就更新“下一跳MAC地址”），而</font><strong><font style="color:rgb(68, 68, 68);">IP头部的源IP、目的IP始终不变</font></strong><font style="color:rgb(68, 68, 68);">（确保最终能找到百度服务器）。</font></li>
 </ul>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h4 id="阶段三：服务器”请求报文“解包"><a href="#阶段三：服务器”请求报文“解包" class="headerlink" title="阶段三：服务器”请求报文“解包"></a><font style="color:rgb(68, 68, 68);">阶段三：服务器”请求报文“解包</font></h4><p><font style="color:rgb(68, 68, 68);">百度服务器接收到底层传来的“链路层帧”后，会从</font><strong><font style="color:rgb(68, 68, 68);">链路层</font></strong><font style="color:rgb(68, 68, 68);">开始向上传递，每经过一层就“拆掉一层包装（头部信息）”，最终拿到应用层的“HTTP请求报文”，理解“用户要访问首页”的需求。</font></p>
-<h5 id="1-链路层：接收物理信号，拆链路层头部"><a href="#1-链路层：接收物理信号，拆链路层头部" class="headerlink" title="1. 链路层：接收物理信号，拆链路层头部"></a><font style="color:rgb(68, 68, 68);">1. 链路层：接收物理信号，拆链路层头部</font></h5><ul>
+<h4 id="阶段三：服务器”请求报文“解包"><a href="#阶段三：服务器”请求报文“解包" class="headerlink" title="阶段三：服务器”请求报文“解包"></a>阶段三：服务器”请求报文“解包</h4><p><font style="color:rgb(68, 68, 68);">百度服务器接收到底层传来的“链路层帧”后，会从</font><strong><font style="color:rgb(68, 68, 68);">链路层</font></strong><font style="color:rgb(68, 68, 68);">开始向上传递，每经过一层就“拆掉一层包装（头部信息）”，最终拿到应用层的“HTTP请求报文”，理解“用户要访问首页”的需求。</font></p>
+<h5 id="1-链路层：接收物理信号，拆链路层头部"><a href="#1-链路层：接收物理信号，拆链路层头部" class="headerlink" title="1. 链路层：接收物理信号，拆链路层头部"></a>1. 链路层：接收物理信号，拆链路层头部</h5><ul>
 <li><font style="color:rgb(68, 68, 68);">百度服务器的网卡接收电信号&#x2F;光信号，转换成“链路层帧”，拆掉“链路层头部”，提取出“IP数据包”，传递给网络层。</font></li>
 </ul>
-<h5 id="2-网络层：拆IP头部，确认目标地址"><a href="#2-网络层：拆IP头部，确认目标地址" class="headerlink" title="2. 网络层：拆IP头部，确认目标地址"></a><font style="color:rgb(68, 68, 68);">2. 网络层：拆IP头部，确认目标地址</font></h5><ul>
+<h5 id="2-网络层：拆IP头部，确认目标地址"><a href="#2-网络层：拆IP头部，确认目标地址" class="headerlink" title="2. 网络层：拆IP头部，确认目标地址"></a>2. 网络层：拆IP头部，确认目标地址</h5><ul>
 <li><font style="color:rgb(68, 68, 68);">拆掉“IP头部”，检查“目的IP地址”是否是自己的IP（确认数据没发错），提取出“TCP段”，传递给传输层。</font></li>
 </ul>
-<h5 id="3-传输层：拆TCP头部，确认端口和数据完整性"><a href="#3-传输层：拆TCP头部，确认端口和数据完整性" class="headerlink" title="3. 传输层：拆TCP头部，确认端口和数据完整性"></a><font style="color:rgb(68, 68, 68);">3. 传输层：拆TCP头部，确认端口和数据完整性</font></h5><ul>
+<h5 id="3-传输层：拆TCP头部，确认端口和数据完整性"><a href="#3-传输层：拆TCP头部，确认端口和数据完整性" class="headerlink" title="3. 传输层：拆TCP头部，确认端口和数据完整性"></a>3. 传输层：拆TCP头部，确认端口和数据完整性</h5><ul>
 <li><font style="color:rgb(68, 68, 68);">拆掉“TCP头部”，通过“目的端口（80）”将数据分配给服务器上的“HTTP服务进程”（百度专门处理网页请求的程序），同时通过“序列号”确认TCP段完整、有序，提取出“HTTP请求报文”，传递给应用层。</font></li>
 </ul>
-<h5 id="4-应用层：解析HTTP请求，生成响应数据"><a href="#4-应用层：解析HTTP请求，生成响应数据" class="headerlink" title="4. 应用层：解析HTTP请求，生成响应数据"></a><font style="color:rgb(68, 68, 68);">4. 应用层：解析HTTP请求，生成响应数据</font></h5><ul>
+<h5 id="4-应用层：解析HTTP请求，生成响应数据"><a href="#4-应用层：解析HTTP请求，生成响应数据" class="headerlink" title="4. 应用层：解析HTTP请求，生成响应数据"></a>4. 应用层：解析HTTP请求，生成响应数据</h5><ul>
 <li><font style="color:rgb(68, 68, 68);">百度服务器的HTTP服务进程解析HTTP请求报文，知道“用户要获取首页数据”，于是生成“HTTP响应报文”——包含百度首页的HTML代码、CSS样式、图片链接等数据，传递给传输层，准备返回给你的电脑。</font></li>
 </ul>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h4 id="阶段四：服务器“响应报文”四层打包"><a href="#阶段四：服务器“响应报文”四层打包" class="headerlink" title="阶段四：服务器“响应报文”四层打包"></a><font style="color:rgb(68, 68, 68);">阶段四：服务器“响应报文”四层打包</font></h4><p><font style="color:rgb(68, 68, 68);">这个过程和“客户端打包请求数据”完全对称：</font></p>
+<h4 id="阶段四：服务器“响应报文”四层打包"><a href="#阶段四：服务器“响应报文”四层打包" class="headerlink" title="阶段四：服务器“响应报文”四层打包"></a>阶段四：服务器“响应报文”四层打包</h4><p><font style="color:rgb(68, 68, 68);">这个过程和“客户端打包请求数据”完全对称：</font></p>
 <ul>
 <li><font style="color:rgb(68, 68, 68);">应用层的HTTP响应报文 → 传输层加TCP头部（源端口80，目的端口54321）→ 网络层加IP头部（源IP180.101.49.11，目的IP113.207.56.78）→ 链路层加MAC头部，转成物理信号，通过网络传回你的电脑。</font></li>
 </ul>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h4 id="阶段五：网络传输"><a href="#阶段五：网络传输" class="headerlink" title="阶段五：网络传输"></a><font style="color:rgb(68, 68, 68);">阶段五：网络传输</font></h4><ul>
+<h4 id="阶段五：网络传输"><a href="#阶段五：网络传输" class="headerlink" title="阶段五：网络传输"></a>阶段五：网络传输</h4><ul>
 <li><font style="color:rgb(68, 68, 68);">百度服务器生成响应数据后，会先发送给百度机房内的交换机和路由器，经过百度出口路由器离开服务器所在的数据中心，进入运营商的骨干网络，通过全国高速光纤链路传输到你所在地区的运营商核心机房，再经过城域网传输到你所在小区的交换机，最后到达你家路由器。你的电脑接收到路由器转发来的链路层帧，经过网卡解封装，最终获得百度服务器返回的数据。  </font></li>
 <li><font style="color:rgb(68, 68, 68);">转发过程中，</font><strong><font style="color:rgb(68, 68, 68);">只有链路层的MAC地址会不断变化</font></strong><font style="color:rgb(68, 68, 68);">（每到一个路由器，就更新“下一跳MAC地址”），而</font><strong><font style="color:rgb(68, 68, 68);">IP头部的源IP、目的IP始终不变</font></strong><font style="color:rgb(68, 68, 68);">（确保最终能找到客户端）。</font></li>
 </ul>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
-<h4 id="阶段六：客户端解包"><a href="#阶段六：客户端解包" class="headerlink" title="阶段六：客户端解包"></a><font style="color:rgb(68, 68, 68);">阶段六：客户端解包</font></h4><p><font style="color:rgb(68, 68, 68);">你的电脑接收百度服务器返回的“链路层帧”后，再次从链路层到应用层拆包：</font></p>
+<h4 id="阶段六：客户端解包"><a href="#阶段六：客户端解包" class="headerlink" title="阶段六：客户端解包"></a>阶段六：客户端解包</h4><p><font style="color:rgb(68, 68, 68);">你的电脑接收百度服务器返回的“链路层帧”后，再次从链路层到应用层拆包：</font></p>
 <ul>
 <li><font style="color:rgb(68, 68, 68);">链路层拆MAC头部 → 网络层拆IP头部 → 传输层拆TCP头部（按序列号拼接信息）→ 应用层拆HTTP响应报文，拿到百度首页的HTML、CSS、图片材料。</font></li>
 <li><font style="color:rgb(68, 68, 68);">最后，浏览器解析这些数据：渲染HTML结构、加载CSS样式、下载图片，最终将完整的百度首页呈现在你的电脑屏幕上。</font></li>
 </ul>
-<p><font style="color:rgb(68, 68, 68);"></font></p>
 <h1 id="3-HTTP-HTTPS-协议"><a href="#3-HTTP-HTTPS-协议" class="headerlink" title="3 HTTP&#x2F;HTTPS 协议"></a>3 HTTP&#x2F;HTTPS 协议</h1><p><font style="color:rgb(15, 17, 21);">HTTP协议，全称超文本传输协议（英文：HyperText Transfer Protocol）是一种使用非常广泛的用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。为什么称之为超文本传输协议呢，不知道大家还记不记得我之前给大家讲前端技术的时候提到过前端页面骨架是HTML语言写出来的，HTML全称为超文本标记语言，HTTP协议最开始就是为了传输HTML页面数据来制定的一种协议。设计HTTP最初的目的为了提供一种发布和接收HTML页面的方法。</font></p>
 <p><font style="color:rgb(15, 17, 21);">简单来说就是（可略过）：HTTP的发展是由蒂姆·伯纳斯·李于1989年在欧洲核子研究组织（CERN）所发起。HTTP的标准制定由万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task Force，IETF）进行协调，最终发布了一一系列的RFC，其中最有名的是1999年6月公布的RFC 2616，定义了HTTP协议中现今广泛使用的一个版本——HTTP 1.1，在这之前应用广泛的是HTTP 1.0版本。2014年12月，互联网工程任务组（IETF）的Hypertext Transfer Protocol Bis（httpbis）工作组将HTTP&#x2F;2标准提议递交至IETF进行讨论，于2015年2月17日被批准。HTTP&#x2F;2标准于2015年5月以RFC 7540正式发布，取代HTTP 1.1成为HTTP的实现标准。但实际上到目前为止，广泛使用的还是HTTP 1.1版本。</font></p>
 <p><font style="color:rgb(15, 17, 21);">协议是什么？我们要搞清楚这个概念，协议就是双方协商好的一个事情的标准，就比如说我们国际通用语言是英语，各国通信都用英语，这就是个协议（我相信以后可能都用汉语，哈哈，中国博大精深），这个标准对于我们的网络来说，其实指的就是一种数据格式。</font></p>
