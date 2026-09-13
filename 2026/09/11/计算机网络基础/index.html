@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2026/png/60138024/1784992280700-5cbe6eb6-1c47-4486-8f1d-de2209074c16.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2026/png/60138024/1784992306496-f82cc734-2ae0-44e4-a946-4b565508be22.png">
 <meta property="article:published_time" content="2026-09-11T11:44:00.000Z">
-<meta property="article:modified_time" content="2026-09-11T15:24:05.881Z">
+<meta property="article:modified_time" content="2026-09-13T08:45:24.976Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="网络安全">
 <meta property="article:tag" content="计算机网络">
@@ -343,7 +343,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          42k words
+          50k words
         
       </span>
     
@@ -354,7 +354,7 @@
         
         
         
-          353 mins
+          417 mins
         
       </span>
     
@@ -2222,7 +2222,7 @@ POP3 协议采用 **TCP 协议**进行通信，默认使用 **110 端口**；当
 <td><font style="color:rgb(69, 69, 69);">通常是中间件（如 Nginx）虽然是好的，但后端的服务（如 Tomcat&#x2F;Python）挂了或没响应。</font></td>
 </tr>
 </tbody></table>
-<h2 id="3-2-HTTP-请求与响应"><a href="#3-2-HTTP-请求与响应" class="headerlink" title="3.2 HTTP 请求与响应"></a>3.2 HTTP 请求与响应</h2><h3 id="3-2-1-HTTP-Request"><a href="#3-2-1-HTTP-Request" class="headerlink" title="3.2.1 HTTP Request"></a>3.2.1 HTTP Request</h3><p>HTTP 请求（HTTP Request）就是<strong>客户端</strong>为了向<strong>服务器</strong>请求某种资源或执行某种操作，而按照 HTTP 协议规定的格式发送的一段数据。</p>
+<h2 id="3-2-HTTP-Request-and-response"><a href="#3-2-HTTP-Request-and-response" class="headerlink" title="3.2 HTTP Request and response"></a>3.2 HTTP Request and response</h2><h3 id="3-2-1-HTTP-Request"><a href="#3-2-1-HTTP-Request" class="headerlink" title="3.2.1 HTTP Request"></a>3.2.1 HTTP Request</h3><p>HTTP 请求（HTTP Request）就是<strong>客户端</strong>为了向<strong>服务器</strong>请求某种资源或执行某种操作，而按照 HTTP 协议规定的格式发送的一段数据。</p>
 <p><strong>例如你在浏览器输入：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">https://example.com/index.html<br></code></pre></td></tr></table></figure>
 
@@ -3007,6 +3007,408 @@ Host: example.com</code></pre><p id="ud4288725" class="ne-p"><span class="ne-tex
 <p><font style="color:rgb(15, 17, 21);">text</font></p>
 <p><font style="color:rgb(15, 17, 21);">登录前：abc123  →  登录成功  →  重新生成  →  xyz789</font></p>
 <p><font style="color:rgb(15, 17, 21);">用于防御</font><font style="color:rgb(15, 17, 21);"> </font><strong><font style="color:rgb(15, 17, 21);">Session Fixation（会话固定）</font></strong><font style="color:rgb(15, 17, 21);">。</font></p>
+<h2 id="3-5-Authentication-and-Authorization"><a href="#3-5-Authentication-and-Authorization" class="headerlink" title="3.5 Authentication and Authorization"></a>3.5 Authentication and Authorization</h2><h3 id="3-5-1-认证验证（Authentication）"><a href="#3-5-1-认证验证（Authentication）" class="headerlink" title="3.5.1 认证验证（Authentication）"></a>3.5.1 认证验证（Authentication）</h3><p><strong>Authentication（AuthN）</strong> 是验证主体（Subject）身份真实性的过程。</p>
+<p>核心问题：</p>
+<blockquote>
+<p><strong>Who are you?——你是谁？</strong></p>
+</blockquote>
+<p>服务器通过某种**身份凭证（Credential）**验证客户端声明的身份。</p>
+<p>常见认证凭证：</p>
+<ul>
+<li>用户名 + 密码</li>
+<li>Session ID</li>
+<li>API Key</li>
+<li>Access Token</li>
+<li>JWT</li>
+<li>数字证书</li>
+<li>多因素认证凭证</li>
+</ul>
+<p><strong>认证基本流程</strong></p>
+<p>****以用户名密码登录为例：<br>    Client  │  │ username + password  ▼Server  │  ├─ 查询用户  ├─ 验证密码  │  ▼Authentication Success  │  ▼建立已认证状态</p>
+<p>认证成功后，服务器建立或确认一个<strong>已认证身份（Authenticated Identity）</strong>。</p>
+<p>例如：<br>    User ID &#x3D; 10001  Username &#x3D; zhangsan  Authenticated &#x3D; true</p>
+<p>后续请求必须能够向服务器证明：</p>
+<blockquote>
+<p>当前请求属于已经通过认证的 User 10001。</p>
+</blockquote>
+<p>这就是 Session、Token 等机制发挥作用的地方。</p>
+<h3 id="3-5-2-授权验证（Authorization）"><a href="#3-5-2-授权验证（Authorization）" class="headerlink" title="3.5.2 授权验证（Authorization）"></a>3.5.2 授权验证（Authorization）</h3><p><strong>Authorization（AuthZ）</strong> 是在主体身份确定之后，判断该主体是否具有执行某项操作、访问某个资源的权限。</p>
+<p>核心问题：</p>
+<blockquote>
+<p><strong>What are you allowed to do?——你能做什么？</strong></p>
+</blockquote>
+<p>例如：<br>    User 10001    │    ├── GET &#x2F;profile       → 允许    ├── POST &#x2F;comment      → 允许    ├── DELETE &#x2F;user&#x2F;10002 → 拒绝    └── GET &#x2F;admin&#x2F;users   → 拒绝</p>
+<p>这里服务器已经知道：<br>    你是谁 &#x3D; User 10001</p>
+<p>但是：<br>    你是否有权限执行这个操作？</p>
+<p>属于 Authorization。</p>
+<p><strong>认证与授权之间的严格区别</strong></p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>Authentication</th>
+<th>Authorization</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>中文</td>
+<td>认证</td>
+<td>授权</td>
+</tr>
+<tr>
+<td>核心问题</td>
+<td>你是谁？</td>
+<td>你能做什么？</td>
+</tr>
+<tr>
+<td>英文简称</td>
+<td>AuthN</td>
+<td>AuthZ</td>
+</tr>
+<tr>
+<td>发生逻辑</td>
+<td>确认身份</td>
+<td>判断权限</td>
+</tr>
+<tr>
+<td>依赖身份</td>
+<td>不一定</td>
+<td>通常需要</td>
+</tr>
+<tr>
+<td>典型对象</td>
+<td>用户身份</td>
+<td>资源、操作、权限</td>
+</tr>
+<tr>
+<td>安全问题</td>
+<td>认证绕过、凭证泄露</td>
+<td>越权、IDOR、权限控制缺失</td>
+</tr>
+</tbody></table>
+<p>可以记成：<br>    Authentication      ↓确认身份      ↓Authorization      ↓判断权限      ↓允许 &#x2F; 拒绝操作</p>
+<ol start="4">
+<li><h1 id="一个完整-Web-请求"><a href="#一个完整-Web-请求" class="headerlink" title="一个完整 Web 请求"></a>一个完整 Web 请求</h1></li>
+</ol>
+<p>例如用户访问：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/admin/users</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>example.com<br><span class="hljs-attribute">Cookie</span><span class="hljs-punctuation">: </span>session_id=abc123<br></code></pre></td></tr></table></figure>
+
+<p>服务器处理过程可以抽象为：</p>
+<blockquote>
+<p>① 解析请求<br>      ↓<br>② 获取 Session ID<br>      ↓<br>③ 查找 Session<br>      ↓<br>④ Authentication<br>      ↓<br>确认：<br>User ID &#x3D; 10001<br>      ↓<br>⑤ Authorization<br>      ↓<br>检查：<br>User 10001 是否具有 admin.users.read 权限？<br>      ↓<br>   ┌──┴──┐<br>   ↓     ↓<br>  有     无<br>   ↓     ↓<br> 200    403</p>
+</blockquote>
+<p>因此：</p>
+<p><strong>认证成功 ≠ 授权成功。</strong></p>
+<p>一个用户完全可能：<br>    Authentication &#x3D; SuccessAuthorization  &#x3D; Failure</p>
+<p>也就是：</p>
+<blockquote>
+<p><strong>用户已经登录，但没有权限执行该操作。</strong></p>
+</blockquote>
+<h3 id="3-5-3-权限控制的核心对象"><a href="#3-5-3-权限控制的核心对象" class="headerlink" title="3.5.3 权限控制的核心对象"></a>3.5.3 权限控制的核心对象</h3><p>Authorization 通常涉及三个核心元素：</p>
+<blockquote>
+<p>Subject（主体）    </p>
+<p>        ↓</p>
+<p>Action（操作）    </p>
+<p>        ↓</p>
+<p>Resource（资源）</p>
+</blockquote>
+<p>例如：</p>
+<blockquote>
+<p>Subject:User 10001</p>
+<p>Action:DELETE</p>
+<p>Resource:&#x2F;user&#x2F;10002</p>
+</blockquote>
+<p>服务器需要判断：<br>    User 10001是否允许DELETE&#x2F;user&#x2F;10002</p>
+<p>这就是一个<strong>访问控制（Access Control）决策</strong>。</p>
+<p>可以抽象成：<br>    Authorization &#x3D;Subject + Action + Resource + Policy</p>
+<p>其中 Policy 是权限策略。</p>
+<h3 id="3-5-4-常见授权模型"><a href="#3-5-4-常见授权模型" class="headerlink" title="3.5.4 常见授权模型"></a>3.5.4 常见授权模型</h3><h4 id="RBAC"><a href="#RBAC" class="headerlink" title="RBAC"></a>RBAC</h4><p><strong>Role-Based Access Control，基于角色的访问控制。</strong></p>
+<p>例如：<br>User └── Role: editor        </p>
+<p>                    ├── article.read        </p>
+<p>                    ├── article.create        </p>
+<p>                    └── article.update</p>
+<p>管理员：<br>    User └── Role: admin        </p>
+<p>                ├── user.read        </p>
+<p>                ├── user.delete        </p>
+<p>                ├── article.delete        </p>
+<p>                └── …</p>
+<p>服务器根据用户角色判断权限。</p>
+<hr>
+<h4 id="ABAC"><a href="#ABAC" class="headerlink" title="ABAC"></a>ABAC</h4><p><strong>Attribute-Based Access Control，基于属性的访问控制。</strong></p>
+<p>不单纯根据角色，而根据：<br>    用户属性+资源属性+操作+环境条件</p>
+<p>例如：<br>    用户部门 &#x3D; 财务部资源部门 &#x3D; 财务部操作 &#x3D; READ时间 &#x3D; 工作时间</p>
+<p>满足策略才允许访问。</p>
+<h3 id="3-5-5-网安中最重要的区别"><a href="#3-5-5-网安中最重要的区别" class="headerlink" title="3.5.5 网安中最重要的区别"></a>3.5.5 网安中最重要的区别</h3><p>你之后学习 Web 安全时，会大量遇到：</p>
+<h4 id="Authentication-问题"><a href="#Authentication-问题" class="headerlink" title="Authentication 问题"></a>Authentication 问题</h4><pre><code class="hljs">没有登录
+    ↓
+却成功访问需要登录的资源
+</code></pre>
+<p>属于：</p>
+<blockquote>
+<p><strong>认证绕过（Authentication Bypass）</strong></p>
+</blockquote>
+<hr>
+<h4 id="Authorization-问题"><a href="#Authorization-问题" class="headerlink" title="Authorization 问题"></a>Authorization 问题</h4><p>用户已经正常登录：<br>    User A</p>
+<p>但是修改 URL：<br>    GET &#x2F;user&#x2F;10001</p>
+<p>变成：<br>    GET &#x2F;user&#x2F;10002</p>
+<p>服务器没有检查：<br>    User A 是否有权访问 User 10002？</p>
+<p>如果直接返回数据，就是：</p>
+<blockquote>
+<p><strong>访问控制缺陷 &#x2F; 越权</strong></p>
+</blockquote>
+<p>其中典型类型是：</p>
+<blockquote>
+<p><strong>IDOR（Insecure Direct Object Reference）</strong></p>
+</blockquote>
+<h2 id="3-6-Token"><a href="#3-6-Token" class="headerlink" title="3.6 Token"></a>3.6 Token</h2><h3 id="3-6-1-Token在认证中的作用"><a href="#3-6-1-Token在认证中的作用" class="headerlink" title="3.6.1 Token在认证中的作用"></a>3.6.1 Token在认证中的作用</h3><h4 id="1-Token-是什么"><a href="#1-Token-是什么" class="headerlink" title="1 Token 是什么"></a>1 Token 是什么</h4><p><strong>Token（令牌）本质上是一种用于证明某种身份、权限或授权状态的凭证（Credential）。</strong></p>
+<p>在 Web 认证场景中，它通常用于解决：</p>
+<blockquote>
+<p>用户完成一次身份认证后，后续每个请求如何向服务器证明“我已经通过认证”？</p>
+</blockquote>
+<p>例如：<br>    用户<br>     ↓<br>    用户名 + 密码<br>     ↓<br>    服务器验证<br>     ↓<br>    认证成功<br>     ↓<br>    生成 Token<br>     ↓<br>    客户端保存 Token<br>     ↓<br>    后续请求携带 Token<br>     ↓<br>    服务器验证 Token<br>     ↓<br>    确认请求者身份&#x2F;授权状态</p>
+<p>因此要区分：<br>    用户名 + 密码<br>            ↓<br>    用于取得 Token</p>
+<p>和：<br>    Token<br>            ↓<br>    用于后续请求证明身份&#x2F;授权状态</p>
+<p>Token 本身不是“登录”这个动作，而是<strong>认证成功后产生的一种凭证</strong>。</p>
+<h4 id="2-Token-的生成与验证"><a href="#2-Token-的生成与验证" class="headerlink" title="2 Token 的生成与验证"></a>2 Token 的生成与验证</h4><h5 id="Token-的生成流程"><a href="#Token-的生成流程" class="headerlink" title="Token 的生成流程"></a>Token 的生成流程</h5><p>一个典型流程：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs txt">Client<br>  │<br>  │ POST /login<br>  │ username + password<br>  ▼<br>Server<br>  │<br>  ├── 查询用户<br>  ├── 验证密码<br>  │<br>  ▼<br>Authentication Success<br>  │<br>  ├── 生成 Token<br>  │<br>  ▼<br>Client<br></code></pre></td></tr></table></figure>
+
+<p>例如服务器生成：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">token</span> <span class="hljs-operator">=</span> <span class="hljs-number">7</span>f82a9c1...<br></code></pre></td></tr></table></figure>
+
+<p>然后返回：<br>    HTTP&#x2F;1.1 200 OK<br>    Content-Type: application&#x2F;json<br>    {<br>        “access_token”: “7f82a9c1…”<br>    }</p>
+<p>之后客户端请求：<br>    GET &#x2F;api&#x2F;profile HTTP&#x2F;1.1<br>    Authorization: Bearer 7f82a9c1…</p>
+<p>服务器拿到 Token 后进行验证。</p>
+<h5 id="Token-的具体验证"><a href="#Token-的具体验证" class="headerlink" title="Token 的具体验证"></a>Token 的具体验证</h5><p>取决于 Token 的实现方式，但通常包括：<br>    Token<br>     ↓<br>    ① 格式是否合法<br>     ↓<br>    ② 是否由可信主体签发<br>     ↓<br>    ③ 是否被篡改<br>     ↓<br>    ④ 是否过期<br>     ↓<br>    ⑤ 是否被撤销<br>     ↓<br>    ⑥ 是否适用于当前服务&#x2F;用途<br>     ↓<br>    ⑦ 对应主体具有什么身份&#x2F;权限</p>
+<p>验证成功：<br>    Authentication Success<br>            ↓<br>    确定 Subject<br>            ↓<br>    Authorization<br>            ↓<br>    检查是否允许访问资源</p>
+<p>所以要注意：</p>
+<blockquote>
+<p><strong>Token 验证成功 ≠ 自动拥有所有权限。</strong></p>
+</blockquote>
+<p>Token 解决的是身份&#x2F;授权凭证问题，具体能访问什么仍然需要 Authorization 判断。</p>
+<hr>
+<h3 id="3-6-2-Token-的传递方式"><a href="#3-6-2-Token-的传递方式" class="headerlink" title="3.6.2 Token 的传递方式"></a>3.6.2 Token 的传递方式</h3><p>Token 本身只是凭证，还需要通过 HTTP 请求传递给服务器。</p>
+<p>最常见的方式是：<br><strong>Authorization Header</strong></p>
+<hr>
+<pre><code class="hljs">GET /api/user HTTP/1.1
+Host: example.com
+Authorization: Bearer 7f82a9c1...
+</code></pre>
+<p>这里：<br>    Authorization<br>        ↓<br>    HTTP Header<br>    Bearer<br>        ↓<br>    认证方案<br>    7f82a9c1…<br>        ↓<br>    Token</p>
+<p><strong>Bearer Token</strong> 的核心含义可以理解为：</p>
+<blockquote>
+<p>持有（bear）这个 Token 的一方，可以使用它进行认证。</p>
+</blockquote>
+<p>因此 Token 一旦泄露，风险很高。</p>
+<hr>
+<h4 id="Token-也可以通过-Cookie-传递"><a href="#Token-也可以通过-Cookie-传递" class="headerlink" title="Token 也可以通过 Cookie 传递"></a>Token 也可以通过 Cookie 传递</h4><p>例如：<br>    Cookie: access_token&#x3D;7f82a9c1…</p>
+<p>所以不要产生：</p>
+<blockquote>
+<p>Token &#x3D; Authorization Header</p>
+</blockquote>
+<p>这种错误理解。</p>
+<p>正确关系：<br>    Token<br>     ↓<br>    凭证<br>    Authorization Header &#x2F; Cookie<br>     ↓<br>    传输 Token 的方式</p>
+<p>后面学习 JWT 时同样成立：<br>    JWT<br>     ↓<br>    Token 的一种具体格式<br>    Cookie &#x2F; Authorization Header<br>     ↓<br>    JWT 的传输方式</p>
+<hr>
+<ol start="4">
+<li><h1 id="Token-的生命周期"><a href="#Token-的生命周期" class="headerlink" title="Token 的生命周期"></a>Token 的生命周期</h1></li>
+</ol>
+<p>Token 不是永久有效的。</p>
+<p>典型生命周期：<br>    生成<br>     ↓<br>    签发<br>     ↓<br>    客户端保存<br>     ↓<br>    请求携带<br>     ↓<br>    服务器验证<br>     ↓<br>    正常使用<br>     ↓<br>    过期 &#x2F; 撤销<br>     ↓<br>    失效</p>
+<p>因此一个完整 Token 系统至少需要考虑：</p>
+<h5 id="创建时间"><a href="#创建时间" class="headerlink" title="创建时间"></a>创建时间</h5><p>Token 什么时候产生。</p>
+<h5 id="有效期"><a href="#有效期" class="headerlink" title="有效期"></a>有效期</h5><p>例如：<br>    Access Token<br>    有效期：30分钟</p>
+<p>过期后：<br>    Token expired<br>     ↓<br>    拒绝请求</p>
+<h5 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h5><p>有些情况下即使 Token 没到过期时间，也需要立即使它失效。</p>
+<p>例如：<br>    用户主动退出<br>    管理员封禁账号<br>    检测到 Token 泄露<br>    修改安全凭证</p>
+<p>因此：</p>
+<blockquote>
+<p><strong>Token 的生命周期管理是认证系统的重要安全组成部分。</strong></p>
+</blockquote>
+<hr>
+<h3 id="3-6-3-Token-的存储与安全"><a href="#3-6-3-Token-的存储与安全" class="headerlink" title="3.6.3 Token 的存储与安全"></a>3.6.3 Token 的存储与安全</h3><p>Token 本质上是一种<strong>身份凭证</strong>。</p>
+<p>因此不能把它当普通字符串处理。</p>
+<p>如果：<br>    Token &#x3D; abc123</p>
+<p>服务器只要接受：<br>    Authorization: Bearer abc123</p>
+<p>就能代表某个用户进行操作，那么：<br>    abc123</p>
+<p>本身就相当于一把“临时身份钥匙”。</p>
+<hr>
+<h4 id="客户端存储"><a href="#客户端存储" class="headerlink" title="客户端存储"></a>客户端存储</h4><p>常见位置包括：<br>    Cookie<br>    Web Storage<br>    内存<br>    移动端安全存储</p>
+<p>不同存储方式有不同安全特性。</p>
+<p>例如 Cookie 可以使用：<br>    Secure<br>    HttpOnly<br>    SameSite</p>
+<p>降低某些攻击风险。</p>
+<p>但是：</p>
+<blockquote>
+<p><strong>HttpOnly 只能限制 JavaScript 对 Cookie 的直接读取，并不能让 Token 本身变得安全。</strong></p>
+</blockquote>
+<p>如果攻击者已经能够利用浏览器环境直接代表用户发送请求，HttpOnly 也不能解决所有问题。</p>
+<hr>
+<h4 id="服务端存储"><a href="#服务端存储" class="headerlink" title="服务端存储"></a>服务端存储</h4><p>Token 是否需要服务端保存取决于 Token 类型和系统设计。</p>
+<p>例如一种传统的随机 Token：<br>    Token &#x3D; 8f3a…</p>
+<p>服务器保存：<br>    8f3a… → User 10001</p>
+<p>那么服务器可以通过 Token 查找用户。</p>
+<p>这种方式本质上仍然具有<strong>服务端状态</strong>。</p>
+<p>而某些自包含 Token：<br>    Token<br>     ↓<br>    自身携带 Claims<br>     ↓<br>    服务器验证签名</p>
+<p>服务器可能不需要查询对应的 Session 数据。</p>
+<p>这就是为什么后面学习 JWT 时会涉及：</p>
+<blockquote>
+<p><strong>有状态 Token 与无状态 Token</strong></p>
+</blockquote>
+<p>但现在你只需要知道：</p>
+<p><strong>Token ≠ 必然无状态。</strong></p>
+<hr>
+<h3 id="3-6-4-Token-泄露、劫持与重放"><a href="#3-6-4-Token-泄露、劫持与重放" class="headerlink" title="3.6.4 Token 泄露、劫持与重放"></a>3.6.4 Token 泄露、劫持与重放</h3><p>这是网络安全学习 Token 时非常重要的一部分。</p>
+<p>Token 泄露</p>
+<hr>
+<p>Token 被未经授权的第三方获得。</p>
+<p>例如：<br>    合法用户<br>     ↓<br>    Token<br>     ↓<br>    日志 &#x2F; 浏览器存储 &#x2F; URL &#x2F; 错误配置<br>     ↓<br>    Token 泄露</p>
+<p>如果 Token 是 Bearer 类型：<br>    攻击者获得 Token<br>            ↓<br>    Authorization: Bearer &lt;合法Token&gt;<br>            ↓<br>    服务器验证成功</p>
+<p>那么攻击者可能在 Token 有效期内冒充该用户。</p>
+<hr>
+<h4 id="Token-劫持"><a href="#Token-劫持" class="headerlink" title="Token 劫持"></a>Token 劫持</h4><p><strong>Token Hijacking</strong> 通常指攻击者获取并利用合法用户 Token，以冒充该用户。</p>
+<p>它和你之前学习的：</p>
+<blockquote>
+<p><strong>Session Hijacking</strong></p>
+</blockquote>
+<p>本质上属于相似的安全问题。</p>
+<p>区别主要在于被窃取的凭证类型不同：<br>    Session Hijacking<br>        ↓<br>    窃取 Session ID<br>    Token Hijacking<br>        ↓<br>    窃取 Token</p>
+<hr>
+<h4 id="Token-Replay：重放"><a href="#Token-Replay：重放" class="headerlink" title="Token Replay：重放"></a>Token Replay：重放</h4><p>假设合法请求：<br>    GET &#x2F;api&#x2F;account<br>    Authorization: Bearer ABC123</p>
+<p>攻击者截获：<br>    ABC123</p>
+<p>然后再次发送：<br>    GET &#x2F;api&#x2F;account<br>    Authorization: Bearer ABC123</p>
+<p>服务器如果仍然接受：<br>    ABC123</p>
+<p>这就是典型的：</p>
+<blockquote>
+<p><strong>Replay（重放）</strong></p>
+</blockquote>
+<p>这里有一个很重要的认识：</p>
+<blockquote>
+<p><strong>Token 加密并不能自动解决重放问题。</strong></p>
+</blockquote>
+<p>因为攻击者不需要理解 Token 内容。</p>
+<p>他只需要：<br>    拿到合法 Token<br>            ↓<br>    原样重新发送</p>
+<p>因此防护重放需要结合具体协议和架构，例如：</p>
+<ul>
+<li><p>短生命周期</p>
+</li>
+<li><p>Token 撤销机制</p>
+</li>
+<li><p>Nonce</p>
+</li>
+<li><p>请求签名</p>
+</li>
+<li><p>时间戳</p>
+</li>
+<li><p>Token 与客户端&#x2F;设备绑定</p>
+</li>
+<li><p>TLS 防止传输过程中被窃取</p>
+</li>
+</ul>
+<p>具体使用哪种方案取决于系统设计。</p>
+<hr>
+<h3 id="3-6-5-Token-与-Session-Cookie-的关系"><a href="#3-6-5-Token-与-Session-Cookie-的关系" class="headerlink" title="3.6.5 Token 与 Session &#x2F; Cookie 的关系"></a>3.6.5 Token 与 Session &#x2F; Cookie 的关系</h3><h4 id="Cookie-1"><a href="#Cookie-1" class="headerlink" title="Cookie"></a>Cookie</h4><p>Cookie 是一种<strong>HTTP 客户端状态存储&#x2F;传输机制</strong>。</p>
+<p>例如：<br>    Cookie: session_id&#x3D;ABC123</p>
+<p>Cookie 本身不是认证机制。</p>
+<hr>
+<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p>Session 是一种<strong>服务端会话状态管理机制</strong>。</p>
+<p>例如：<br>    Session ID &#x3D; ABC123<br>    服务器：<br>    ABC123 → User 10001</p>
+<p>通常：<br>    Cookie<br>     ↓<br>    Session ID<br>     ↓<br>    Session</p>
+<hr>
+<h4 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h4><p>Token 是一种<strong>认证&#x2F;授权凭证</strong>。</p>
+<p>例如：<br>    Token &#x3D; ABC123</p>
+<p>客户端：<br>    Authorization: Bearer ABC123</p>
+<p>服务器验证 Token 后确认身份。</p>
+<hr>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>可以这样理解：<br>    Cookie<br>    │<br>    │ 是一种传输&#x2F;存储机制<br>    │<br>    ├── 可以保存 Session ID<br>    │<br>    └── 也可以保存 Token</p>
+<p>而：<br>    Session<br>    │<br>    └── 服务端会话状态</p>
+<p>以及：<br>    Token<br>    │<br>    └── 身份&#x2F;授权凭证</p>
+<p>所以：<br>    Cookie ≠ Session<br>    Cookie ≠ Token<br>    Session ≠ Token</p>
+<p>但是它们可以组合：<br>    Cookie<br>      ↓<br>    Session ID<br>      ↓<br>    Session</p>
+<p>也可以：<br>    Cookie<br>      ↓<br>    Token</p>
+<p>还可以：<br>    Authorization Header<br>      ↓<br>    Token</p>
+<hr>
+<h4 id="Token-与-Session-的核心区别"><a href="#Token-与-Session-的核心区别" class="headerlink" title="Token 与 Session 的核心区别"></a>Token 与 Session 的核心区别</h4><p>最简单的对比：</p>
+<h3 id="Session-模型"><a href="#Session-模型" class="headerlink" title="Session 模型"></a>Session 模型</h3><pre><code class="hljs">Client
+  │
+  │ Session ID
+  ▼
+Server
+  │
+  ▼
+Session Store
+  │
+  ▼
+User Identity
+</code></pre>
+<p>服务器需要根据 Session ID 找到对应的服务端状态。</p>
+<h3 id="Token-模型"><a href="#Token-模型" class="headerlink" title="Token 模型"></a>Token 模型</h3><pre><code class="hljs">Client
+  │
+  │ Token
+  ▼
+Server
+  │
+  ▼
+验证 Token
+  │
+  ▼
+确定身份/授权状态
+</code></pre>
+<p>但是不要把它理解成：</p>
+<blockquote>
+<p>Session &#x3D; 有状态，Token &#x3D; 无状态。</p>
+</blockquote>
+<p>这是过度简化。</p>
+<p>准确说：</p>
+<blockquote>
+<p><strong>Session 是服务端会话状态机制；Token 是凭证。Token 是否有状态取决于服务器如何实现 Token 的签发、验证、撤销和存储。</strong></p>
+</blockquote>
+<hr>
+<h1 id="3-6-6-完整的Http会话模型"><a href="#3-6-6-完整的Http会话模型" class="headerlink" title="3.6.6 完整的Http会话模型"></a>3.6.6 完整的Http会话模型</h1><p>把你已经学过的内容全部串起来：<br>                        用户登录<br>                           │<br>                           ▼<br>                   Username + Password<br>                           │<br>                           ▼<br>                    Authentication<br>                           │<br>                 ┌─────────┴─────────┐<br>                 ▼                   ▼<br>              Session              Token<br>                 │                   │<br>            Session ID          Access Token<br>                 │                   │<br>                 ▼                   ▼<br>               Cookie          Cookie &#x2F; Header<br>                 │                   │<br>                 └─────────┬─────────┘<br>                           ▼<br>                      后续 HTTP 请求<br>                           │<br>                           ▼<br>                        凭证验证<br>                           │<br>                           ▼<br>                    确定 Subject 身份<br>                           │<br>                           ▼<br>                     Authorization<br>                           │<br>                           ▼<br>                     Access Control<br>                           │<br>                    ┌──────┴──────┐<br>                    ▼             ▼<br>                  Allow          Deny</p>
+<p>而 <strong>JWT 现在应该放在这里：</strong><br>    Token<br>      │<br>      ├── 随机 Token<br>      ├── API Key<br>      ├── Access Token<br>      └── JWT<br>            ↓<br>         一种具体的<br>         Token 格式</p>
+<p>所以你现在学完 Token 后，下一节再学：</p>
+<blockquote>
+<p><strong>JWT：一种结构化、自包含的 Token 格式，以及它如何利用 Signature、Claims 等机制实现可验证的身份凭证。</strong></p>
+</blockquote>
+<h4 id="Token-阶段的验收标准"><a href="#Token-阶段的验收标准" class="headerlink" title="Token 阶段的验收标准"></a>Token 阶段的验收标准</h4><p>你现在至少应该能够准确回答：</p>
+<ol>
+<li><p>Token 是什么？</p>
+<p>Token 是一种用于证明或传递身份、权限或授权状态的凭证。在 Web 认证中，通常由服务器签发，客户端在后续请求中携带。</p>
+</li>
+<li><p>Token 在 Authentication 中解决什么问题？<br>解决用户完成一次身份认证后，后续请求如何持续证明自身身份的问题。客户端无需每次重新提交用户名和密码，只需携带有效 Token。</p>
+</li>
+<li><p>Token 是怎么生成和验证的？<br>服务器在认证成功后生成并签发 Token。客户端提交 Token 后，服务器根据 Token 的实现方式进行验证，例如查询服务端存储记录、验证签名、检查有效期和签发方等。</p>
+</li>
+<li><p><code>Authorization: Bearer xxx</code> 中的 Bearer 和 Token 分别是什么？<br>Bearer 是 HTTP Authorization Header 中的一种认证方案；Token 是实际的认证凭证。<br>例如：<br>Authorization: Bearer abc123<br>Bearer &#x3D; 认证方案<br>abc123 &#x3D; Token</p>
+</li>
+<li><p>Token 可以放 Cookie 吗？</p>
+<p>Cookie 是 HTTP 状态管理机制，用于在客户端存储数据，并在符合条件的后续请求中自动携带。Cookie 可以保存 Session ID，也可以保存 Token。</p>
+</li>
+<li><p>Token 是否一定无状态？</p>
+<p>不一定。<br>有状态 Token：服务器保存 Token 与用户状态的映射。<br>无状态 Token：Token 自身携带可验证信息，服务器主要通过验证 Token 判断身份，例如常见的 JWT。</p>
+</li>
+<li><p>Token 为什么属于敏感身份凭证？</p>
+<p>因为服务器可能仅凭有效 Token 就确认请求者的身份或授权状态。攻击者获得有效 Token 后，可能无需密码即可冒充对应用户。</p>
+</li>
+<li><p>Token 泄露后为什么可能导致身份冒充？</p>
+<p>如果攻击者获得仍然有效的 Token，并且系统没有额外的绑定或防护机制，攻击者可以在有效期内携带该 Token 访问受保护资源，从而造成身份冒充。</p>
+</li>
+<li><p>什么是 Token Replay？</p>
+<p>Token Replay（令牌重放）是攻击者获取合法 Token 后，将该 Token 原样重新用于后续请求的攻击方式。<br>核心不是破解或修改 Token，而是重复使用合法凭证。</p>
+</li>
+<li><p>Token、Session、Cookie 三者到底是什么关系？</p>
+<p>Cookie：客户端侧的存储&#x2F;传输机制。<br>Session：服务器侧的会话状态管理机制。<br>Token：用于证明或传递身份、权限或授权状态的凭证。</p>
+<p>典型组合：<br>Cookie → Session ID → Server Session</p>
+<p>也可以：<br>Authorization Header → Token</p>
+<p>或者：<br>Cookie → Token</p>
+<p>三者不是同一层面的概念。</p>
+</li>
+<li><p>为什么 JWT 是 Token 的一种，而不是 Token 的同义词？</p>
+<p>Token 是“凭证”这一抽象概念；JWT（JSON Web Token）是一种具体的结构化 Token 格式。</p>
+</li>
+</ol>
+<p>    关系：<br>    Token<br>    → JWT、随机 Token、API Token 等</p>
+<p>    因此：<br>    JWT ⊂ Token</p>
+<p>    JWT 的典型结构是：<br>    Header.Payload.Signature</p>
+<p>这 11 个问题能答清楚，就可以进入 <strong>JWT</strong>，而不用再继续扩展 Token 的理论。</p>
 
                 
               </div>
@@ -3077,6 +3479,12 @@ Host: example.com</code></pre><p id="ud4288725" class="ne-p"><span class="ne-tex
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2026/09/11/hello-world/" title="Hello World">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

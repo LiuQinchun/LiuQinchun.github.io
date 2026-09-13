@@ -2191,6 +2191,21 @@ input[type=checkbox] {
 .about-page .about-content {
   display: none;
 }
+.about-page-body {
+  background-color: #0b0f14 !important;
+  color: #fff;
+}
+.about-page-body .footer-inner {
+  color: rgba(255,255,255,0.7);
+}
+.about-page-body .footer-content {
+  color: rgba(255,255,255,0.88);
+  letter-spacing: 0.08em;
+}
+.about-page-body .footer-divider {
+  margin: 0 0.5rem;
+  color: rgba(255,255,255,0.45);
+}
 .about-info {
   position: relative;
   max-width: 54rem;
