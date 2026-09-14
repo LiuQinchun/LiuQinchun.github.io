@@ -1,0 +1,26 @@
+/* Show a practical scrollbar for the article table of contents. */
+#toc .toc-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(127, 127, 127, 0.45) transparent;
+  padding-right: 0.35rem;
+}
+
+#toc .toc-body::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+}
+
+#toc .toc-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#toc .toc-body::-webkit-scrollbar-thumb {
+  background-color: rgba(127, 127, 127, 0.35);
+  border-radius: 6px;
+}
+
+#toc .toc-body::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(127, 127, 127, 0.55);
+}

@@ -22,7 +22,7 @@
     <meta name="description" content="1 OSI 七层模型OSI（Open System  Interconnect）七层模型是一种将计算机网络通信协议划分为七个不同层次的标准化框架。       层 名称 核心作用    7 应用层 提供网络服务   6 表示层 数据格式转换、加密、压缩   5 会话层 管理通信过程   4 传输层 端到端可靠传输   3 网络层 IP寻址和路由选择   2 数据链路层 MAC寻址和帧传输   1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络基础">
-<meta property="og:url" content="https://liuqinchun.github.io/2026/09/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:url" content="https://liuqinchun.github.io/2026/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1 OSI 七层模型OSI（Open System  Interconnect）七层模型是一种将计算机网络通信协议划分为七个不同层次的标准化框架。       层 名称 核心作用    7 应用层 提供网络服务   6 表示层 数据格式转换、加密、压缩   5 会话层 管理通信过程   4 传输层 端到端可靠传输   3 网络层 IP寻址和路由选择   2 数据链路层 MAC寻址和帧传输   1">
 <meta property="og:locale" content="en_US">
@@ -41,8 +41,9 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2026/png/60138024/1784992217409-3de5a9d4-841c-44bd-a4dd-415ab3937d5e.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2026/png/60138024/1784992280700-5cbe6eb6-1c47-4486-8f1d-de2209074c16.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2026/png/60138024/1784992306496-f82cc734-2ae0-44e4-a946-4b565508be22.png">
-<meta property="article:published_time" content="2026-09-11T11:44:00.000Z">
-<meta property="article:modified_time" content="2026-09-13T08:45:24.976Z">
+<meta property="og:image" content="file:///C:/Users/Admini/Pictures/Typedown/0802be41-42a8-417d-9747-1de2cf6cdf5b.png">
+<meta property="article:published_time" content="2026-09-13T11:44:00.000Z">
+<meta property="article:modified_time" content="2026-09-14T06:19:32.935Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="网络安全">
 <meta property="article:tag" content="计算机网络">
@@ -83,6 +84,10 @@
     <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
 
 
 
@@ -331,8 +336,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-11 19:44" pubdate>
-          September 11, 2026 pm
+        <time datetime="2026-09-13 19:44" pubdate>
+          September 13, 2026 pm
         </time>
       </span>
     
@@ -343,7 +348,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          50k words
+          54k words
         
       </span>
     
@@ -354,7 +359,7 @@
         
         
         
-          417 mins
+          455 mins
         
       </span>
     
@@ -3362,7 +3367,7 @@ Server
 <p><strong>Session 是服务端会话状态机制；Token 是凭证。Token 是否有状态取决于服务器如何实现 Token 的签发、验证、撤销和存储。</strong></p>
 </blockquote>
 <hr>
-<h1 id="3-6-6-完整的Http会话模型"><a href="#3-6-6-完整的Http会话模型" class="headerlink" title="3.6.6 完整的Http会话模型"></a>3.6.6 完整的Http会话模型</h1><p>把你已经学过的内容全部串起来：<br>                        用户登录<br>                           │<br>                           ▼<br>                   Username + Password<br>                           │<br>                           ▼<br>                    Authentication<br>                           │<br>                 ┌─────────┴─────────┐<br>                 ▼                   ▼<br>              Session              Token<br>                 │                   │<br>            Session ID          Access Token<br>                 │                   │<br>                 ▼                   ▼<br>               Cookie          Cookie &#x2F; Header<br>                 │                   │<br>                 └─────────┬─────────┘<br>                           ▼<br>                      后续 HTTP 请求<br>                           │<br>                           ▼<br>                        凭证验证<br>                           │<br>                           ▼<br>                    确定 Subject 身份<br>                           │<br>                           ▼<br>                     Authorization<br>                           │<br>                           ▼<br>                     Access Control<br>                           │<br>                    ┌──────┴──────┐<br>                    ▼             ▼<br>                  Allow          Deny</p>
+<h3 id="3-6-6-完整的Http会话模型"><a href="#3-6-6-完整的Http会话模型" class="headerlink" title="3.6.6 完整的Http会话模型"></a>3.6.6 完整的Http会话模型</h3><p>把你已经学过的内容全部串起来：<br>                        用户登录<br>                           │<br>                           ▼<br>                   Username + Password<br>                           │<br>                           ▼<br>                    Authentication<br>                           │<br>                 ┌─────────┴─────────┐<br>                 ▼                   ▼<br>              Session              Token<br>                 │                   │<br>            Session ID          Access Token<br>                 │                   │<br>                 ▼                   ▼<br>               Cookie          Cookie &#x2F; Header<br>                 │                   │<br>                 └─────────┬─────────┘<br>                           ▼<br>                      后续 HTTP 请求<br>                           │<br>                           ▼<br>                        凭证验证<br>                           │<br>                           ▼<br>                    确定 Subject 身份<br>                           │<br>                           ▼<br>                     Authorization<br>                           │<br>                           ▼<br>                     Access Control<br>                           │<br>                    ┌──────┴──────┐<br>                    ▼             ▼<br>                  Allow          Deny</p>
 <p>而 <strong>JWT 现在应该放在这里：</strong><br>    Token<br>      │<br>      ├── 随机 Token<br>      ├── API Key<br>      ├── Access Token<br>      └── JWT<br>            ↓<br>         一种具体的<br>         Token 格式</p>
 <p>所以你现在学完 Token 后，下一节再学：</p>
 <blockquote>
@@ -3370,8 +3375,7 @@ Server
 </blockquote>
 <h4 id="Token-阶段的验收标准"><a href="#Token-阶段的验收标准" class="headerlink" title="Token 阶段的验收标准"></a>Token 阶段的验收标准</h4><p>你现在至少应该能够准确回答：</p>
 <ol>
-<li><p>Token 是什么？</p>
-<p>Token 是一种用于证明或传递身份、权限或授权状态的凭证。在 Web 认证中，通常由服务器签发，客户端在后续请求中携带。</p>
+<li><p>Token 是什么？<br>Token 是一种用于证明或传递身份、权限或授权状态的凭证。在 Web 认证中，通常由服务器签发，客户端在后续请求中携带。</p>
 </li>
 <li><p>Token 在 Authentication 中解决什么问题？<br>解决用户完成一次身份认证后，后续请求如何持续证明自身身份的问题。客户端无需每次重新提交用户名和密码，只需携带有效 Token。</p>
 </li>
@@ -3379,36 +3383,444 @@ Server
 </li>
 <li><p><code>Authorization: Bearer xxx</code> 中的 Bearer 和 Token 分别是什么？<br>Bearer 是 HTTP Authorization Header 中的一种认证方案；Token 是实际的认证凭证。<br>例如：<br>Authorization: Bearer abc123<br>Bearer &#x3D; 认证方案<br>abc123 &#x3D; Token</p>
 </li>
-<li><p>Token 可以放 Cookie 吗？</p>
-<p>Cookie 是 HTTP 状态管理机制，用于在客户端存储数据，并在符合条件的后续请求中自动携带。Cookie 可以保存 Session ID，也可以保存 Token。</p>
+<li><p>Token 可以放 Cookie 吗？<br>Cookie 是 HTTP 状态管理机制，用于在客户端存储数据，并在符合条件的后续请求中自动携带。Cookie 可以保存 Session ID，也可以保存 Token。</p>
 </li>
-<li><p>Token 是否一定无状态？</p>
-<p>不一定。<br>有状态 Token：服务器保存 Token 与用户状态的映射。<br>无状态 Token：Token 自身携带可验证信息，服务器主要通过验证 Token 判断身份，例如常见的 JWT。</p>
+<li><p>Token 是否一定无状态？<br>不一定。<br>有状态 Token：服务器保存 Token 与用户状态的映射。<br>无状态 Token：Token 自身携带可验证信息，服务器主要通过验证 Token 判断身份，例如常见的 JWT。</p>
 </li>
-<li><p>Token 为什么属于敏感身份凭证？</p>
-<p>因为服务器可能仅凭有效 Token 就确认请求者的身份或授权状态。攻击者获得有效 Token 后，可能无需密码即可冒充对应用户。</p>
+<li><p>Token 为什么属于敏感身份凭证？<br>因为服务器可能仅凭有效 Token 就确认请求者的身份或授权状态。攻击者获得有效 Token 后，可能无需密码即可冒充对应用户。</p>
 </li>
-<li><p>Token 泄露后为什么可能导致身份冒充？</p>
-<p>如果攻击者获得仍然有效的 Token，并且系统没有额外的绑定或防护机制，攻击者可以在有效期内携带该 Token 访问受保护资源，从而造成身份冒充。</p>
+<li><p>Token 泄露后为什么可能导致身份冒充？<br>如果攻击者获得仍然有效的 Token，并且系统没有额外的绑定或防护机制，攻击者可以在有效期内携带该 Token 访问受保护资源，从而造成身份冒充。</p>
 </li>
-<li><p>什么是 Token Replay？</p>
-<p>Token Replay（令牌重放）是攻击者获取合法 Token 后，将该 Token 原样重新用于后续请求的攻击方式。<br>核心不是破解或修改 Token，而是重复使用合法凭证。</p>
+<li><p>什么是 Token Replay？<br>Token Replay（令牌重放）是攻击者获取合法 Token 后，将该 Token 原样重新用于后续请求的攻击方式。<br>核心不是破解或修改 Token，而是重复使用合法凭证。</p>
 </li>
-<li><p>Token、Session、Cookie 三者到底是什么关系？</p>
-<p>Cookie：客户端侧的存储&#x2F;传输机制。<br>Session：服务器侧的会话状态管理机制。<br>Token：用于证明或传递身份、权限或授权状态的凭证。</p>
-<p>典型组合：<br>Cookie → Session ID → Server Session</p>
-<p>也可以：<br>Authorization Header → Token</p>
-<p>或者：<br>Cookie → Token</p>
-<p>三者不是同一层面的概念。</p>
+<li><p>Token、Session、Cookie 三者到底是什么关系？<br>Cookie：客户端侧的存储&#x2F;传输机制。<br>Session：服务器侧的会话状态管理机制。<br>Token：用于证明或传递身份、权限或授权状态的凭证。<br>典型组合：<br>Cookie → Session ID → Server Session<br>也可以：<br>Authorization Header → Token<br>或者：<br>Cookie → Token<br>三者不是同一层面的概念。</p>
 </li>
-<li><p>为什么 JWT 是 Token 的一种，而不是 Token 的同义词？</p>
-<p>Token 是“凭证”这一抽象概念；JWT（JSON Web Token）是一种具体的结构化 Token 格式。</p>
+<li><p>为什么 JWT 是 Token 的一种，而不是 Token 的同义词？<br>Token 是“凭证”这一抽象概念；JWT（JSON Web Token）是一种具体的结构化 Token 格式。</p>
 </li>
 </ol>
 <p>    关系：<br>    Token<br>    → JWT、随机 Token、API Token 等</p>
 <p>    因此：<br>    JWT ⊂ Token</p>
 <p>    JWT 的典型结构是：<br>    Header.Payload.Signature</p>
 <p>这 11 个问题能答清楚，就可以进入 <strong>JWT</strong>，而不用再继续扩展 Token 的理论。</p>
+<p>这份划分<strong>更符合当前《网安学习计划纲领》的实际目标</strong>。前面给出的 3.7 JWT 结构偏向“完整 JWT 教材”，范围确实超过了当前阶段需要掌握的深度。</p>
+<p>结合当前路线，JWT 应该定位为：</p>
+<blockquote>
+<p><strong>HTTP 认证体系中的一个核心令牌机制，以“结构 → 验证 → 信任 → 安全风险”为主线，服务于后续 Web 安全与安全分析学习。</strong></p>
+</blockquote>
+<h2 id="3-7-JWT（JSON-Web-Token）"><a href="#3-7-JWT（JSON-Web-Token）" class="headerlink" title="3.7 JWT（JSON Web Token）"></a>3.7 JWT（JSON Web Token）</h2><h3 id="3-7-1-JWT-的概念与结构"><a href="#3-7-1-JWT-的概念与结构" class="headerlink" title="3.7.1 JWT 的概念与结构"></a>3.7.1 JWT 的概念与结构</h3><img title="" src="file:///C:/Users/Admini/Pictures/Typedown/0802be41-42a8-417d-9747-1de2cf6cdf5b.png" srcset="/img/loading.gif" lazyload alt="0802be41-42a8-417d-9747-1de2cf6cdf5b" style="zoom:67%;">
+
+<h4 id="1-JWT-的定义"><a href="#1-JWT-的定义" class="headerlink" title="1. JWT 的定义"></a>1. JWT 的定义</h4><p>JWT（JSON Web Token）是由 <strong>RFC 7519</strong> 定义的一种开放标准，用于以紧凑（Compact）、URL 安全（URL-safe）的形式表示 <strong>Claims（声明）</strong>。</p>
+<p>JWT 本质上是一种<strong>结构化 Token 格式</strong>。它允许认证系统将与主体、令牌生命周期以及授权上下文有关的信息封装在 Token 中，并通过数字签名等密码学机制对其进行保护。</p>
+<p>因此需要区分：</p>
+<blockquote>
+<p>JWT 是 Token 的一种具体表示格式，而不是认证协议本身。</p>
+</blockquote>
+<p>JWT 常用于：</p>
+<ul>
+<li><p>身份认证；</p>
+</li>
+<li><p>API 访问凭证；</p>
+</li>
+<li><p>授权信息传递。</p>
+</li>
+</ul>
+<hr>
+<h4 id="2-JWT-的基本结构"><a href="#2-JWT-的基本结构" class="headerlink" title="2. JWT 的基本结构"></a>2. JWT 的基本结构</h4><p>典型的签名 JWT 由三个部分组成：<br>    Header.Payload.Signature</p>
+<p>三个部分分别承担不同职责：</p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>内容</th>
+<th>主要作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Header</td>
+<td>类型、算法等元数据</td>
+<td>描述 Token 的保护方式</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td>Claims</td>
+<td>承载声明信息</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>签名结果</td>
+<td>验证内容完整性及签发者可信性</td>
+</tr>
+</tbody></table>
+<p>其中：</p>
+<p><strong>Header</strong>：标题，描述 JWT 使用的密码学算法以及相关元数据。</p>
+<p><strong>Payload</strong>：承载 Claims。</p>
+<p><strong>Signature</strong>：对 Header 与 Payload 进行密码学保护后的结果。</p>
+<hr>
+<h4 id="3-Self-contained-Token"><a href="#3-Self-contained-Token" class="headerlink" title="3. Self-contained Token"></a>3. Self-contained Token</h4><p>JWT 的重要特征之一是 <strong>Self-contained（自包含）</strong>。</p>
+<p>所谓自包含，是指 Token 本身可以携带完成验证和建立认证上下文所需的部分信息，而不必仅依赖一个服务器端 Session ID。</p>
+<p>典型结构：<br>    JWT<br>    ├── Header<br>    ├── Claims<br>    └── Signature</p>
+<p>这与传统 Session 模型形成明显区别：<br> Session：<br>    Session ID<br>         ↓<br>    Server-side </p>
+<p>        ↓     Session</p>
+<p>    User State</p>
+<p>而 JWT 可以形成：</p>
+<pre><code class="hljs">JWT
+    ↓
+Signature Verification
+    ↓
+Claims
+    ↓
+Authenticated Principal
+</code></pre>
+<p>但必须注意：</p>
+<blockquote>
+<p><strong>Self-contained ≠ Automatically Trusted</strong></p>
+</blockquote>
+<p>JWT 中的数据只有在完成正确的签名验证、Claims 验证以及应用层安全策略检查后，才能进入认证上下文。</p>
+<hr>
+<h3 id="3-7-2-JWT-的编码与签名原理"><a href="#3-7-2-JWT-的编码与签名原理" class="headerlink" title="3.7.2 JWT 的编码与签名原理"></a>3.7.2 JWT 的编码与签名原理</h3><h4 id="1-Base64URL"><a href="#1-Base64URL" class="headerlink" title="1. Base64URL"></a>1. Base64URL</h4><p>JWT 的 Header 和 Payload 通常经过 <strong>Base64URL Encoding</strong>。</p>
+<p>Base64URL 的作用是：</p>
+<blockquote>
+<p>将二进制或 JSON 数据转换为适合在 URL、HTTP Header 等环境中传输的字符串形式。</p>
+</blockquote>
+<p>Base64URL：</p>
+<ul>
+<li><p>不提供加密；</p>
+</li>
+<li><p>不提供完整性保护；</p>
+</li>
+<li><p>不提供身份认证；</p>
+</li>
+<li><p>不提供机密性。</p>
+</li>
+</ul>
+<p>因此：</p>
+<blockquote>
+<p><strong>Base64URL 是编码，不是密码学保护。</strong></p>
+</blockquote>
+<hr>
+<h4 id="2-Signature"><a href="#2-Signature" class="headerlink" title="2. Signature"></a>2. Signature</h4><p>对于典型 JWS JWT，签名输入为：</p>
+<pre><code class="hljs">Base64URL(Header) + &quot;.&quot; + Base64URL(Payload)
+</code></pre>
+<p>随后使用指定算法和密钥生成 Signature。</p>
+<p>验证过程使用相应的验证密钥重新计算或验证该签名。</p>
+<p>如果 Header 或 Payload 被修改：</p>
+<pre><code class="hljs">原始 Header + 原始 Payload
+        ↓
+      Signature
+</code></pre>
+<p>变成：</p>
+<pre><code class="hljs">修改后的 Header + 修改后的 Payload
+        ↓
+      原 Signature
+</code></pre>
+<p>则通常无法通过签名验证。</p>
+<p>因此 Signature 的核心作用是：</p>
+<blockquote>
+<p><strong>使接收方能够检测 Token 内容是否被未经授权地修改。</strong></p>
+</blockquote>
+<hr>
+<h4 id="3-为什么需要密钥"><a href="#3-为什么需要密钥" class="headerlink" title="3. 为什么需要密钥"></a>3. 为什么需要密钥</h4><p>签名安全性的核心在于：</p>
+<blockquote>
+<p><strong>只有拥有正确密钥的一方才能产生能够通过验证的合法签名。</strong></p>
+</blockquote>
+<p>因此 JWT 的信任关系实际上建立在：</p>
+<pre><code class="hljs">Signing Key
+      ↓
+Signature
+      ↓
+Verification Key
+      ↓
+Signature Validation
+</code></pre>
+<p>之上。</p>
+<p>如果签名密钥泄露，攻击者可能构造新的合法 JWT。</p>
+<p>因此：</p>
+<blockquote>
+<p><strong>JWT 的安全边界最终落在签名算法与密钥管理之上。</strong></p>
+</blockquote>
+<hr>
+<h3 id="3-7-3-JWT-的认证流程"><a href="#3-7-3-JWT-的认证流程" class="headerlink" title="3.7.3 JWT 的认证流程"></a>3.7.3 JWT 的认证流程</h3><h4 id="1-用户认证"><a href="#1-用户认证" class="headerlink" title="1. 用户认证"></a>1. 用户认证</h4><p>用户首先通过用户名、密码或其他认证机制完成初始身份认证。</p>
+<pre><code class="hljs">Credentials
+    ↓
+Authentication
+    ↓
+User Identity
+</code></pre>
+<hr>
+<h4 id="2-JWT-签发"><a href="#2-JWT-签发" class="headerlink" title="2. JWT 签发"></a>2. JWT 签发</h4><p>认证成功后，服务端根据用户身份构造 Claims，并使用签名密钥生成 JWT。</p>
+<pre><code class="hljs">User Identity
+    ↓
+Claims
+    ↓
+JWT
+    ↓
+Signature
+    ↓
+Issued Token
+</code></pre>
+<hr>
+<h4 id="3-客户端携带-JWT"><a href="#3-客户端携带-JWT" class="headerlink" title="3. 客户端携带 JWT"></a>3. 客户端携带 JWT</h4><p>后续请求携带 JWT。</p>
+<p>常见方式：</p>
+<pre><code class="hljs">Authorization: Bearer &lt;JWT&gt;
+</code></pre>
+<p>这里需要区分：</p>
+<pre><code class="hljs">Authorization → HTTP Header
+Bearer        → Authentication Scheme
+JWT           → Credential / Token
+</code></pre>
+<hr>
+<h4 id="4-服务端验证-JWT"><a href="#4-服务端验证-JWT" class="headerlink" title="4. 服务端验证 JWT"></a>4. 服务端验证 JWT</h4><p>服务端收到 JWT 后，需要进行验证：</p>
+<pre><code class="hljs">JWT
+ ↓
+Parse
+ ↓
+Verify Signature
+ ↓
+Validate Claims
+ ↓
+Establish Identity
+ ↓
+Authorization
+</code></pre>
+<p>因此：</p>
+<blockquote>
+<p>JWT 认证并不是“解析 Payload → 读取用户名”这么简单。</p>
+</blockquote>
+<hr>
+<h3 id="3-7-4-JWT-Claims"><a href="#3-7-4-JWT-Claims" class="headerlink" title="3.7.4 JWT Claims"></a>3.7.4 JWT Claims</h3><p>当前阶段不要求深入 RFC 7519 的全部 Claim 规范，只要求建立基本语义。</p>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>含义</th>
+<th>当前要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>iss</code></td>
+<td>Issuer，发行者</td>
+<td>认识</td>
+</tr>
+<tr>
+<td><code>sub</code></td>
+<td>Subject，主体</td>
+<td>认识</td>
+</tr>
+<tr>
+<td><code>aud</code></td>
+<td>Audience，受众</td>
+<td>认识</td>
+</tr>
+<tr>
+<td><code>exp</code></td>
+<td>Expiration Time，过期时间</td>
+<td>重点</td>
+</tr>
+<tr>
+<td><code>iat</code></td>
+<td>Issued At，签发时间</td>
+<td>认识</td>
+</tr>
+<tr>
+<td><code>nbf</code></td>
+<td>Not Before，生效时间</td>
+<td>认识</td>
+</tr>
+<tr>
+<td><code>jti</code></td>
+<td>JWT ID</td>
+<td>了解</td>
+</tr>
+</tbody></table>
+<p>其中当前阶段重点理解：<br>    iss → 谁签发<br>    sub → 表示谁<br>    aud → 给谁使用<br>    exp → 什么时候失效</p>
+<p>不要求现阶段深入研究全部 Registered Claims 的标准细节。</p>
+<hr>
+<h3 id="3-7-5-JWT-安全分析"><a href="#3-7-5-JWT-安全分析" class="headerlink" title="3.7.5 JWT 安全分析"></a>3.7.5 JWT 安全分析</h3><p>这一节是当前路线的<strong>重点</strong>。</p>
+<p>JWT 的安全问题本质上可以归结为：</p>
+<pre><code class="hljs">算法信任
++
+密钥信任
++
+签名验证
++
+Claims 信任
++
+Token 生命周期
+</code></pre>
+<h4 id="1-alg-none"><a href="#1-alg-none" class="headerlink" title="1. alg:none"></a>1. <code>alg:none</code></h4><p>攻击者修改 Header：</p>
+<pre><code class="hljs">{&quot;alg&quot;:&quot;none&quot;}
+</code></pre>
+<p>并移除 Signature。</p>
+<p>如果服务端：</p>
+<ul>
+<li><p>信任 Token 中的 <code>alg</code>；</p>
+</li>
+<li><p>没有固定允许的算法；</p>
+</li>
+<li><p>错误接受无签名 JWT；</p>
+</li>
+</ul>
+<p>则可能导致伪造 Token 被接受。</p>
+<p>核心成因：</p>
+<blockquote>
+<p><strong>服务端将不可信的 Token Header 错误地当成了安全策略。</strong></p>
+</blockquote>
+<hr>
+<h4 id="2-算法混淆"><a href="#2-算法混淆" class="headerlink" title="2. 算法混淆"></a>2. 算法混淆</h4><p>典型场景：<br>    RS256<br>     ↓<br>    HS256</p>
+<p>RS256 使用：<br>    Private Key → Sign<br>    Public Key  → Verify</p>
+<p>HS256 使用：<br>    Shared Secret → Sign &#x2F; Verify</p>
+<p>如果服务端错误地：</p>
+<ol>
+<li><p>信任 JWT 的 <code>alg</code>；</p>
+</li>
+<li><p>没有固定算法；</p>
+</li>
+<li><p>混淆对称算法与非对称算法的密钥上下文；</p>
+</li>
+</ol>
+<p>则可能出现算法混淆问题。</p>
+<p>其核心不是简单的：</p>
+<blockquote>
+<p>“RS256 不安全。”</p>
+</blockquote>
+<p>而是：</p>
+<blockquote>
+<p><strong>算法选择与密钥解释脱离了服务端既定的信任策略。</strong></p>
+</blockquote>
+<hr>
+<h4 id="3-HMAC-弱密钥"><a href="#3-HMAC-弱密钥" class="headerlink" title="3. HMAC 弱密钥"></a>3. HMAC 弱密钥</h4><p>HS256 使用共享 Secret。</p>
+<p>如果 Secret 强度不足：<br>    Weak Secret<br>         ↓<br>    Offline Guessing<br>         ↓<br>    Secret Recovery<br>         ↓<br>    JWT Forgery</p>
+<p>因此 HS256 的核心安全问题之一是：</p>
+<blockquote>
+<p><strong>Secret 的熵、保存方式和泄露风险。</strong></p>
+</blockquote>
+<hr>
+<h3 id="3-7-6-JWT-与-Token-生命周期"><a href="#3-7-6-JWT-与-Token-生命周期" class="headerlink" title="3.7.6 JWT 与 Token 生命周期"></a>3.7.6 JWT 与 Token 生命周期</h3><p>当前阶段只建立三个核心概念。</p>
+<h4 id="1-Expiration"><a href="#1-Expiration" class="headerlink" title="1. Expiration"></a>1. Expiration</h4><p>JWT 可以通过 <code>exp</code> 表示有效期。<br>    Current Time ≥ exp<br>            ↓<br>    Token Expired</p>
+<hr>
+<h4 id="2-Token-Theft"><a href="#2-Token-Theft" class="headerlink" title="2. Token Theft"></a>2. Token Theft</h4><p>如果有效 JWT 被窃取：<br>    Attacker<br>       ↓<br>    Valid JWT<br>       ↓<br>    Server<br>       ↓<br>    Authentication</p>
+<p>攻击者可能在 Token 有效期内冒充原持有者。</p>
+<hr>
+<h4 id="3-Replay"><a href="#3-Replay" class="headerlink" title="3. Replay"></a>3. Replay</h4><p>Replay（重放）指攻击者不需要破解或修改 Token，而是重新使用已经获得的有效凭证。</p>
+<p>因此：</p>
+<blockquote>
+<p><strong>JWT 的签名能够防止未经授权的修改，但不能天然防止合法 Token 被盗后重复使用。</strong></p>
+</blockquote>
+<p>这一点直接连接后续的 Token 安全与 Web 安全分析。</p>
+<hr>
+<h3 id="3-7-7-JWT-与-Cookie、Session、Access-Token"><a href="#3-7-7-JWT-与-Cookie、Session、Access-Token" class="headerlink" title="3.7.7 JWT 与 Cookie、Session、Access Token"></a>3.7.7 JWT 与 Cookie、Session、Access Token</h3><p>当前只建立概念边界。</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>所属层次</th>
+<th>核心作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JWT</td>
+<td>Token Format</td>
+<td>表示结构化 Token</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>HTTP 状态机制</td>
+<td>浏览器保存&#x2F;携带数据</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>Server-side State</td>
+<td>保存服务器端会话状态</td>
+</tr>
+<tr>
+<td>Access Token</td>
+<td>Token Role</td>
+<td>访问受保护资源</td>
+</tr>
+<tr>
+<td>Refresh Token</td>
+<td>Token Role</td>
+<td>获取新的 Access Token</td>
+</tr>
+</tbody></table>
+<p>核心关系：<br>    Cookie 可以携带 JWT<br>    JWT 可以作为 Access Token<br>    JWT 可以携带在 Bearer 中</p>
+<p>但：<br>    JWT ≠ Cookie<br>    JWT ≠ Session<br>    JWT ≠ Access Token<br>    JWT ≠ Bearer</p>
+<hr>
+<h3 id="3-7-8-JWT-扩展知识"><a href="#3-7-8-JWT-扩展知识" class="headerlink" title="3.7.8 JWT 扩展知识"></a>3.7.8 JWT 扩展知识</h3><p>以下内容当前阶段只建立概念，不进入深入实现。</p>
+<h4 id="1-JWE"><a href="#1-JWE" class="headerlink" title="1. JWE"></a>1. JWE</h4><p>**JWE（JSON Web Encryption）**是 JWT 相关 JOSE 体系中的加密机制。</p>
+<p>当前只需要知道：<br>    JWS → Signature<br>    JWE → Encryption</p>
+<p>当前路线不要求研究 JWE 的加密结构和算法实现。</p>
+<h4 id="2-KID"><a href="#2-KID" class="headerlink" title="2. KID"></a>2. KID</h4><p>**<code>kid</code>（Key ID）**用于标识 JWT 使用的密钥。</p>
+<p>主要服务于多密钥环境和密钥轮换。</p>
+<p>当前只需理解：</p>
+<blockquote>
+<p><code>kid</code> 是密钥选择信息，但其本身属于不可信输入。</p>
+</blockquote>
+<h4 id="3-JKU"><a href="#3-JKU" class="headerlink" title="3. JKU"></a>3. JKU</h4><p>**<code>jku</code>（JWK Set URL）**可以用于指定 JWK Set 的位置。</p>
+<p>当前只需认识其存在以及潜在的<strong>外部密钥信任问题</strong>，暂不深入攻击实现。</p>
+<hr>
+<h3 id="3-7-9-当前阶段不纳入学习范围"><a href="#3-7-9-当前阶段不纳入学习范围" class="headerlink" title="3.7.9 当前阶段不纳入学习范围"></a>3.7.9 当前阶段不纳入学习范围</h3><p>以下内容从当前网络安全学习路线中明确排除：</p>
+<ol>
+<li><p>JWE 内部加密实现；</p>
+</li>
+<li><p>JOSE 全套规范的深入研究；</p>
+</li>
+<li><p>OAuth 2.0 完整协议体系；</p>
+</li>
+<li><p>OpenID Connect；</p>
+</li>
+<li><p>各类框架 JWT 源码；</p>
+</li>
+<li><p>国密 JWT 学术方案；</p>
+</li>
+<li><p>JWT 密码学算法实现；</p>
+</li>
+<li><p>与当前安全分析目标关系较弱的扩展规范。</p>
+</li>
+</ol>
+<p>这些内容并非“不重要”，而是<strong>当前阶段投入产出比不足</strong>。</p>
+<hr>
+<h3 id="3-7-10-JWT-验收标准"><a href="#3-7-10-JWT-验收标准" class="headerlink" title="3.7.10 JWT 验收标准"></a>3.7.10 JWT 验收标准</h3><p>当前 JWT 学习完成后，应能够独立回答：</p>
+<ol>
+<li><p>JWT 是什么？</p>
+</li>
+<li><p>JWT 与 Token 是什么关系？</p>
+</li>
+<li><p>Header、Payload、Signature 分别承担什么职责？</p>
+</li>
+<li><p>Base64URL 为什么不是加密？</p>
+</li>
+<li><p>为什么 JWT 能够做到 Self-contained？</p>
+</li>
+<li><p>为什么 Signature 需要密钥？</p>
+</li>
+<li><p>JWT 的完整认证流程是什么？</p>
+</li>
+<li><p><code>iss</code>、<code>sub</code>、<code>aud</code>、<code>exp</code> 分别表示什么？</p>
+</li>
+<li><p>为什么 JWT 签名验证成功不等于授权成功？</p>
+</li>
+<li><p>Cookie、Session、JWT、Access Token、Bearer Token 有什么区别？</p>
+</li>
+<li><p><code>alg:none</code> 的安全问题产生于什么信任错误？</p>
+</li>
+<li><p>RS256 与 HS256 的密钥模型有什么区别？</p>
+</li>
+<li><p>什么是算法混淆？</p>
+</li>
+<li><p>为什么 HMAC 弱密钥可能导致 JWT 伪造？</p>
+</li>
+<li><p>Token Theft 与 Replay 分别是什么？</p>
+</li>
+<li><p>为什么签名不能防止 Token 被窃取后的重放？</p>
+</li>
+<li><p>JWT 为什么不天然等于 Stateless？</p>
+</li>
+<li><p><code>kid</code>、JWE、JKU 分别是什么？</p>
+</li>
+</ol>
+<p><strong>达到上述标准后，JWT 基础阶段即可验收。</strong></p>
+<p>随后学习顺序应回到原计划，而不是继续无限扩展 JWT：<strong>Access Token &#x2F; Refresh Token → Token Rotation &#x2F; Revocation → OAuth 2.0 基础 → HTTPS&#x2F;TLS → Web 安全机制</strong>。这样 JWT 会作为 HTTP 认证体系中的一个节点，而不会从主线中“学偏”。 </p>
 
                 
               </div>
@@ -3436,7 +3848,7 @@ Server
   <div class="license-box my-3">
     <div class="license-title">
       <div>计算机网络基础</div>
-      <div>https://liuqinchun.github.io/2026/09/11/计算机网络基础/</div>
+      <div>https://liuqinchun.github.io/2026/09/13/计算机网络基础/</div>
     </div>
     <div class="license-meta">
       
@@ -3448,7 +3860,7 @@ Server
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>September 11, 2026</div>
+          <div>September 13, 2026</div>
         </div>
       
       
@@ -3479,12 +3891,6 @@ Server
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2026/09/11/hello-world/" title="Hello World">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
@@ -3712,6 +4118,109 @@ Server
         });
       }
     }
+    function locateActiveTocItem() {
+      var tocBody = document.getElementById('toc-body');
+      if (!tocBody) { return; }
+
+      var activeTimer = null;
+      var pendingLink = null;
+      var pendingHref = '';
+      var pendingUntil = 0;
+      var findTocLink = function(href) {
+        if (!href) { return null; }
+        var links = tocBody.querySelectorAll('.tocbot-link');
+        for (var i = 0; i < links.length; i++) {
+          if (links[i].getAttribute('href') === href) {
+            return links[i];
+          }
+        }
+        return null;
+      };
+      var getCurrentLink = function() {
+        if (Date.now() < pendingUntil) {
+          if (pendingLink && tocBody.contains(pendingLink)) {
+            return pendingLink;
+          }
+          return findTocLink(pendingHref);
+        }
+        return tocBody.querySelector('.tocbot-active-link');
+      };
+      var scrollLinkIntoView = function(link, behavior) {
+        if (!link || !tocBody.contains(link)) { return; }
+        expandAllToc();
+
+        var bodyRect = tocBody.getBoundingClientRect();
+        var linkRect = link.getBoundingClientRect();
+        var linkTop = linkRect.top - bodyRect.top + tocBody.scrollTop;
+        var linkHeight = linkRect.height || link.offsetHeight;
+        var targetScrollTop = linkTop - ((tocBody.clientHeight - linkHeight) / 2);
+
+        targetScrollTop = Math.max(0, Math.min(targetScrollTop, tocBody.scrollHeight - tocBody.clientHeight));
+        if (Math.abs(targetScrollTop - tocBody.scrollTop) < 1) { return; }
+        tocBody.scrollTo({ top: targetScrollTop, behavior: behavior || 'auto' });
+      };
+      var scheduleActiveLink = function(link, behavior) {
+        if (!link) { return; }
+        if (activeTimer) {
+          clearInterval(activeTimer);
+          activeTimer = null;
+        }
+
+        var start = Date.now();
+        var duration = 1400;
+        var sync = function() {
+          expandAllToc();
+          scrollLinkIntoView(link, behavior);
+          if (Date.now() - start >= duration) {
+            clearInterval(activeTimer);
+            activeTimer = null;
+          }
+        };
+
+        sync();
+        window.requestAnimationFrame(sync);
+        activeTimer = setInterval(sync, 80);
+      };
+
+      jQuery('#toc-body')
+        .off('click.tocActivePosition')
+        .on('click.tocActivePosition', '.tocbot-link', function() {
+          pendingLink = this;
+          pendingHref = this.getAttribute('href') || '';
+          pendingUntil = Date.now() + 3000;
+          scheduleActiveLink(this, 'auto');
+        });
+
+      if (window.__tocActivePositionObserver) {
+        window.__tocActivePositionObserver.disconnect();
+      }
+      window.__tocActivePositionObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+          var link = mutation.target;
+          if (link.classList.contains('tocbot-active-link')) {
+            scheduleActiveLink(link, 'auto');
+          }
+        });
+      });
+      window.__tocActivePositionObserver.observe(tocBody, {
+        attributes: true,
+        attributeFilter: ['class'],
+        subtree: true
+      });
+
+      var activeLink = tocBody.querySelector('.tocbot-active-link');
+      if (activeLink) {
+        scheduleActiveLink(activeLink, 'auto');
+      }
+
+      if (window.__tocActivePositionScrollListener) {
+        Fluid.utils.unlistenScroll(window.__tocActivePositionScrollListener);
+      }
+      window.__tocActivePositionScrollListener = Fluid.utils.listenScroll(function() {
+        scheduleActiveLink(getCurrentLink(), 'auto');
+      });
+    }
     var tocConfig = Object.assign({
       tocSelector     : '#toc-body',
       contentSelector : '.markdown-body',
@@ -3727,12 +4236,16 @@ Server
     if (isExpandAllEnabled()) {
       tocConfig.collapseDepth = 6;
     }
+    // Tocbot uses a nested item's local offsetTop for scroll sync, which
+    // sends deep headings back to the top of the scroll container.
+    tocConfig.disableTocScrollSync = true;
     window.tocbot.init(tocConfig);
     if (toc.find('.toc-list-item').length > 0) {
       toc.css('visibility', 'visible');
     }
     expandAllToc();
     bindTocToggle();
+    locateActiveTocItem();
 
     Fluid.events.registerRefreshCallback(function() {
       if ('tocbot' in window) {
@@ -3746,6 +4259,7 @@ Server
         }
         expandAllToc();
         bindTocToggle();
+        locateActiveTocItem();
       }
     });
   });

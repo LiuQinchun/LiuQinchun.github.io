@@ -74,6 +74,10 @@
 
 
 
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
@@ -548,7 +552,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" title="计算机网络基础">
+                      <a href="/2026/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" title="计算机网络基础">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">计算机网络基础</span>
                         <span class="visible-mobile">Previous</span>
@@ -774,6 +778,109 @@
         });
       }
     }
+    function locateActiveTocItem() {
+      var tocBody = document.getElementById('toc-body');
+      if (!tocBody) { return; }
+
+      var activeTimer = null;
+      var pendingLink = null;
+      var pendingHref = '';
+      var pendingUntil = 0;
+      var findTocLink = function(href) {
+        if (!href) { return null; }
+        var links = tocBody.querySelectorAll('.tocbot-link');
+        for (var i = 0; i < links.length; i++) {
+          if (links[i].getAttribute('href') === href) {
+            return links[i];
+          }
+        }
+        return null;
+      };
+      var getCurrentLink = function() {
+        if (Date.now() < pendingUntil) {
+          if (pendingLink && tocBody.contains(pendingLink)) {
+            return pendingLink;
+          }
+          return findTocLink(pendingHref);
+        }
+        return tocBody.querySelector('.tocbot-active-link');
+      };
+      var scrollLinkIntoView = function(link, behavior) {
+        if (!link || !tocBody.contains(link)) { return; }
+        expandAllToc();
+
+        var bodyRect = tocBody.getBoundingClientRect();
+        var linkRect = link.getBoundingClientRect();
+        var linkTop = linkRect.top - bodyRect.top + tocBody.scrollTop;
+        var linkHeight = linkRect.height || link.offsetHeight;
+        var targetScrollTop = linkTop - ((tocBody.clientHeight - linkHeight) / 2);
+
+        targetScrollTop = Math.max(0, Math.min(targetScrollTop, tocBody.scrollHeight - tocBody.clientHeight));
+        if (Math.abs(targetScrollTop - tocBody.scrollTop) < 1) { return; }
+        tocBody.scrollTo({ top: targetScrollTop, behavior: behavior || 'auto' });
+      };
+      var scheduleActiveLink = function(link, behavior) {
+        if (!link) { return; }
+        if (activeTimer) {
+          clearInterval(activeTimer);
+          activeTimer = null;
+        }
+
+        var start = Date.now();
+        var duration = 1400;
+        var sync = function() {
+          expandAllToc();
+          scrollLinkIntoView(link, behavior);
+          if (Date.now() - start >= duration) {
+            clearInterval(activeTimer);
+            activeTimer = null;
+          }
+        };
+
+        sync();
+        window.requestAnimationFrame(sync);
+        activeTimer = setInterval(sync, 80);
+      };
+
+      jQuery('#toc-body')
+        .off('click.tocActivePosition')
+        .on('click.tocActivePosition', '.tocbot-link', function() {
+          pendingLink = this;
+          pendingHref = this.getAttribute('href') || '';
+          pendingUntil = Date.now() + 3000;
+          scheduleActiveLink(this, 'auto');
+        });
+
+      if (window.__tocActivePositionObserver) {
+        window.__tocActivePositionObserver.disconnect();
+      }
+      window.__tocActivePositionObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+          var link = mutation.target;
+          if (link.classList.contains('tocbot-active-link')) {
+            scheduleActiveLink(link, 'auto');
+          }
+        });
+      });
+      window.__tocActivePositionObserver.observe(tocBody, {
+        attributes: true,
+        attributeFilter: ['class'],
+        subtree: true
+      });
+
+      var activeLink = tocBody.querySelector('.tocbot-active-link');
+      if (activeLink) {
+        scheduleActiveLink(activeLink, 'auto');
+      }
+
+      if (window.__tocActivePositionScrollListener) {
+        Fluid.utils.unlistenScroll(window.__tocActivePositionScrollListener);
+      }
+      window.__tocActivePositionScrollListener = Fluid.utils.listenScroll(function() {
+        scheduleActiveLink(getCurrentLink(), 'auto');
+      });
+    }
     var tocConfig = Object.assign({
       tocSelector     : '#toc-body',
       contentSelector : '.markdown-body',
@@ -789,12 +896,16 @@
     if (isExpandAllEnabled()) {
       tocConfig.collapseDepth = 6;
     }
+    // Tocbot uses a nested item's local offsetTop for scroll sync, which
+    // sends deep headings back to the top of the scroll container.
+    tocConfig.disableTocScrollSync = true;
     window.tocbot.init(tocConfig);
     if (toc.find('.toc-list-item').length > 0) {
       toc.css('visibility', 'visible');
     }
     expandAllToc();
     bindTocToggle();
+    locateActiveTocItem();
 
     Fluid.events.registerRefreshCallback(function() {
       if ('tocbot' in window) {
@@ -808,6 +919,7 @@
         }
         expandAllToc();
         bindTocToggle();
+        locateActiveTocItem();
       }
     });
   });
