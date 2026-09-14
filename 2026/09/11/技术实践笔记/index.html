@@ -581,6 +581,10 @@
     <i class="iconfont icon-list"></i>
     <span>Table of Contents</span>
   </p>
+  <div class="toc-actions" id="toc-actions" aria-label="目录操作">
+    <button type="button" class="toc-action" data-toc-action="expand">展开全部</button>
+    <button type="button" class="toc-action" data-toc-action="collapse">收起全部</button>
+  </div>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -721,13 +725,43 @@
     if (toc.length === 0 || !window.tocbot) { return; }
     var boardCtn = jQuery('#board-ctn');
     var boardTop = boardCtn.offset().top;
+    var tocManuallyCollapsed = false;
 
     function isExpandAllEnabled() {
       return CONFIG.toc && CONFIG.toc.expand_all === true;
     }
-    function expandAllToc() {
-      if (!isExpandAllEnabled()) { return; }
+    function expandAllToc(force) {
+      if (!force && (!isExpandAllEnabled() || tocManuallyCollapsed)) { return; }
       jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function collapseAllToc() {
+      tocManuallyCollapsed = true;
+      jQuery('#toc-body .toc-list-item > ol').addClass('tocbot-is-collapsed');
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length > 0) {
+          updateTocToggle($li, $childList);
+        }
+      });
+    }
+    function bindTocActions() {
+      jQuery('#toc-actions')
+        .off('click.tocActions')
+        .on('click.tocActions', '.toc-action', function() {
+          var action = jQuery(this).data('toc-action');
+          if (action === 'expand') {
+            tocManuallyCollapsed = false;
+            expandAllToc(true);
+            jQuery('#toc-body .toc-list-item > ol').each(function() {
+              updateTocToggle(jQuery(this).parent('.toc-list-item'), jQuery(this));
+            });
+            return;
+          }
+          if (action === 'collapse') {
+            collapseAllToc();
+          }
+        });
     }
     function updateTocToggle($li, $childList) {
       var $toggle = $li.children('.toc-toggle');
@@ -904,6 +938,7 @@
       toc.css('visibility', 'visible');
     }
     expandAllToc();
+    bindTocActions();
     bindTocToggle();
     locateActiveTocItem();
 
@@ -918,6 +953,7 @@
           toc.css('visibility', 'visible');
         }
         expandAllToc();
+        bindTocActions();
         bindTocToggle();
         locateActiveTocItem();
       }

@@ -793,6 +793,30 @@ sup > a::before,
 .toc-header > i {
   font-size: 1.25rem;
 }
+.toc-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: -0.1rem 0 0.55rem;
+  padding: 0 0.1rem;
+}
+.toc-action {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--sec-text-color);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, font-weight 0.15s ease-in-out;
+}
+.toc-action:hover,
+.toc-action:focus {
+  color: var(--text-color);
+  font-weight: bold;
+  outline: none;
+}
 .toc-body {
   max-height: 75vh;
   overflow-y: auto;
