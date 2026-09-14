@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2026/png/60138024/1784992306496-f82cc734-2ae0-44e4-a946-4b565508be22.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/network-3.7.1.png">
 <meta property="article:published_time" content="2026-09-13T11:44:00.000Z">
-<meta property="article:modified_time" content="2026-09-14T06:33:03.632Z">
+<meta property="article:modified_time" content="2026-09-14T07:31:42.046Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="网络安全">
 <meta property="article:tag" content="计算机网络">
@@ -359,7 +359,7 @@
         
         
         
-          455 mins
+          454 mins
         
       </span>
     
@@ -3092,9 +3092,7 @@ Host: example.com</code></pre><p id="ud4288725" class="ne-p"><span class="ne-tex
 </tr>
 </tbody></table>
 <p>可以记成：<br>    Authentication      ↓确认身份      ↓Authorization      ↓判断权限      ↓允许 &#x2F; 拒绝操作</p>
-<ol start="4">
-<li><h1 id="一个完整-Web-请求"><a href="#一个完整-Web-请求" class="headerlink" title="一个完整 Web 请求"></a>一个完整 Web 请求</h1></li>
-</ol>
+<p><strong>一个完整 Web 请求</strong></p>
 <p>例如用户访问：</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/admin/users</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>example.com<br><span class="hljs-attribute">Cookie</span><span class="hljs-punctuation">: </span>session_id=abc123<br></code></pre></td></tr></table></figure>
 
@@ -3214,10 +3212,7 @@ Authorization: Bearer 7f82a9c1...
 <p>正确关系：<br>    Token<br>     ↓<br>    凭证<br>    Authorization Header &#x2F; Cookie<br>     ↓<br>    传输 Token 的方式</p>
 <p>后面学习 JWT 时同样成立：<br>    JWT<br>     ↓<br>    Token 的一种具体格式<br>    Cookie &#x2F; Authorization Header<br>     ↓<br>    JWT 的传输方式</p>
 <hr>
-<ol start="4">
-<li><h1 id="Token-的生命周期"><a href="#Token-的生命周期" class="headerlink" title="Token 的生命周期"></a>Token 的生命周期</h1></li>
-</ol>
-<p>Token 不是永久有效的。</p>
+<h4 id="Token-的生命周期"><a href="#Token-的生命周期" class="headerlink" title="Token 的生命周期"></a>Token 的生命周期</h4><p>Token 不是永久有效的。</p>
 <p>典型生命周期：<br>    生成<br>     ↓<br>    签发<br>     ↓<br>    客户端保存<br>     ↓<br>    请求携带<br>     ↓<br>    服务器验证<br>     ↓<br>    正常使用<br>     ↓<br>    过期 &#x2F; 撤销<br>     ↓<br>    失效</p>
 <p>因此一个完整 Token 系统至少需要考虑：</p>
 <h5 id="创建时间"><a href="#创建时间" class="headerlink" title="创建时间"></a>创建时间</h5><p>Token 什么时候产生。</p>
@@ -3461,15 +3456,7 @@ Server
 <p>这与传统 Session 模型形成明显区别：<br> Session：<br>    Session ID<br>         ↓<br>    Server-side </p>
 <p>        ↓     Session</p>
 <p>    User State</p>
-<p>而 JWT 可以形成：</p>
-<pre><code class="hljs">JWT
-    ↓
-Signature Verification
-    ↓
-Claims
-    ↓
-Authenticated Principal
-</code></pre>
+<p>而 JWT 可以形成：<br>    JWT<br>        ↓<br>    Signature Verification<br>        ↓<br>    Claims<br>        ↓<br>    Authenticated Principal</p>
 <p>但必须注意：</p>
 <blockquote>
 <p><strong>Self-contained ≠ Automatically Trusted</strong></p>
@@ -3497,21 +3484,11 @@ Authenticated Principal
 <p><strong>Base64URL 是编码，不是密码学保护。</strong></p>
 </blockquote>
 <hr>
-<h4 id="2-Signature"><a href="#2-Signature" class="headerlink" title="2. Signature"></a>2. Signature</h4><p>对于典型 JWS JWT，签名输入为：</p>
-<pre><code class="hljs">Base64URL(Header) + &quot;.&quot; + Base64URL(Payload)
-</code></pre>
+<h4 id="2-Signature"><a href="#2-Signature" class="headerlink" title="2. Signature"></a>2. Signature</h4><p>对于典型 JWS JWT，签名输入为：<br>    Base64URL(Header) + “.” + Base64URL(Payload)</p>
 <p>随后使用指定算法和密钥生成 Signature。</p>
 <p>验证过程使用相应的验证密钥重新计算或验证该签名。</p>
-<p>如果 Header 或 Payload 被修改：</p>
-<pre><code class="hljs">原始 Header + 原始 Payload
-        ↓
-      Signature
-</code></pre>
-<p>变成：</p>
-<pre><code class="hljs">修改后的 Header + 修改后的 Payload
-        ↓
-      原 Signature
-</code></pre>
+<p>如果 Header 或 Payload 被修改：<br>    原始 Header + 原始 Payload<br>            ↓<br>          Signature</p>
+<p>变成：<br>    修改后的 Header + 修改后的 Payload<br>            ↓<br>          原 Signature</p>
 <p>则通常无法通过签名验证。</p>
 <p>因此 Signature 的核心作用是：</p>
 <blockquote>
@@ -3522,15 +3499,7 @@ Authenticated Principal
 <blockquote>
 <p><strong>只有拥有正确密钥的一方才能产生能够通过验证的合法签名。</strong></p>
 </blockquote>
-<p>因此 JWT 的信任关系实际上建立在：</p>
-<pre><code class="hljs">Signing Key
-      ↓
-Signature
-      ↓
-Verification Key
-      ↓
-Signature Validation
-</code></pre>
+<p>因此 JWT 的信任关系实际上建立在：<br>    Signing Key<br>          ↓<br>    Signature<br>          ↓<br>    Verification Key<br>          ↓<br>    Signature Validation</p>
 <p>之上。</p>
 <p>如果签名密钥泄露，攻击者可能构造新的合法 JWT。</p>
 <p>因此：</p>
@@ -3538,49 +3507,15 @@ Signature Validation
 <p><strong>JWT 的安全边界最终落在签名算法与密钥管理之上。</strong></p>
 </blockquote>
 <hr>
-<h3 id="3-7-3-JWT-的认证流程"><a href="#3-7-3-JWT-的认证流程" class="headerlink" title="3.7.3 JWT 的认证流程"></a>3.7.3 JWT 的认证流程</h3><h4 id="1-用户认证"><a href="#1-用户认证" class="headerlink" title="1. 用户认证"></a>1. 用户认证</h4><p>用户首先通过用户名、密码或其他认证机制完成初始身份认证。</p>
-<pre><code class="hljs">Credentials
-    ↓
-Authentication
-    ↓
-User Identity
-</code></pre>
+<h3 id="3-7-3-JWT-的认证流程"><a href="#3-7-3-JWT-的认证流程" class="headerlink" title="3.7.3 JWT 的认证流程"></a>3.7.3 JWT 的认证流程</h3><h4 id="1-用户认证"><a href="#1-用户认证" class="headerlink" title="1. 用户认证"></a>1. 用户认证</h4><p>用户首先通过用户名、密码或其他认证机制完成初始身份认证。<br>    Credentials<br>        ↓<br>    Authentication<br>        ↓<br>    User Identity</p>
 <hr>
-<h4 id="2-JWT-签发"><a href="#2-JWT-签发" class="headerlink" title="2. JWT 签发"></a>2. JWT 签发</h4><p>认证成功后，服务端根据用户身份构造 Claims，并使用签名密钥生成 JWT。</p>
-<pre><code class="hljs">User Identity
-    ↓
-Claims
-    ↓
-JWT
-    ↓
-Signature
-    ↓
-Issued Token
-</code></pre>
+<h4 id="2-JWT-签发"><a href="#2-JWT-签发" class="headerlink" title="2. JWT 签发"></a>2. JWT 签发</h4><p>认证成功后，服务端根据用户身份构造 Claims，并使用签名密钥生成 JWT。<br>    User Identity<br>        ↓<br>    Claims<br>        ↓<br>    JWT<br>        ↓<br>    Signature<br>        ↓<br>    Issued Token</p>
 <hr>
 <h4 id="3-客户端携带-JWT"><a href="#3-客户端携带-JWT" class="headerlink" title="3. 客户端携带 JWT"></a>3. 客户端携带 JWT</h4><p>后续请求携带 JWT。</p>
-<p>常见方式：</p>
-<pre><code class="hljs">Authorization: Bearer &lt;JWT&gt;
-</code></pre>
-<p>这里需要区分：</p>
-<pre><code class="hljs">Authorization → HTTP Header
-Bearer        → Authentication Scheme
-JWT           → Credential / Token
-</code></pre>
+<p>常见方式：<br>    Authorization: Bearer <JWT></p>
+<p>这里需要区分：<br>    Authorization → HTTP Header<br>    Bearer        → Authentication Scheme<br>    JWT           → Credential &#x2F; Token</p>
 <hr>
-<h4 id="4-服务端验证-JWT"><a href="#4-服务端验证-JWT" class="headerlink" title="4. 服务端验证 JWT"></a>4. 服务端验证 JWT</h4><p>服务端收到 JWT 后，需要进行验证：</p>
-<pre><code class="hljs">JWT
- ↓
-Parse
- ↓
-Verify Signature
- ↓
-Validate Claims
- ↓
-Establish Identity
- ↓
-Authorization
-</code></pre>
+<h4 id="4-服务端验证-JWT"><a href="#4-服务端验证-JWT" class="headerlink" title="4. 服务端验证 JWT"></a>4. 服务端验证 JWT</h4><p>服务端收到 JWT 后，需要进行验证：<br>    JWT<br>     ↓<br>    Parse<br>     ↓<br>    Verify Signature<br>     ↓<br>    Validate Claims<br>     ↓<br>    Establish Identity<br>     ↓<br>    Authorization</p>
 <p>因此：</p>
 <blockquote>
 <p>JWT 认证并不是“解析 Payload → 读取用户名”这么简单。</p>
@@ -3635,20 +3570,8 @@ Authorization
 <p>不要求现阶段深入研究全部 Registered Claims 的标准细节。</p>
 <hr>
 <h3 id="3-7-5-JWT-安全分析"><a href="#3-7-5-JWT-安全分析" class="headerlink" title="3.7.5 JWT 安全分析"></a>3.7.5 JWT 安全分析</h3><p>这一节是当前路线的<strong>重点</strong>。</p>
-<p>JWT 的安全问题本质上可以归结为：</p>
-<pre><code class="hljs">算法信任
-+
-密钥信任
-+
-签名验证
-+
-Claims 信任
-+
-Token 生命周期
-</code></pre>
-<h4 id="1-alg-none"><a href="#1-alg-none" class="headerlink" title="1. alg:none"></a>1. <code>alg:none</code></h4><p>攻击者修改 Header：</p>
-<pre><code class="hljs">{&quot;alg&quot;:&quot;none&quot;}
-</code></pre>
+<p>JWT 的安全问题本质上可以归结为：<br>    算法信任<br>    +<br>    密钥信任<br>    +<br>    签名验证<br>    +<br>    Claims 信任<br>    +<br>    Token 生命周期</p>
+<h4 id="1-alg-none"><a href="#1-alg-none" class="headerlink" title="1. alg:none"></a>1. <code>alg:none</code></h4><p>攻击者修改 Header：<br>    {“alg”:”none”}</p>
 <p>并移除 Signature。</p>
 <p>如果服务端：</p>
 <ul>
