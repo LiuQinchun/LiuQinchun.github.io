@@ -24,3 +24,87 @@
 #toc .toc-body::-webkit-scrollbar-thumb:hover {
   background-color: rgba(127, 127, 127, 0.55);
 }
+
+.home-directory {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.directory-section {
+  border: 1px solid var(--line-color);
+  border-top: 3px solid var(--post-link-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.directory-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.directory-heading h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.directory-heading span {
+  min-width: 1.75rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--line-color);
+  color: var(--sec-text-color);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.directory-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.directory-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.directory-list li:last-child {
+  border-bottom: 0;
+}
+
+.directory-list a {
+  min-width: 0;
+  color: var(--text-color);
+  overflow-wrap: anywhere;
+}
+
+.directory-list a:hover {
+  color: var(--post-link-color);
+}
+
+.directory-list time {
+  flex: 0 0 auto;
+  color: var(--sec-text-color);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.directory-empty {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  color: var(--sec-text-color);
+}
+
+@media (max-width: 767px) {
+  .home-directory {
+    grid-template-columns: 1fr;
+  }
+}

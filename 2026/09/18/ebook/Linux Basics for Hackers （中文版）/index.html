@@ -1,477 +1,77 @@
 
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
-
-
-
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux Basics for Hackers （中文版） · Qinchun</title>
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
+<meta name="description" content="面向网络安全与渗透测试初学者的技术知识库">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="黑客LINUX基础 从学习Kali Linux中的网络、脚本和安全性开始 LINUX BASICS FOR HACKERS Getting Started with Networking, Scripting, and Security in Kali byOccupyTheWeb  San Francisco LINUX BASICS FOR HACKERS. Copyright © 2019">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Linux Basics for Hackers （中文版）">
-<meta property="og:url" content="https://liuqinchun.github.io/2026/09/18/ebook/Linux%20Basics%20for%20Hackers%20%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88%EF%BC%89/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="黑客LINUX基础 从学习Kali Linux中的网络、脚本和安全性开始 LINUX BASICS FOR HACKERS Getting Started with Networking, Scripting, and Security in Kali byOccupyTheWeb  San Francisco LINUX BASICS FOR HACKERS. Copyright © 2019">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://liuqinchun.github.io/media/323bd329815a69597017e16d24aa005b.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/eb9002c942bec8f6a3e8c5f9a2ea65c5.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/623bd39353062eb519f083b474425395.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/52583fd0d4bb34d6df76448eb9dada25.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/e2e43ceaa39827d811ccc53018ce9579.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/bcec1d78dddd105f4cdb6cc2e5353d19.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/14996ba312f203743bdc73f0e5f6a6e2.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/354326d98c062b895fc07f2e3aa77246.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/844d764a5dba1aa33dd8354a58034232.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/1344ce5759666037b6a3a0ede32fce30.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/5154fa110b43ee135021e2733734a650.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/56d403c023ecd17f2bebfa91d5e3b63d.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/8bd36859f20d2d47af365a18fb38c146.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/e323c30f7cfccd40b972479e4ab2c992.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/879a0039815774548ce8b7e8535bbfda.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/aa3836e224661a60b8c43ec9082aa6a7.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/97d91a980bb195ad10a6b817b40c2147.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/c69ed1b22fd3096f2986c2482612fc48.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/ee3e6a159adab72ba3772a398e1d9d29.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/8ebe56bbef2063341864729f2aab4c8f.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/679d9d5016713df94d66cbdda8806b80.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/0a6dc2f76e0bef32bc4f99f524f4b43f.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/f1217866f08f7a25f799a3f3059175d9.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/605279c0127a743c9a1499fc0dbeb8e5.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/e20d99d34733be9ccd428a1be5ea13a9.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/dbe9da136b68e46a69a46917a5877cf1.png">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/41d6401c2d447b561d674cb712879fc0.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/5b28e6105fa19fe871e94cabda608798.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/dbe9da136b68e46a69a46917a5877cf1.png">
-<meta property="og:image" content="https://liuqinchun.github.io/media/c973dc42cccb8d1a846438cc7ae62208.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/bb0ce068112c0206dec65771b035fac8.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/afead7fc78bec7b31db7fb6df492349c.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/a2ef41728e4be58a27dc8d0931c6f698.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/4c6319d4cd6fea27b11b2b15957ee5d4.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/b05f2150e9ba9e4d4442047c552a482d.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/0955fee776d67ad88de93cbc3a3ffee5.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/dbe9da136b68e46a69a46917a5877cf1.png">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/3748e7e7264f2e86559ef80539e43267.emf">
-<meta property="og:image" content="https://liuqinchun.github.io/media/4858864cb327786ba5721a42ccaf9061.png">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/d2233519049faa800f2d17b70a2b0c49.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/78966166364fa333ab0a0ade1814d1ff.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/7175e9c9b79109178504fe8bf9a03d66.png">
-<meta property="og:image" content="https://liuqinchun.github.io/media/0a8f549c27999dde99385077b044f218.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/efa0e6d9bf0b8a01574a2cf7da697c5f.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/4e0701d4b1ec450ebfe1954a1aa19c61.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/abccd38d4674a7264a0c5970a8fa2ae9.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/10c395fb7ebf0b01de589ae8c97efc9f.png">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/e32e433a357ea259e281139cd66a5d4f.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/0e0e922081017058045dc34ab4846c5e.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/c7e4d75f4a42b35b995a2f59f2682623.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/d9fd4fbea84c6ed281a27256b370943a.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/daed19a4c3611d9c919ee79c3922e106.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/d42a93e0f3382ba2f04fdfc835c17eed.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/451fdbee142e8cd4684d71b24707d050.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/5359668eb1c6683ced7efbe70e4ad829.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/dbe9da136b68e46a69a46917a5877cf1.png">
-<meta property="og:image" content="https://liuqinchun.github.io/media/4084b66ecfbd01a7de38db1280dfb2ae.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/3d8bbfe4ed6e81e998728cae3cba1a94.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/a92812faed6dd13528ac35ae9a98e7c0.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/9d7ab233cc99bc8f5afb6fd5e9ca3491.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/6335bdbe17999e1b2b49960b180e1046.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/25f4621a2daaf57f0032e7fc863e6779.png">
-<meta property="og:image" content="https://liuqinchun.github.io/media/0d9b3cd46385f1cdf932cbe16ef808f9.jpg">
-<meta property="og:image" content="https://liuqinchun.github.io/media/54f1386e92dc8a3b1c43371a4bf2c175.jpg">
-<meta property="article:published_time" content="2026-09-18T04:00:00.000Z">
-<meta property="article:modified_time" content="2026-09-18T12:37:00.815Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://liuqinchun.github.io/media/323bd329815a69597017e16d24aa005b.jpg">
-  
-  
-  
-  <title>Linux Basics for Hackers （中文版） - Hexo</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-  
-<link rel="stylesheet" href="/css/custom.css">
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"liuqinchun.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='10' fill='%2307111F'/%3E%3Ctext x='17' y='23' font-family='monospace' font-size='13' font-weight='bold' fill='%2322D3EE' text-anchor='middle'%3EQ_%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/prose.css">
 <meta name="generator" content="Hexo 8.1.2"></head>
-
-
-<body class="">
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+<body class="qc-body qc-page-post">
+<header class="qc-navbar">
+  <div class="qc-navbar-inner">
+    <a class="qc-brand" href="/">
+      <span class="qc-brand-logo">Q_</span>
+      <span class="qc-brand-text">
+        <span class="qc-brand-name">Qinchun</span>
+        <span class="qc-brand-tagline">SECURITY KNOWLEDGE BASE</span>
+      </span>
     </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content (desktop) -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
+    <div class="qc-navbar-right">
+      <button type="button" class="qc-search-trigger" id="qc-search-trigger" aria-label="搜索">
+        <svg class="qc-icon qc-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="qc-search-placeholder">搜索文档、命令与工具...</span>
+        <span class="qc-kbd">⌘ K</span>
+      </button>
+      <a class="qc-docs-link" href="/archives/">Docs</a>
+      <span class="qc-lang"><b>ZH</b><i>/</i><span>EN</span></span>
     </div>
   </div>
-</nav>
+</header>
 
-<!-- Mobile grid menu overlay -->
-<div id="mobile-grid-menu" class="d-lg-none">
-  <div class="mobile-grid-menu-inner">
-    <div class="container">
-      <div class="row">
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-home-fill"></i>
-                  <span>Home</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/archives/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-archive-fill"></i>
-                  <span>Archives</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/categories/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-category-fill"></i>
-                  <span>Categories</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/tags/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-tags-fill"></i>
-                  <span>Tags</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/about/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-user-fill"></i>
-                  <span>About</span>
-                </div>
-              </a>
-            </div>
-          
-        
-        
-          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
-            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <div class="mobile-grid-item">
-                <i class="iconfont icon-search"></i>
-                <span>Search</span>
-              </div>
-            </a>
-          </div>
-        
-        
-          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
-               data-label-light="Light"
-               data-label-dark="Dark">
-            <a href="javascript:;" aria-label="Color Toggle">
-              <div class="mobile-grid-item">
-                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
-                <span id="mobile-color-toggle-label">Dark</span>
-              </div>
-            </a>
-          </div>
-        
-      </div>
-    </div>
-  </div>
-</div>
+<aside class="qc-sidebar">
+  <div class="qc-sidebar-status"><span class="qc-dot qc-dot-green"></span>DOCS ONLINE</div>
+  <nav class="qc-side-nav">
+    
+    <a class="qc-side-link qc-side-start " href="/">开始阅读</a>
+    <div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>Blog</span></div><div class="qc-side-branch"><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>计算机操作系统</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/09/13/Blog/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>计算机网络</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/09/13/Blog/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>实践记录</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/01/01/Blog/%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">实践笔记</a></div><a class="qc-side-post" href="/2026/01/01/Blog/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">实践笔记</a><a class="qc-side-post" href="/2026/09/13/Blog/%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">脚本语言基础</a><a class="qc-side-post" href="/2026/09/13/Blog/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><a class="qc-side-post" href="/2026/09/13/Blog/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>Ebook</span></div><div class="qc-side-branch"><a class="qc-side-post active" href="/2026/09/18/Ebook/Linux%20Basics%20for%20Hackers%20%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88%EF%BC%89/">Linux Basics for Hackers （中文版）</a></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>hands-on</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/09/13/hands-on/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/">网络渗透技术</a></div>
+  </nav>
+</aside>
 
+<main class="qc-main">
   
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="Linux Basics for Hackers （中文版）"></span>
-          
-        </div>
-
+<article class="qc-article">
+  <div class="qc-container qc-article-container">
+    <nav class="qc-breadcrumb">
+      <a href="/">DOCS</a>
+      <i>/</i><a href="/categories/%E7%94%B5%E5%AD%90%E4%B9%A6/">电子书</a><i>/</i><a href="/categories/%E7%94%B5%E5%AD%90%E4%B9%A6/Linux%E5%9F%BA%E7%A1%80/">Linux基础</a>
+      <i>/</i><span>当前</span>
+    </nav>
+    <header class="qc-article-head">
+      <h1 class="qc-article-title">Linux Basics for Hackers （中文版）</h1>
+      <div class="qc-article-meta">
+        <span><svg class="qc-icon qc-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>2026-09-18</span>
+        <i>·</i>
+        <span>9.2 万字</span>
         
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-18 12:00" pubdate>
-          September 18, 2026 pm
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
+        <i>·</i><span>更新 2026-09-18</span>
         
-          158k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          1316 mins
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
         
       </div>
-
-      
-    </div>
-  </div>
-</div>
-
-
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <h1 id="seo-header">Linux Basics for Hackers （中文版）</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <p><img src="/media/323bd329815a69597017e16d24aa005b.jpg" srcset="/img/loading.gif" lazyload></p>
+    </header>
+    <div class="qc-prose">
+      <p><img src="/media/323bd329815a69597017e16d24aa005b.jpg"></p>
 <p><strong>黑客LINUX基础</strong></p>
 <p><strong>从学习Kali Linux中的网络、脚本和安全性开始</strong></p>
 <p>LINUX BASICS FOR HACKERS</p>
 <p><strong>Getting Started with Networking, Scripting, and Security in Kali by<br>OccupyTheWeb</strong></p>
-<p><img src="/media/eb9002c942bec8f6a3e8c5f9a2ea65c5.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/eb9002c942bec8f6a3e8c5f9a2ea65c5.jpg"></p>
 <p>San Francisco</p>
 <p><strong>LINUX BASICS FOR HACKERS.</strong> Copyright © 2019 by OccupyTheWeb.</p>
 <p>版权所有。未经版权所有者和出版商事先书面许可，不得以任何形式或通过电子或机械方式（包括影印，录制或任何信息存储或检索系统）复制或传播本作品的任何部分。</p>
@@ -504,7 +104,7 @@
 <p>LC 记录可在此网址获取 <a target="_blank" rel="noopener" href="https://lccn.loc.gov/2018030544">https://lccn.loc.gov/2018030544</a>。</p>
 <p>No Starch Press 和 No Starch Press 徽标是 No Starch Press<br>Inc.的注册商标。此处提及的其他产品和公司名称可能是其各自所有者的商标。我们不是在每次出现商标名称时使用商标符号，而是仅以编辑方式使用这些名称，并且为商标所有者的利益而使用，而无意侵犯商标。</p>
 <p>本书中的信息按“As<br>Is”分发，不附带任何保证。虽然在准备这项工作时已经采取了一切预防措施，但作者和 No<br>Starch Press<br>均不对任何人或实体对由于包含在其中的信息，直接或间接造成的任何损失或损害承担任何责任。</p>
-<h2 id="绪-论"><a href="#绪-论" class="headerlink" title="绪 论"></a>绪 论</h2><p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="绪-论"><a href="#绪-论" class="headerlink" title="绪 论"></a>绪 论</h2><p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>黑客攻击是21世纪最重要的技能！我不轻易做出这种说法。近年来似乎每天早上新闻事件的标题重申了这一说法。各国正在互相监视以获取机密，网络犯罪分子正在窃取数十亿美元，要求赎金的数字蠕虫被释放，竞选对手正在影响彼此的选举，战斗人员相互拆台。这些都是黑客的工作，他们对我们日益数字化的世界的影响才刚刚凸显。</p>
 <p>我决定在与成千上万有抱负的黑客通过NullByte（<a target="_blank" rel="noopener" href="http://www.hackersarise.com)以及美国军事和情报机构(nsa,dia,cia和fbi)的几乎所有分支机构合作写这本书.这些经历告诉我,许多有抱负的黑客对linux几乎没有任何经验,而这种缺乏经验是他们开始成为职业黑客的主要障碍.几乎所有最好的黑客工具都是用linux编写的,因此一些基本的linux技能是成为专业黑客的先决条件.我写这本书是为了帮助有抱负的黑客克服这个障碍./">http://www.hackersarise.com）以及美国军事和情报机构（NSA，DIA，CIA和FBI）的几乎所有分支机构合作写这本书。这些经历告诉我，许多有抱负的黑客对Linux几乎没有任何经验，而这种缺乏经验是他们开始成为职业黑客的主要障碍。几乎所有最好的黑客工具都是用Linux编写的，因此一些基本的Linux技能是成为专业黑客的先决条件。我写这本书是为了帮助有抱负的黑客克服这个障碍。</a></p>
 <p>黑客是IT领域的精英职业。因此，它需要对IT概念和技术进行广泛而详细的理解。在最基础的层次上，Linux是一项需求。如果你想把黑客和信息安全作为你的职业，我强烈建议你投入时间和精力来使用和理解它。</p>
@@ -557,53 +157,53 @@
 <h3 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h3><p>虚拟机（VM）技术允许您从笔记本电脑或台式机等硬件上运行多个操作系统。这意味着您可以继续运行您熟悉的Windows或MacOS操作系统，并在该操作系统中运行Kali<br>Linux虚拟机。您不需要覆盖现有的操作系统来学习Linux。</p>
 <p>VMware，Oracle，Microsoft和其他供应商提供了大量虚拟机应用程序。这些都很好用，但在这里我将向您展示如何下载和安装Oracle的免费VirtualBox。</p>
 <h4 id="安装VirtualBox"><a href="#安装VirtualBox" class="headerlink" title="安装VirtualBox"></a><em>安装VirtualBox</em></h4><p>你可以从<a target="_blank" rel="noopener" href="https://www.virtualbox.org/">https://www.virtualbox.org/</a>下载VirtualBox，如图1所示，单击左侧菜单中的下载链接，并为计算机当前操作系统选择VirtualBox安装包，该操作系统将承载VirtualBox<br>VM。请务必下载最新版本。</p>
-<p><img src="/media/623bd39353062eb519f083b474425395.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/623bd39353062eb519f083b474425395.jpg"></p>
 <p><em>图1:VirtualBox主页</em></p>
 <p>下载完成后，单击setup文件，您将看到一个熟悉的安装向导，如图2所示。</p>
-<p><img src="/media/52583fd0d4bb34d6df76448eb9dada25.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/52583fd0d4bb34d6df76448eb9dada25.jpg"></p>
 <p><em>图2:安装向导对话框</em></p>
 <p>单击<strong>Next</strong>，您应该会看到自定义安装设置屏幕，如图3中所示。</p>
-<p><img src="/media/e2e43ceaa39827d811ccc53018ce9579.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/e2e43ceaa39827d811ccc53018ce9579.jpg"></p>
 <p><em>图3:自定义设置对话框</em></p>
 <p>在此屏幕上，只需单击<strong>Next</strong>。继续单击<strong>Next</strong>，直到到达网络接口警告屏幕，然后单击<strong>Yes</strong>。</p>
 <p>单击<strong>Install</strong>开始该过程。在此过程中，可能会多次提示您安装设备软件。这些是虚拟机通信所需的虚拟网络设备。单击<strong>Install</strong>。</p>
 <p>安装完成后，单击<strong>Finish</strong>。</p>
 <h4 id="设置虚拟机"><a href="#设置虚拟机" class="headerlink" title="设置虚拟机"></a><em>设置虚拟机</em></h4><p>现在让我们开始使用您的虚拟机。VirtualBox应该在安装后打开 -<br>如果没有，则手动打开它 - 你应该看到VirtualBox Manager的欢迎，如图4所示。</p>
-<p><img src="/media/bcec1d78dddd105f4cdb6cc2e5353d19.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/bcec1d78dddd105f4cdb6cc2e5353d19.jpg"></p>
 <p><em>图4: VirtualBox Manager</em></p>
 <p>由于我们将使用Kali Linux镜像创建新的虚拟机，因此请单击左上角的“新建”。<br>这将打开图5中所示的Create Virtual Machine对话框。</p>
-<p><img src="/media/14996ba312f203743bdc73f0e5f6a6e2.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/14996ba312f203743bdc73f0e5f6a6e2.jpg"></p>
 <p><em>图5: Create Virtual Machine对话框</em></p>
 <p>给你的机器命名（任何名称都可以，但我只是使用Kali）然后从“<strong>Type</strong>”下拉菜单中选择Linux。<br>最后，从第三个下拉菜单中选择Debian（64bit）（除非您使用的是32位版本的Kali，在这种情况下选择Debian<br>32bit版本）。单击“<strong>Next</strong>”，您将看到如图6所示的屏幕。</p>
-<p><img src="/media/354326d98c062b895fc07f2e3aa77246.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/354326d98c062b895fc07f2e3aa77246.jpg"></p>
 <p><em>图6: 分配内存</em></p>
 <p>在这里，您需要选择要为此新虚拟机分配多少RAM。</p>
 <p>根据经验，我不建议使用超过总系统内存RAM的25％。这意味着如果您在物理系统或主机系统上安装了4GB，则为虚拟机选择仅1GB，如果物理系统上只有16GB，则选择4GB。您为虚拟机提供的RAM越多，运行的速度越快。虽速度越快，但您还必须为主机操作系统和您可能希望同时运行的任何其他虚拟机留下足够的RAM。当您不使用此虚拟机时，它们将不使用任何RAM，但它们将使用硬盘空间。</p>
 <p>单击<strong>Next</strong>，您将看到硬盘屏幕。选择“<strong>Create Virtual Hard<br>Disk</strong>”，单击“<strong>Create</strong>”。</p>
 <p>在下一个屏幕中，您可以决定是要将要创建的硬盘动态分配还是以固定大小分配。如果选择<strong>动态分配</strong>，系统将不会占用您为虚拟硬盘分配的最大大小，直到需要时，它为主机系统节省更多未使用的硬盘空间。我建议你选择动态分配。</p>
 <p>单击<strong>Next</strong>，您将选择要分配给VM的硬盘空间量以及VM的位置（请参见图7）。</p>
-<p><img src="/media/844d764a5dba1aa33dd8354a58034232.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/844d764a5dba1aa33dd8354a58034232.jpg"></p>
 <p><em>图7: 分配硬盘空间</em></p>
 <p>默认值为8GB。我通常发现它有点小，建议你至少分配20-25GB。请记住，如果您选择动态分配硬盘空间，那么直到您需要它时，它才会使用该空间，并且在已经分配好硬盘空间之后再扩展它可能比较棘手，所以最好还是选择偏高的空间。</p>
 <p>单击<strong>Create</strong>，就可以开始了!</p>
 <h4 id="在VM上安装Kali"><a href="#在VM上安装Kali" class="headerlink" title="在VM上安装Kali"></a><em>在VM上安装Kali</em></h4><p>此时，您应该看到如图8所示的屏幕。现在您需要安装Kali。请注意，在VirtualBox<br>Manager的左侧，您应该看到Kali<br>VM已关闭的指示。单击<strong>Start</strong>按钮（绿色箭头图标）。</p>
-<p><img src="/media/1344ce5759666037b6a3a0ede32fce30.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/1344ce5759666037b6a3a0ede32fce30.jpg"></p>
 <p><em>图8:VirtualBox欢迎屏幕</em></p>
 <p>然后，VirtualBox<br>Manager将询问在哪里可以找到启动盘。您已经下载了扩展名为.iso的磁盘映像，该映像应位于您的Downloads文件夹中（如果您使用torrent下载Kali，则.iso文件将位于您的Torrenting应用程序的Downloads文件夹中）。单击右侧的文件夹图标，导航到Downloads文件夹，然后选择Kali映像文件（参见图9）。</p>
-<p><img src="/media/5154fa110b43ee135021e2733734a650.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/5154fa110b43ee135021e2733734a650.jpg"></p>
 <p><em>图9:选择启动盘</em></p>
 <p>然后单击<strong>Start</strong>。恭喜，您刚刚在虚拟机上安装了Kali Linux！</p>
 <h4 id="设置KALI"><a href="#设置KALI" class="headerlink" title="设置KALI"></a><em>设置KALI</em></h4><p>Kali现在将打开如图10所示的屏幕，为您提供多种启动选择。我建议为初学者使用图形安装**(graphical<br>install)**。使用键盘键导航菜单。</p>
 <p>如果在将Kali安装到VirtualBox时出现错误，可能是因为您没有在硬件系统的BIOS中启用虚拟化。每个系统及其BIOS略有不同，因此请与您的制造商联系或在线搜索您的硬件系统和BIOS的解决方案。<br>此外，在Windows系统上，您可能需要禁用任何具有竞争的虚拟化软件，如HyperV。同样，您的系统的互联网搜索引擎应该能够指导您这样做。</p>
-<p><img src="/media/56d403c023ecd17f2bebfa91d5e3b63d.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/56d403c023ecd17f2bebfa91d5e3b63d.jpg"></p>
 <p><em>图10:选择install方法</em></p>
 <p>接下来会要求您选择语言。确保选择最适合的语言，然后单击<strong>Continue</strong>。接下来，选择您的位置，单击<strong>Continue</strong>，然后选择键盘布局。</p>
 <p>单击<strong>Continue</strong>时，VirtualBox将执行检测硬件和网络适配器的过程。只要耐心等待。最终，您将看到一个要求您配置网络的屏幕，如图11所示。</p>
-<p><img src="/media/8bd36859f20d2d47af365a18fb38c146.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/8bd36859f20d2d47af365a18fb38c146.jpg"></p>
 <p><em>图11:输入主机名</em></p>
 <p>它要求输入的第一项是您的主机名称。你可以随心所欲地命名，但我用默认的“kali”作为名字。</p>
 <p>接下来，系统会要求您输入域名。没有必要在这里输入任何东西。单击<strong>Continue</strong>。下一个屏幕非常重要，如图12所示。在这里，系统会要求您输入要用于root用户的密码。</p>
-<p><img src="/media/e323c30f7cfccd40b972479e4ab2c992.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/e323c30f7cfccd40b972479e4ab2c992.jpg"></p>
 <p><em>图12:设置root密码</em></p>
 <p>Linux中的root用户是强大的系统管理员。您可以使用任何您认为安全的密码。如果这是我们在互联网上使用的物理系统，我建议您使用非常长且复杂的密码来限制攻击者破解它的能力。由于这是人们在没有首先访问主机操作系统的情况下无法访问的虚拟机，因此在此虚拟机上进行密码验证并不重要，但您仍应明智地选择。</p>
 <p>单击<strong>Continue</strong>继续，系统将要求您设置时区。这样做，然后继续。</p>
@@ -611,27 +211,27 @@
 <p>然后，Kali会警告您，您选择的磁盘上的所有数据都将被删除，但别担心！这是一个虚拟磁盘，磁盘是新的并且是空的，所以这实际上不会做任何事情。单击<strong>Continue</strong>继续。</p>
 <p>Kali现在会询问您是希望将所有文件放在一个分区中，还是想要单独的分区。如果这是一个生产系统，您可能会为&#x2F;<br>home，&#x2F; var和&#x2F;<br>tmp选择单独的分区，但考虑到我们将其用作虚拟环境中的学习系统，您可以安全地选择将全部文件放在一个分区中。</p>
 <p>现在，将询问您是否将更改写入磁盘。选择<strong>Finish<br>partitioning</strong>并将更改写入磁盘。Kali将再次提示您是否要将更改写入磁盘，选择<strong>Yes</strong>并单击<strong>Continue</strong>继续（参见图13）。</p>
-<p><img src="/media/879a0039815774548ce8b7e8535bbfda.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/879a0039815774548ce8b7e8535bbfda.jpg"></p>
 <p><em>图13:将更改写入磁盘</em></p>
 <p>Kali现在将开始安装操作系统。这可能需要一段时间，所以请耐心等待。现在是时候休息一下，喝上自己喜欢的饮料吧。</p>
 <p>安装完成后，系统将提示您是否要使用网络镜像。这真的没有必要，所以点击<strong>No</strong>。</p>
 <p>然后Kali将提示您是否要安装<strong>GRUB（Grand Unified<br>Bootloader）</strong>，如图14所示。引导加载程序使您可以选择不同的操作系统启动，这意味着当你启动你的机器，你可以启动 Kali或其他操作系统。选择<strong>Yes</strong>并单击<strong>Continue</strong>继续。</p>
-<p><img src="/media/aa3836e224661a60b8c43ec9082aa6a7.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/aa3836e224661a60b8c43ec9082aa6a7.jpg"></p>
 <p><em>图14:安装GRUB</em></p>
 <p>在下一个屏幕上，系统将提示您是自动还是手动安装GRUB引导加载程序。由于原因尚不清楚，如果您选择第二个选项，Kali将倾向于挂起并在安装后显示空白屏幕。选择手动输入设备<strong>Enter<br>device manually</strong>，如图15所示。</p>
-<p><img src="/media/97d91a980bb195ad10a6b817b40c2147.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/97d91a980bb195ad10a6b817b40c2147.jpg"></p>
 <p><em>图15:手动输入设备</em></p>
 <p>在下面的屏幕上，选择GRUB引导加载程序应安装的驱动器（它可能类似于&#x2F;dev&#x2F;sda）。单击进入下一个屏幕，该屏幕应告知您安装已完成。</p>
 <p>恭喜！你已经安装了Kali。单击<strong>Continue</strong>继续。Kali将尝试重新启动，在您最终遇到Kali<br>2019的登录屏幕之前，您将看到许多代码行穿过一个空白的黑色屏幕，然后如图16所示。</p>
-<p><img src="/media/c69ed1b22fd3096f2986c2482612fc48.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/c69ed1b22fd3096f2986c2482612fc48.jpg"></p>
 <p><em>图16:Kali登录屏幕</em></p>
 <p>以root身份登录，系统将询问您的密码。输入您为root用户选择的密码。</p>
 <p>以root身份登录后，您将看到Kali Linux桌面，如图17中所示。</p>
-<p><img src="/media/ee3e6a159adab72ba3772a398e1d9d29.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/ee3e6a159adab72ba3772a398e1d9d29.jpg"></p>
 <p><em>图17:Kali主屏幕</em></p>
 <p>您现在已准备好开始进入令人兴奋的黑客攻击领域！欢迎！</p>
 <h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><h2 id="开始学习基础知识"><a href="#开始学习基础知识" class="headerlink" title="开始学习基础知识"></a>开始学习基础知识</h2><p>GETTING STARTED WITH THE BASICS</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>从本质上而言，黑客就是行动者。我们想要触摸和玩弄一些东西，我们也希望创造并且有时可能会破坏一些事物。在我们能够做我们最喜欢的事情之前，我们中很少有人想要阅读信息技术理论的长篇大论：黑客攻击。考虑到这一点，本章旨在为您提供一些基本技能，帮助您在Kali中启动和运行。现在！</p>
 <p>在本章中，我们不会详细介绍任何一个概念 -<br>我们将覆盖足够的内容，让您在黑客的操作系统中进行游戏和探索：Linux。我们将为后面的章节保存更深入的讨论。</p>
 <h3 id="介绍术语和概念"><a href="#介绍术语和概念" class="headerlink" title="介绍术语和概念"></a>介绍术语和概念</h3><p>在开始我们的黑客Linux基础知识奇妙世界之旅之前，我想介绍几个术语，这些术语应该澄清本章后面讨论的一些概念。</p>
@@ -646,18 +246,18 @@
 <p>**终端(<strong>Terminal</strong>)**这是命令行界面（CLI）。</p>
 <p>有了这些基础知识，我们将尝试有条不紊地强化成为黑客或渗透测试人员所需的基本Linux技能。在第一章中，我将引导您开始使用Kali<br>Linux。</p>
 <h3 id="KALI之旅"><a href="#KALI之旅" class="headerlink" title="KALI之旅"></a>KALI之旅</h3><p>一旦你启动Kali，你就会看到一个登录界面，如图1-1所示。使用<strong>root</strong>帐户用户名<em>root</em>和默认密码<em>toor</em>登录。</p>
-<p><img src="/media/8ebe56bbef2063341864729f2aab4c8f.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/8ebe56bbef2063341864729f2aab4c8f.jpg"></p>
 <p><em>图1­1: 使用root帐户登录Kali</em></p>
 <p>您现在应该可以访问您的Kali桌面（参见图1-2）。<br>我们将快速查看桌面的两个最基本的方面：终端接口和文件结构。</p>
-<p><img src="/media/679d9d5016713df94d66cbdda8806b80.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/679d9d5016713df94d66cbdda8806b80.jpg"></p>
 <p><em>图1­2: Kali 桌面</em></p>
 <h4 id="终端"><a href="#终端" class="headerlink" title="终端"></a><em>终端</em></h4><p>使用Kali的第一步是打开终端，这是我们将在本书中使用的命令行界面。在Kali<br>Linux中，您将在桌面底部找到终端的图标。双击此图标以打开终端或<strong>CTRL­ALT­T</strong>。您的新终端应如图1-3所示。</p>
-<p><img src="/media/0a6dc2f76e0bef32bc4f99f524f4b43f.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/0a6dc2f76e0bef32bc4f99f524f4b43f.jpg"></p>
 <p><em>图1­3: Kali终端</em></p>
 <p>此终端打开命令行环境（称为shell），使您可以在底层操作系统上运行命令并编写脚本。虽然Linux有许多不同的shell环境，但最受欢迎的是<strong>bash<br>shell</strong>，它也是Kali和许多其他Linux发行版中的默认shell。</p>
 <p>要更改密码，可以使用命令<strong>passwd</strong>。</p>
 <h4 id="Linux文件系统"><a href="#Linux文件系统" class="headerlink" title="Linux文件系统"></a><em>Linux文件系统</em></h4><p>Linux文件系统结构与Windows有些不同。Linux在文件系统的基础上没有物理驱动器（例如C：驱动器），而是使用逻辑文件系统。在文件系统结构的最顶层是&#x2F;，它通常被称为文件系统的根，就好像它是一个倒置树（见图1-4）。请记住，这与root用户不同。这些术语起初可能看起来令人困惑，但是一旦习惯了Linux，它们就会变得更容易区分。</p>
-<p><img src="/media/f1217866f08f7a25f799a3f3059175d9.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/f1217866f08f7a25f799a3f3059175d9.jpg"></p>
 <p><em>图1­4: Linux 文件系统</em></p>
 <p>文件系统的根（&#x2F;）位于文件系统目录树的顶部，以下是要了解的最重要的子目录：</p>
 <p><strong>&#x2F;root</strong> root用户的主目录</p>
@@ -711,7 +311,7 @@
 <p>home lost+found root usr</p>
 <p>此命令列出目录中包含的文件和目录。您也可以在任何特定目录上使用此命令，而不仅仅是您当前所在的目录，方法是在命令后列出目录名称，例如，<strong>ls<br>&#x2F;etc</strong>显示&#x2F;etc目录中的内容。</p>
 <p>要获取有关文件和目录的更多信息，例如它们的权限、所有者、大小以及上次修改它们的时间，可以在<strong>ls</strong>之后添加**-l**参数（l代表long）。这通常被称为长列表。我们来试试吧：</p>
-<p><img src="/media/605279c0127a743c9a1499fc0dbeb8e5.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/605279c0127a743c9a1499fc0dbeb8e5.jpg"></p>
 <p>如您所见，<strong>ls<br>-l</strong>为我们提供了更多信息，例如对象是文件还是目录、链接数、所有者、组、大小、创建或修改时的时间及其名称。</p>
 <p>我通常在Linux中进行列出文件列表时添加-l参数，但是每个参数都需要自己添加。我们将在第5章中详细讨论<strong>ls<br>-l</strong>。</p>
 <p>Linux中的某些文件是隐藏的，不会通过简单的<strong>ls</strong>或<strong>ls<br>-l</strong>命令显示。要显示隐藏文件，请添加小写**-a**参数，如下所示：</p>
@@ -724,7 +324,7 @@
 <p>kali &gt;nmap -h</p>
 <p>不幸的是，虽然许多应用程序支持所有三个选项（ <strong>- help</strong>，<strong>-h</strong>和<br><strong>-？</strong>），但无法保证您正在使用的应用程序。因此，如果其中一个选项不起作用，请尝试另一个。</p>
 <h5 id="使用man引用手册页"><a href="#使用man引用手册页" class="headerlink" title="使用man引用手册页"></a>使用man引用手册页</h5><p>除了帮助信息之外，大多数命令和应用程序都有一个手册（man）页面，其中包含更多信息，例如命令或应用程序的描述和概要。只需在命令、实用程序或应用程序之前键入<strong>man</strong>即可查看手册页。例如，要查看aircrackng的手册页，请输入以下内容：</p>
-<p><img src="/media/e20d99d34733be9ccd428a1be5ea13a9.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/e20d99d34733be9ccd428a1be5ea13a9.jpg"></p>
 <p>这将打开aircrackng手册，为您提供比帮助信息更详细的信息。您可以使用<strong>ENTER</strong>键滚动浏览此手册文件，也可以分别使用<strong>PG<br>DN</strong>和<strong>PG<br>UP</strong>键向上和向下翻页。要退出，只需输入<strong>q</strong>（退出），然后返回命令提示符。</p>
 <h3 id="搜索查找"><a href="#搜索查找" class="headerlink" title="搜索查找"></a>搜索查找</h3><p>在你熟悉Linux之前，找到自己的方法会很令人沮丧，但是对一些基本命令和技术的了解将大大有助于使命令行更加友好。以下命令可帮助您从终端查找内容。</p>
 <h4 id="使用locate搜索"><a href="#使用locate搜索" class="headerlink" title="使用locate搜索"></a><em>使用locate搜索</em></h4><p>可能最容易使用的命令是<strong>locate</strong>。接下来是一个关键字，表示您想要查找的内容，此命令将遍历整个文件系统并找到该单词的每个匹配项。</p>
@@ -843,11 +443,11 @@
 <p>但需要注意的是：要小心使用**-r<strong>选项和</strong>rm**，至少在开始时，因为错误地删除有价值的文件和目录非常容易。例如，在主目录（&#x2F;）中使用<strong>rm<br>-r</strong>会删除那里的每一个文件和目录 – 这不是你想要的致命性的动作。</p>
 <h3 id="现在开始"><a href="#现在开始" class="headerlink" title="现在开始!"></a>现在开始!</h3><p>现在您已经掌握了一些在文件系统中导航切换的基本技能，您可以在进行（黑客游戏）之前稍微使用Linux系统。使用终端的最佳方法是立即尝试使用新发现的技能。在随后的章节中，我们将深入探讨我们的黑客游戏。</p>
 <h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><h2 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h2><p>TEXT MANIPULATION</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>在Linux系统中，我们处理的一切都是文件，并且绝大多数都是文本文件；举个例子，在Linux系统中，所有的配置文件都是文本文件。所以我们只需要打开文件，更改文件的内容，保存文件，再重新启动应用就可以更改应用配置。</p>
 <p>由于存在大量文本文件，操作文本在Linux系统管理和Linux应用中显得尤为重要。在这一章节，<br>你可以通过一些命令和技巧，实现在Linux系统下操作文本。</p>
 <p>为了方便演示，我将使用世界顶尖的网络入侵检测系统（NIDS）Snort的文件，Snort<br>最早由Marty Roesch<br>开发，现在属于Cisco。NIDS经常被用于检测黑客入侵，所以如果你想成为成功的黑客，你必须了解<br>NIDS如何检测攻击和绕过检测的方法。</p>
-<p><img src="/media/dbe9da136b68e46a69a46917a5877cf1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/dbe9da136b68e46a69a46917a5877cf1.png"></p>
 <h3 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h3><p>如第1章所示，最基本的打印文本命令是<strong>cat</strong>，但是它有它的限制，使用<strong>cat</strong>命令打印位于&#x2F;etc&#x2F;snort的Snort<br>配置文件（snort.conf）（参见文本清单2-1）</p>
 <p>kali &gt;cat &#x2F;etc&#x2F;snort&#x2F;snort.conf</p>
 <p><em>清单 2-1: 在终端中打印snort.conf</em></p>
@@ -1003,7 +603,7 @@
 <p>如你所见，less去掉了接下来出现的output并且高亮了所有搜到的字段。在这里,<br>它直接跳到Snort的输出段，真是方便啊！</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Linux系统有许多操纵文本的方法，每种方法都有其优缺点。在本章中，我们已经接触了一些最有用的方法，但是我建议您尝试每一种方法，并建立您自己的感觉和偏好。例如，我认为<strong>grep</strong>是不可缺少的，并且我广泛的使用<strong>less</strong>，但是您可能会有不同的观点。</p>
 <h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><h2 id="分析和管理网络"><a href="#分析和管理网络" class="headerlink" title="分析和管理网络"></a>分析和管理网络</h2><p>ANALYZING AND MANAGING NETWORKS</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>了解网络对任何一个有追求的黑客都是至关重要的。在许多情况下，你将通过网络攻击某些东西，而优秀的黑客需要知道怎样去和目标网络连接和交互。例如，您可能需要连接到视图中隐藏了Internet协议（IP）地址的计算机，或者你可能需要将目标的域名系统(DNS)查询重定向到您的系统，这些任务都相对比较简单，但是都需要一点Linux网络知识。本章节将向你展示一些在你的网络黑客冒险过程中进行分析和管理网络的基本的Linux工具。</p>
 <h3 id="使用IFCONFIG分析网络"><a href="#使用IFCONFIG分析网络" class="headerlink" title="使用IFCONFIG分析网络"></a>使用IFCONFIG分析网络</h3><p><strong>ifconfig</strong>命令是检测活动网络接口并与之交互最基本的工具之一。你可以简单地在终端（terminal）输入ifconfig命令来查询你所在的网络活动连接状态。请自己尝试一下，你应该看到和清单3­1相似的输出。</p>
 <p>kali &gt;ifconfig</p>
@@ -1090,22 +690,22 @@
 <h4 id="更改你的DNS服务器"><a href="#更改你的DNS服务器" class="headerlink" title="更改你的DNS服务器"></a><em>更改你的DNS服务器</em></h4><p>在某些情况下，你可能希望使用其他DNS服务器。为了这么做，你将编辑一个在操作系统名为&#x2F;etc&#x2F;resolv.conf纯文本文件。使用文本编辑器打开这个文件——这里我使用Leafpad。然后，在你的命令行输入你选择的编辑器准确的名称并在后面加上文件的位置和文件名。例如：</p>
 <p>kali &gt;leafpad &#x2F;etc&#x2F;resolv.conf</p>
 <p>将我指定的图形文本编辑器Leafpad里打开位于&#x2F;etc目录下的resolv.conf文件在。这个文件的内容看上去应该如图<br>3­1所示。</p>
-<p><img src="/media/41d6401c2d447b561d674cb712879fc0.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/41d6401c2d447b561d674cb712879fc0.jpg"></p>
 <p><em>图 3­1: 在文本编辑器中的典型的resolv.conf 文件</em></p>
 <p>正如你在第三行看到的，我的名称服务器在这里设置为192.168.181.2的本地DNS服务器。它正常工作，但是如果我希望添加或者替换DNS服务器为8.8.8.8的Google公共DNS服务器。我需要在&#x2F;etc&#x2F;resolv.conf文件中添加以下行来指定这个名称服务器<br>：</p>
 <p>nameserver 8.8.8.8</p>
 <p>然后我需要保持这个文件。但是，你也可以通过输入以下指定命令达到同样的效果：</p>
 <p>kali &gt;echo “nameserver 8.8.8.8”&gt; &#x2F;etc&#x2F;resolv.conf</p>
 <p>这个命令回显字符串nameserver<br>8.8.8.8并将其重定向（&gt;）到文件&#x2F;etc&#x2F;resolv.conf中，替换掉当前的内容。你的&#x2F;etc&#x2F;resolv.conf文件现在应如图3-2所示。</p>
-<p><img src="/media/5b28e6105fa19fe871e94cabda608798.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/5b28e6105fa19fe871e94cabda608798.jpg"></p>
 <p><em>图 3­2: 更改 resolv.conf 文件信息来指定 Google DNS 服务器</em></p>
 <p>如果你现在打开&#x2F;etc&#x2F;resolv.conf文件，你将看到它将DNS请求指向Google的DNS服务器而不是本地DNS服务器。你的机器现在将转到Google公共DNS服务器来解析域名成IP地址。这意味着域名解析将花费更长的时间(可能是几毫秒)。因此，为了保持速度但保留使用公共服务器的选项，你可能需要在resolv.conf文件中重新保存本地DNS服务器，然后使用公共DNS服务器进行后续操作。操作系统按&#x2F;etc&#x2F;resolv.conf文件中列出的顺序查询每个DNS服务器，因此只有在本地DNS服务器中找不到域名时，系统才会引用公共DNS服务器。</p>
-<p><img src="/media/dbe9da136b68e46a69a46917a5877cf1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/dbe9da136b68e46a69a46917a5877cf1.png"></p>
 <h4 id="映射您自己的-IP-地址"><a href="#映射您自己的-IP-地址" class="headerlink" title="映射您自己的 IP 地址"></a><em>映射您自己的 IP 地址</em></h4><p>在你的操作系统中一个被称为hosts的特殊文件总是执行域名——IP地址转换。这个hosts文件位于&#x2F;etc&#x2F;hosts，与DNS有点类似，你可以使用它来指定你自己的IP地址——域名映射。换句话说，当你在浏览器输入<a target="_blank" rel="noopener" href="http://www.microsoft.com(或者其他任何域名)时,你可以决定浏览器将访问哪个ip地址而不是让dns服务决定.对于黑客,这对于劫持局域网上的tcp连接以使用dnsspoof等工具将流量定向到恶意web服务器非常有用./">www.microsoft.com（或者其他任何域名）时，你可以决定浏览器将访问哪个IP地址而不是让DNS服务决定。对于黑客，这对于劫持局域网上的TCP连接以使用dnsspoof等工具将流量定向到恶意Web服务器非常有用。</a></p>
 <p>在命令行中，输入以下命令 (你可以将首选文本编辑器替换为Leafpad):</p>
 <p>kali &gt;leafpad &#x2F;etc&#x2F;hosts</p>
 <p>你应该看到你的hosts文件，如图3-3所示</p>
-<p><img src="/media/c973dc42cccb8d1a846438cc7ae62208.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/c973dc42cccb8d1a846438cc7ae62208.jpg"></p>
 <p><em>图 3­3: 默认 Kali Linux hosts 文件</em></p>
 <p>默认情况下，hosts文件只包含localhost的映射(127.0.0.1)和你的系统主机名(本例中为Kali,<br>位于127.0.1.1)。但是你可以按照你的意愿添加任何IP地址映射到任何域名。举个如何使用它的例子，你可以将<a href="http://www.bankofamerica.com映射到你的本地网站，地址为192.168.181.131。">www.bankofamerica.com映射到你的本地网站，地址为192.168.181.131。</a></p>
 <p>127.0.0.1 localhost</p>
@@ -1119,7 +719,7 @@
 <p>这些实际上都非常简单，对吧？</p>
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>任何黑客都需要一些基本的Linux网络技能来连接、分析和管理网络。随着你的进步，这些技能在侦察、欺骗和连接目标系统中将变得越来越有用。</p>
 <h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><h2 id="添加和删除软件"><a href="#添加和删除软件" class="headerlink" title="添加和删除软件"></a>添加和删除软件</h2><p>ADDING AND REMOVING SOFTWARE</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>Linux或任何操作系统中最基本的任务之一便是添加和删除软件。您经常需要安装发行版中没有附带的软件，或者删除不需要的软件，这样就不会占用硬盘空间。</p>
 <p>有些软件安装需要依赖其他软件才能运行，有时您会发现您可以在软件包安装过程中一次性下载所需的所有软件，软件包是一组文件(通常是库和其他依赖项)，您需要这些文件才能使软件成功运行。当您安装一个包时，包中的所有文件连同一个脚本一起安装，以简化软件的加载。</p>
 <p>在本章中，我们将研究添加新软件的三个关键方法：<strong>apt</strong>包管理器、基于gui的安装管理器和<strong>git</strong>。</p>
@@ -1203,7 +803,7 @@
 <p>你可以找到<em>sources.list</em>文件在&#x2F;etc&#x2F;apt&#x2F;<em>sources.list</em>。使用任何文本编辑器列出并打开它。我还是用Leafpad打开此文件。<em>sources.list</em>文件在终端中输入以下内容，用你自己使用的编辑器名称替换leafpad:</p>
 <p>kali &gt;leafpad &#x2F;etc&#x2F;apt&#x2F;sources.list</p>
 <p>输入此命令后，您应该会看到一个类似于Kali默认存储库列表中的窗口。</p>
-<p><img src="/media/bb0ce068112c0206dec65771b035fac8.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/bb0ce068112c0206dec65771b035fac8.jpg"></p>
 <p><em>图4-1:source .list中Kali的默认存储库</em></p>
 <p>许多Linux发行版将存储库划分为不同的类别。例如，Ubuntu将其存储库分类如下:</p>
 <p><strong>main</strong>包含受支持的开源软件</p>
@@ -1225,10 +825,10 @@
 <p>Processing triggers for menu (2.1.47)…</p>
 <p>kali &gt;</p>
 <p>一旦你安装了synaptic,你可以从设置▸新立得软件包管理器（Settings ▸ Synaptic<br>Package Manager）,应该打开窗口如图4­2。</p>
-<p><img src="/media/afead7fc78bec7b31db7fb6df492349c.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/afead7fc78bec7b31db7fb6df492349c.jpg"></p>
 <p><em>图4-2:Synaptic包管理器接口</em></p>
 <p>现在您可以搜索您正在寻找的包，只需单击Search选项卡打开一个搜索窗口。因为您再次寻找Snort，所以在搜索窗口中输入Snort并单击search。向下滚动搜索结果以找到您要查找的包。选中snort旁边的复选框，然后单击Apply选项卡，如图4-3所示。Synaptic现在将从存储库下载并安装Snort以及任何必要的依赖项。</p>
-<p><img src="/media/a2ef41728e4be58a27dc8d0931c6f698.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/a2ef41728e4be58a27dc8d0931c6f698.jpg"></p>
 <p><em>图4-3:从Synaptic包管理器下载Snort</em></p>
 <h3 id="使用GIT安装软件"><a href="#使用GIT安装软件" class="headerlink" title="使用GIT安装软件"></a>使用GIT安装软件</h3><p>有时，您想要的软件在任何存储库中都不可用——尤其是在它是全新的情况下——但是它可能在github<br>(<a target="_blank" rel="noopener" href="https://www.github.com/)%E4%B8%8A%E5%8F%AF%E7%94%A8%EF%BC%8C%E8%BF%99%E4%B8%AA%E7%AB%99%E7%82%B9%E5%85%81%E8%AE%B8%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E4%B8%8E%E5%85%B6%E4%BB%96%E4%BA%BA%E5%85%B1%E4%BA%AB%E4%BB%96%E4%BB%AC%E7%9A%84%E8%BD%AF%E4%BB%B6%EF%BC%8C%E4%BB%A5%E4%BE%BF%E4%B8%8B%E8%BD%BD%E3%80%81%E4%BD%BF%E7%94%A8%E5%92%8C%E6%8F%90%E4%BE%9B%E5%8F%8D%E9%A6%88%E3%80%82%E4%BE%8B%E5%A6%82%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%82%A8%E6%83%B3%E8%A6%81%E8%93%9D%E7%89%99%E6%94%BB%E5%87%BB%E5%92%8C%E6%B8%97%E9%80%8F%E5%A5%97%E4%BB%B6bluediving%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8Kali%E5%AD%98%E5%82%A8%E5%BA%93%E4%B8%AD%E6%89%BE%E4%B8%8D%E5%88%B0%E5%AE%83%EF%BC%8C%E9%82%A3%E4%B9%88%E6%82%A8%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%90%9C%E7%B4%A2%E6%A0%8F%E4%B8%AD%E8%BE%93%E5%85%A5*bluediving*%E6%9D%A5%E6%90%9C%E7%B4%A2%E3%80%82%E5%A6%82%E6%9E%9C%E5%AE%83%E5%AD%98%E5%9C%A8%E4%BA%8Egithub%E4%B8%8A%EF%BC%8C%E6%82%A8%E5%BA%94%E8%AF%A5%E5%9C%A8%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C%E4%B8%AD%E7%9C%8B%E5%88%B0%E5%AE%83%E7%9A%84%E5%AD%98%E5%82%A8%E5%BA%93%E3%80%82">https://www.github.com/)上可用，这个站点允许开发人员与其他人共享他们的软件，以便下载、使用和提供反馈。例如，如果您想要蓝牙攻击和渗透套件bluediving，但是在Kali存储库中找不到它，那么您可以通过在浏览器搜索栏中输入*bluediving*来搜索。如果它存在于github上，您应该在搜索结果中看到它的存储库。</a></p>
 <p>在github上找到软件后，可以通过输入git clone命令及其github<br>URL从终端安装软件。例如，bluediving位于<a target="_blank" rel="noopener" href="https://www.github.com/balle/bluediving.git%E3%80%82%E8%A6%81%E5%B0%86%E5%85%B6%E5%85%8B%E9%9A%86%E5%88%B0%E6%82%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E8%AF%B7%E8%BE%93%E5%85%A5%E6%B8%85%E5%8D%954-7%E6%89%80%E7%A4%BA%E7%9A%84%E5%91%BD%E4%BB%A4%E3%80%82">https://www.github.com/balle/bluediving.git。要将其克隆到您的系统中，请输入清单4-7所示的命令。</a></p>
@@ -1252,7 +852,7 @@
 <p>如您所见，bluediving已成功地克隆到系统中，并为其文件创建了一个名为bluediving的新目录。</p>
 <h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p>在本章中，您学习了许多在Linux系统上下载和安装新软件的方法。软件包管理器(如apt)、基于gui的安装程序和git<br>clone是有抱负的黑客需要知道的最常见和最关键的方法。你很快就会发现自己对它们都很熟悉了。</p>
 <h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><h2 id="控制文件和目录权限"><a href="#控制文件和目录权限" class="headerlink" title="控制文件和目录权限"></a>控制文件和目录权限</h2><p>CONTROLLING FILE AND DIRECTORY PERMISSIONS</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>并非操作系统的每个用户都应具有相同级别的文件和目录访问权限。与任何专业操作系统一样，Linux具有保护文件和目录访问的方法。系统允许系统管理员（root用户或文件所有者）通过赋予用户读取，写入或执行文件的权限来保护其文件免受不必要的访问或篡改。对于每个文件和目录，我们可以为文件所有者、特定用户组以及所有其他用户指定权限状态，这在多用户操作系统中是必要的。</p>
 <p>在本章中，我将向您展示如何检查和更改选定用户的文件和目录的权限，如何设置默认文件和目录权限以及如何设置特殊权限。最后，您将看到黑客对权限的理解如何帮助他们攻击系统。</p>
 <h3 id="多类型用户"><a href="#多类型用户" class="headerlink" title="多类型用户"></a>多类型用户</h3><p>在Linux系统中，root用户非常强大。root用户基本上可以执行任何操作。系统上的其他用户拥有有限的权限，不可能具有root用户具有的所有访问权限。</p>
@@ -1431,7 +1031,7 @@
 </ul>
 <h3 id="赋予默认的安全级别权限"><a href="#赋予默认的安全级别权限" class="headerlink" title="赋予默认的安全级别权限"></a>赋予默认的安全级别权限</h3><p>如您所见，Linux自动分配基本权限（通常为文件666和目录777）。您可以使用umask（或unmask）方法更改分配给每个用户创建的文件和目录的默认权限。umask方法表示要从文件或目录的基本权限中删除的权限，以使其更安全。</p>
 <p>umask是对应于三个权限数字的三位十进制数字，但是从权限编号中减去umask编号以提供新的权限状态。这意味着当创建新文件或目录时，它权限设置为默认值减去umask中的值，如图5-1所示。</p>
-<p><img src="/media/4c6319d4cd6fea27b11b2b15957ee5d4.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/4c6319d4cd6fea27b11b2b15957ee5d4.jpg"></p>
 <p><em>图5­1: umask值022如何影响新文件和目录的权限</em></p>
 <p>例如，如果umask设置为022，则具有原始默认权限666的新文件现在将具有权限644，这意味着所有者具有读取和写入权限，并且该组和所有其他用户仅具有读取权限。</p>
 <p>在Kali中，与大多数Debian系统一样，umask预先配置为022，这意味着Kali默认值为644，文件为755，目录为755。</p>
@@ -1472,7 +1072,7 @@
 <p>Linux具有良好的安全系统，可保护文件和目录免受未经授权的访问。<br>有抱负的黑客需要对该系统有基本的了解，不仅要保护他们的文件，还要执行新的工具和文件。<br>在某些情况下，黑客可以利用SUID和SGID权限来升级来自普通用户的权限到root用户。</p>
 <h3 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h3><p>Linux使用权限来保护用户或组的文件和目录免受系统中其他用户的攻击，可用于攻击性和防御性目的。<br>您现在应该知道如何管理这些权限以及如何利用此弱点来攻击系统（特别是SUID和SGID位）。</p>
 <h2 id="6"><a href="#6" class="headerlink" title="6"></a>6</h2><h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><p>PROCESS MANAGEMENT</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>在任何时间，Linux系统通常同时运行数百个，甚至数千个进程。进程只是一个正在运行和使用资源的程序。它包括终端，Web服务器，任何正在运行的命令，任何数据库，GUI界面等等。任何优秀的Linux管理员（特别是黑客）都需要了解如何管理他们的流程以优化他们的系统。例如，一旦黑客控制了目标系统，他们可能想要找到并停止某个进程，如防病毒应用程序或防火墙。为此，黑客首先需要知道如何找到该过程。黑客可能还想设置一个扫描脚本来定期运行以查找易受攻击的系统，因此我们还将研究如何安排这样的脚本。</p>
 <p>在本章中，您将学习如何管理这些过程。首先，您将学习查看和查找流程以及如何发现哪些流程使用的资源最多。然后，您将学习如何通过在后台运行流程来管理流程，确定流程优先级，并在必要时将其删除。最后，您将学习如何安排在指定日期和日期以及特定时间运行的进程。</p>
 <h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><p>在大多数情况下，管理进程的第一步是查看系统上正在运行的进程。<strong>ps</strong>命令是用于查看进程的主要工具。<br>在命令行中运行它以查看哪些进程处于活动状态：</p>
@@ -1529,7 +1129,7 @@
 <h4 id="使用nice命令改变进程优先级"><a href="#使用nice命令改变进程优先级" class="headerlink" title="使用nice命令改变进程优先级"></a><em>使用nice命令改变进程优先级</em></h4><p>在黑客的语境中，你不会经常听到nice这个词，但在这里你会听到。nice命令用于影响进程对内核的优先级。正如您在运行ps命令时看到的，系统上同时运行着许多进程，它们都在争夺可用的资源。内核将对进程的优先级拥有最终决定权，但是您可以使用nice建议提高进程的优先级。</p>
 <p>使用nice这个术语背后的想法是，当您使用它时，您将决定对其他用户有多“好”：如果您的进程使用了大部分系统资源，那么就会对其他进程产生影响。</p>
 <p>nice的值范围从-20到+19，默认值为0(参见图6-1)。高nice值为低优先级，低nice值为高优先级(当您对其他用户和进程不太友好时)。当进程启动时，它继承其父进程的nice值。进程的所有者可以降低进程的优先级，但不能增加其优先级。当然，超级用户或根用户可以随意将nice值设置为他们喜欢的任何值。</p>
-<p><img src="/media/b05f2150e9ba9e4d4442047c552a482d.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/b05f2150e9ba9e4d4442047c552a482d.jpg"></p>
 <p><em>图6­1: nice优先级数值</em></p>
 <p>启动进程时，可以使用nice命令设置优先级，然后在使用renice命令开始运行进程后更改优先级。这两个命令的语法略有不同，可能会令人困惑。nice命令要求增加nice值，而renice命令要求niceness的绝对值。让我们看一个例子来证明这一点。</p>
 <h5 id="在运行进程时设置优先级"><a href="#在运行进程时设置优先级" class="headerlink" title="在运行进程时设置优先级"></a>在运行进程时设置优先级</h5><p>出于演示目的，我们假设我们有一个名为slowprocess的进程位于&#x2F; bin &#x2F;<br>slowprocess。如果我们希望它加速执行完成，我们可以使用nice命令启动该过程：</p>
@@ -1542,7 +1142,7 @@
 <p>kali &gt;renice 20 6996</p>
 <p>与nice一样，只有root用户可以将进程重新设置为负值以赋予其更高的优先级，但任何用户都可以使用renice来降低优先级。</p>
 <p>您还可以使用top工具更改nice值。随着top运行，只需按R键，然后提供PID和nice值。如清单6-4中top正在运行，当我按下R键并提供PID和nice值时，我得到以下输出：</p>
-<p><img src="/media/0955fee776d67ad88de93cbc3a3ffee5.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/0955fee776d67ad88de93cbc3a3ffee5.jpg"></p>
 <p><em>清单 6­4: 通过top改变nice值</em></p>
 <p>当我按下R键时，我被要求带有文本renice PID [value]的PID➊值。<br>然后应该改变输出以反映新的优先级。</p>
 <h4 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a><em>终止进程</em></h4><p>有时，进程会消耗太多的系统资源，表现出异常的行为，或者假死。表现出这种行为的过程通常被称为僵尸过程。对你来说，最有问题的症状可能是僵尸进程使用的浪费资源，可以更好地分配给有用的进程。</p>
@@ -1659,7 +1259,7 @@
 <p>此代码片段将安排myscanningscript今天上午7:20执行。</p>
 <h3 id="总结-4"><a href="#总结-4" class="headerlink" title="总结"></a>总结</h3><p>管理Linux中的进程是每个Linux用户和黑客的技能。您必须能够查看，查找，终止，确定优先级并让进程以最佳方式运行。黑客通常需要在他们想要杀死的目标上找到进程，例如防病毒软件或防火墙。他们还需要管理攻击中的多个进程并确定其优先级。</p>
 <h2 id="7"><a href="#7" class="headerlink" title="7"></a>7</h2><h2 id="管理用户环境变量"><a href="#管理用户环境变量" class="headerlink" title="管理用户环境变量"></a>管理用户环境变量</h2><p>MANAGING USER ENVIRONMENT VARIABLES</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>为了充分利用Linux来入侵系统，您需要了解环境变量，并熟练地管理它们，以获得最佳的性能、便利性，甚至是隐匿性。然而，在Linux新手发现有问题的领域中，管理用户环境变量可能是最难掌握的。从技术上讲，有两种类型的变量：<strong>shell</strong>和环境变量。环境变量是构建在系统和接口中的系统范围的变量，它们控制用户对系统的外观、行为和“感觉”，并且它们由任何子shell或进程继承。另一方面，Shell变量通常以小写形式列出，并且只在它们所设置的Shell中有效。为了避免过度解释，我在这一章中只介绍了环境变量和shell变量的一些最基本和有用的技巧，并没有深入讨论它们之间的区别。</p>
 <p>变量只是键值对中的字符串。通常，每一对看起来都像KEY&#x3D;value。在有多个值的情况下，它们看起来像KEY&#x3D;value1:value2。与Linux中的大多数东西一样，如果值中有空格，则需要包含在引号中。在Kali<br>Linux中，您的环境就是您的bash<br>shell。每个用户，包括根用户，都有一组默认的环境变量，这些环境变量决定了系统的外观、行为和感觉。您可以更改这些变量的值，使您的系统更有效地工作，调整您的工作环境以最好地满足您的个人需求，如果需要，还可以覆盖您的痕迹。</p>
 <h3 id="查看和修改环境变量"><a href="#查看和修改环境变量" class="headerlink" title="查看和修改环境变量"></a>查看和修改环境变量</h3><p>您可以查看所有默认的环境变量，方法是在终端的任意目录下输入<strong>env</strong>，如下所示:</p>
@@ -1744,7 +1344,7 @@
 <p>kali &gt;echo $PATH</p>
 <p>&#x2F;usr&#x2F;local&#x2F;sbin:usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;sbin&#x2F;bin:&#x2F;root&#x2F;newhackingtool</p>
 <p>现在，您可以在系统的任何位置执行newhackingtool应用程序，而不必导航到它的目录。bash<br>shell将在为您的新工具列出的所有目录中查找!</p>
-<p><img src="/media/dbe9da136b68e46a69a46917a5877cf1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/dbe9da136b68e46a69a46917a5877cf1.png"></p>
 <h4 id="如何不添加PATH变量"><a href="#如何不添加PATH变量" class="headerlink" title="如何不添加PATH变量"></a><em>如何不添加PATH变量</em></h4><p>新Linux用户经常犯的一个错误是，以这种方式将一个新目录(如&#x2F;root&#x2F;newhackingtool)直接分配给PATH变量:</p>
 <p>kali &gt;PATH&#x3D;&#x2F;root&#x2F;newhackingtool</p>
 <p>kali &gt;echo $PATH</p>
@@ -1768,7 +1368,7 @@
 <p>如您所见，当您输入unset<br>MYNEWVARIABLE时，您将删除该变量及其值。如果在同一个变量上使用echo，Linux现在将返回空行。</p>
 <h3 id="总结-5"><a href="#总结-5" class="headerlink" title="总结"></a>总结</h3><p>您可能会发现环境变量是外来的，但是值得了解它们。它们控制Linux中工作环境的外观、行为和感觉。您可以通过更改这些变量、导出它们，甚至创建您自己的变量来管理这些变量，使您的环境适合您的需要。在某些情况下，它们可能有助于掩盖您作为黑客的踪迹。</p>
 <h2 id="8"><a href="#8" class="headerlink" title="8"></a>8</h2><h2 id="BASH脚本编程"><a href="#BASH脚本编程" class="headerlink" title="BASH脚本编程"></a>BASH脚本编程</h2><p>BASH SCRIPTING</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>任何有自尊心的黑客都必须能够编写脚本。因此，任何自尊的Linux管理员都必须能够编写脚本。黑客经常需要自动化命令，有时需要多个工具，这可以通过他们自己编写的简短程序最有效地完成。</p>
 <p>在本章中，我们构建了几个简单的bash<br>shell脚本，以帮助您开始编写脚本。随着我们的进展，我们将添加功能和特性，最终构建一个脚本，该脚本能够在一系列IP地址中查找潜在的攻击目标。</p>
 <p>要成为一名优秀的黑客，您还需要能够使用一种广泛使用的脚本语言编写脚本，例如Ruby<br>(Metasploit exploits是用Ruby编写的)、Python(许多黑客工具都是Python脚本)或Perl<br>(Perl是最好的文本操作脚本语言)。在第17章中，我将简要介绍Python脚本。</p>
@@ -1877,8 +1477,8 @@
 <p>➐ cat MySQLscan2</p>
 <p><em>清单8-4:高级MySQL端口扫描器</em></p>
 <p>我们需要做的第一件事是用IP地址范围替换指定的子网。我们将创建一个名为<strong>FirstIP</strong>的变量和另一个名为<strong>LastOctetIP</strong>的变量来创建这个范围，并为端口号创建一个名为<strong>port</strong>的变量(最后一个八位体是IP地址中第三段（以**.**分割的IP）之后的最后一组数字。在IP地址192.168.1.101中，最后一个字节是101)。</p>
-<p><img src="/media/3748e7e7264f2e86559ef80539e43267.emf" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/media/4858864cb327786ba5721a42ccaf9061.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/3748e7e7264f2e86559ef80539e43267.emf"></p>
+<p><img src="/media/4858864cb327786ba5721a42ccaf9061.png"></p>
 <p>我们还需要提示用户输入这些值。我们可以使用清单8-1中使用的echo命令来实现这一点。</p>
 <p><strong>FirstIP</strong>变量的值，对应“Enter the starting IP address ：”<br>➊，向用户询问他们想扫描第一个IP地址。在屏幕上看到这个提示时，用户将输入第一个IP地址，因此我们需要从用户那里获取该输入。</p>
 <p>➋我们可以读取命令后跟变量的名称我们想在存储输入。这个命令将把用户输入的IP地址放入变量<strong>FirstIP</strong>中。然后我们可以在整个脚本中使用<strong>FirstIP</strong>中的值。</p>
@@ -2014,7 +1614,7 @@
 </tbody></table>
 <h3 id="总结-6"><a href="#总结-6" class="headerlink" title="总结"></a>总结</h3><p>脚本是任何黑客或系统管理员的基本技能。它使您能够通常需要花费几个小时的任务变得自动化，并且一旦保存为脚本，就可以反复使用它。Bash脚本是脚本的最基本形式，在第17章中，您将使用更多的功能进一步学习Python脚本。</p>
 <h2 id="9"><a href="#9" class="headerlink" title="9"></a>9</h2><h2 id="压缩和归档"><a href="#压缩和归档" class="headerlink" title="压缩和归档"></a>压缩和归档</h2><p>COMPRESSING AND ARCHIVING</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>黑客经常需要下载和安装新软件，以及发送和下载多个脚本和大文件。如果将这些文件压缩并合并到单个文件中，那么这些任务就更容易完成。如果您来自Windows世界，您可能会从**.zip<strong>格式中认识到这个概念，该格式组合和压缩文件，使其更小，以便通过互联网或可移动媒体传输。在Linux中有很多方法可以做到这一点，在本章中我们将介绍一些最常用的工具。我们还将查看</strong>dd**命令，它允许您复制整个驱动器，包括这些驱动器上的已删除文件。</p>
 <h3 id="压缩是什么"><a href="#压缩是什么" class="headerlink" title="压缩是什么?"></a>压缩是什么?</h3><p>压缩这个有趣的主题本身就可以填满一整本书，但是对于这本书，我们只需要对这个过程有一个基本的了解。顾名思义，压缩使数据更小，因此需要更少的存储容量，使数据更容易传输。对于初学者来说，将压缩分类为有损或无损就足够了。</p>
 <p>有损压缩在减小文件大小方面非常有效，但是会丢失信息的完整性。换句话说，压缩后的文件与原始文件并不完全相同。这种类型的压缩用于较大的图形，视频和音频文件，其中一些小的差异在文件中很难察觉<br>.mp3、.mp4、.png和.jpg都是有损压缩算法。如果.png文件中的一个像素或.mp3文件中的一个音符发生了变化，你的眼睛或耳朵不太可能注意到其中的差别——当然，音乐爱好者会说他们肯定能分辨出.mp3和未压缩的.flac文件之间的差别。有损压缩的优点是它的效率和有效性。压缩比是非常高，这意味着生成的文件比原始文件小得多。</p>
@@ -2108,7 +1708,7 @@
 <p>正如前面提到的，值得您自己多做一些研究，但是这是对该命令及其常见用法的一个很好的介绍。</p>
 <h3 id="总结-7"><a href="#总结-7" class="headerlink" title="总结"></a>总结</h3><p>Linux有许多命令可以让您组合和压缩文件，以便更容易地进行传输。对于组合文件，<strong>tar</strong>是首选命令，并且您至少有三个实用程序可以使用不同的压缩比压缩文件——gzip、bzip2和compression。<strong>dd</strong>命令超越了这个范围。它使您能够在没有文件系统等逻辑结构的情况下对存储设备进行物理复制，允许您恢复已删除的文件等工件。</p>
 <h2 id="10"><a href="#10" class="headerlink" title="10"></a>10</h2><h2 id="文件系统和存储设备管理"><a href="#文件系统和存储设备管理" class="headerlink" title="文件系统和存储设备管理"></a>文件系统和存储设备管理</h2><p>FILESYSTEM AND STORAGE DEVICE MANAGEMENT</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>如果您来自Windows环境，那么Linux表示和管理存储设备的方式在您看来将非常不同。您已经看到，文件系统没有驱动器的物理表示形式，就像Windows中的C:、D:或E:系统一样，而是有一个文件树结构，其顶部或根目录是&#x2F;。本章将介绍Linux如何表示存储设备，如硬盘驱动器、闪存驱动器和其他存储设备。</p>
 <p>我们首先查看附加的驱动器和其他存储设备是如何挂载在文件系统上的，然后是&#x2F;(根)目录。在这个上下文中挂载仅仅意味着将驱动器或磁盘附加到文件系统，使操作系统能够访问它们。对于黑客来说，有必要了解文件和存储设备管理系统，包括您自己的系统和目标系统。黑客通常使用外部媒介来加载数据、黑客工具，甚至他们的操作系统。在目标系统上之后，您需要了解正在处理的文件、在何处查找机密文件或其他关键文件、如何将驱动器挂载到目标系统，是否以及在何处可以将这些文件放在系统上。本章将介绍所有这些主题，以及如何管理和监视存储设备。</p>
 <p>我们从名为&#x2F;dev的目录开始，您可能已经在目录结构中注意到了：dev是device的缩写，Linux中的每个设备都由&#x2F;dev目录中的文件表示。让我们从与&#x2F;dev开始一起工作。</p>
@@ -2287,7 +1887,7 @@
 <p>File system checking finished. No errors found.</p>
 <h3 id="总结-8"><a href="#总结-8" class="headerlink" title="总结"></a>总结</h3><p>理解Linux如何设计和管理它的设备对于任何Linux用户和黑客来说都是至关重要的。黑客需要知道哪些设备被连接到一个系统，以及有多少可用空间。由于存储设备经常出现错误，我们可以使用<strong>fsck</strong>检查和修复这些错误。<strong>dd</strong>命令能够创建设备的物理副本，包括任何已删除的文件。</p>
 <h2 id="11"><a href="#11" class="headerlink" title="11"></a>11</h2><h2 id="日志系统"><a href="#日志系统" class="headerlink" title="日志系统"></a>日志系统</h2><p>THE LOGGING SYSTEM</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>对于任何Linux用户，了解日志文件的使用是非常重要的。日志文件存储关于操作系统和应用程序运行时发生的事件的信息，包括任何错误和安全警报。您的系统将根据我将在本章中介绍的一系列规则自动记录信息。</p>
 <p>作为黑客，日志文件可以跟踪目标的活动和身份。但是它也可以是你自己在别人系统上的活动的踪迹。因此，黑客需要知道他们可以收集什么信息，以及可以收集关于他们自己的行为和方法的什么信息，以便隐藏证据。</p>
 <p>另一方面，任何保护Linux系统的人都需要知道如何管理日志记录功能，以确定系统是否受到攻击，然后破译实际发生的事情以及由谁做的。</p>
@@ -2448,7 +2048,7 @@
 <p>现在尝试打开一个日志文件:</p>
 <p>kali &gt;leafpad &#x2F;var&#x2F;log&#x2F;auth.log.1</p>
 <p>一旦您覆盖了一个文件，您将看到其中的内容是难以理解的乱码，如图11-1所示。</p>
-<p><img src="/media/d2233519049faa800f2d17b70a2b0c49.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/d2233519049faa800f2d17b70a2b0c49.jpg"></p>
 <p><em>图11-1:覆盖的日志文件</em></p>
 <p>现在，如果安全工程师或取证调查员检查日志文件，他们将发现没有任何用处，因为没有一个是可恢复的！</p>
 <h4 id="禁用日志记录"><a href="#禁用日志记录" class="headerlink" title="禁用日志记录"></a><em>禁用日志记录</em></h4><p>另一个覆盖跟踪的选项是禁用日志记录。当黑客控制了一个系统，他们可以立即禁用日志，以防止系统跟踪他们的活动。当然，这需要<strong>root</strong>特权。</p>
@@ -2460,7 +2060,7 @@
 <h3 id="总结-9"><a href="#总结-9" class="headerlink" title="总结"></a>总结</h3><p>日志文件几乎跟踪Linux系统上发生的所有事情。在试图分析发生了什么，无论是故障还是黑客攻击时，它们都是非常宝贵的资源。对于黑客来说，日志文件可以作为他们活动和身份的证据。</p>
 <p>然而，精明的黑客可以删除和覆盖这些文件，并完全禁用日志记录，因此不会留下任何证据。</p>
 <h2 id="12"><a href="#12" class="headerlink" title="12"></a>12</h2><h2 id="熟练使用服务"><a href="#熟练使用服务" class="headerlink" title="熟练使用服务"></a>熟练使用服务</h2><p>USING AND ABUSING SERVICES</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>在Linux术语中，服务是在后台运行的应用程序，等待您使用它。您的Linux系统预装了许多服务。其中最著名的是无处不在的Apache<br>Web<br>Server，它用于创建，管理和部署Web服务器，还有更多。出于本章关于服务的目的，我只选择了对黑客特别重要的四个：Apache<br>Web Server，OpenSSH，MySQL和PostgreSQL。</p>
 <p>在本章中，您将学习如何使用Apache设置web服务器、使用OpenSSH进行物理监视、使用MySQL访问数据以及使用PostgreSQL存储黑客信息。</p>
 <h3 id="启动、停止和重新启动服务"><a href="#启动、停止和重新启动服务" class="headerlink" title="启动、停止和重新启动服务"></a>启动、停止和重新启动服务</h3><p>在开始使用这四个关键的服务之前，让我们先研究一下如何在Linux中启动、停止和重新启动服务。</p>
@@ -2483,11 +2083,11 @@
 <p>当然，第一步是启动我们的Apache守护进程。在Kali中，转到应用程序▸服务▸HTTPD（Applications<br>▸ Services ▸ HTTPD）并单击Apache<br>start。您可以通过输入以下命令从命令行完成相同的操作：</p>
 <p>kali &gt;services apache2 start</p>
 <p>现在Apache正在运行，它应该能够提供其默认网页。 在您喜欢的Web浏览器中输入http:&#x2F;&#x2F;<br>localhost &#x2F;以显示网页，该网页应类似于图12-1。</p>
-<p><img src="/media/78966166364fa333ab0a0ade1814d1ff.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/78966166364fa333ab0a0ade1814d1ff.jpg"></p>
 <p><em>图12­1: Apache2 Web Server 默认页</em></p>
 <p>如您所见，Apache将“<strong>It works</strong>”显示为其默认网页。现在你知道你的Apache<br>Web服务器正在运行，让我们来自定义它吧！</p>
 <h4 id="编辑index-html文件"><a href="#编辑index-html文件" class="headerlink" title="编辑index.html文件"></a><em>编辑index.html文件</em></h4><p>Apache的默认网页位于&#x2F;var&#x2F;www&#x2F;html&#x2F;index.html。您可以编辑index.html文件以提供您想要的任何信息，所以让我们创建自己的信息。为此，您可以使用任何文本编辑器，我将使用Leafpad打开&#x2F;var&#x2F;www&#x2F;html&#x2F;index.html，你会看到类似于列表12-1的信息。</p>
-<p><img src="/media/7175e9c9b79109178504fe8bf9a03d66.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/7175e9c9b79109178504fe8bf9a03d66.png"></p>
 <p><em>清单12­1: Apache Web Server 的index.html页面</em></p>
 <p>请注意，默认网页是我们将浏览器打开到localhost时显示的文本，默认格式为➊。我们需要做的就是编辑或替换此文件，让我们的Web服务器显示我们想要的信息。</p>
 <h4 id="添加HTML"><a href="#添加HTML" class="headerlink" title="添加HTML"></a><em>添加HTML</em></h4><p>现在我们已启动并运行Web服务器并打开index.html文件，我们可以添加我们希望Web服务器提供的任何文本。我们将创建一些简单的HTML模块。</p>
@@ -2502,7 +2102,7 @@
 <p><em>清单12­2:一些简单的HTML添加到index.html</em></p>
 <p>完全按照清单12-2中的内容输入文本后，将此文件另存为&#x2F;var&#x2F;www&#x2F;html&#x2F;index.html并关闭文本编辑器。<br>然后，您的文本编辑器将提示您该文件已存在，没关系，只需覆盖现有的&#x2F;var&#x2F;www&#x2F;html&#x2F;index.html文件即可。</p>
 <h4 id="看会发生什么"><a href="#看会发生什么" class="headerlink" title="看会发生什么"></a><em>看会发生什么</em></h4><p>保存了我们的&#x2F;var&#x2F;www&#x2F;html&#x2F;index.html文件后，我们可以查看Apache将提供的服务。再次浏览浏览器到http:&#x2F;&#x2F;<br>localhost，您应该会看到类似于图12-2的内容。</p>
-<p><img src="/media/0a8f549c27999dde99385077b044f218.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/0a8f549c27999dde99385077b044f218.jpg"></p>
 <p><em>图12-2：新的HackersArise网站</em></p>
 <p>Apache就像我们创建它一样提供了我们的网页！</p>
 <h3 id="OPENSSH和树莓派"><a href="#OPENSSH和树莓派" class="headerlink" title="OPENSSH和树莓派"></a>OPENSSH和树莓派</h3><p>SSH是Secure Shell的首字母缩写，它基本上使我们能够安全地连接到远程系统上的终端 -<br>这是多年前常见的不安全telnet的替代品。当我们构建Web服务器时，SSH使我们能够创建访问列表（可以使用此服务的用户列表），使用加密密码对用户进行身份验证，以及加密所有通信。这减少了不需要的用户使用远程终端的机会（由于添加的认证过程）或拦截我们的通信（由于加密）。可能最广泛使用的Linux<br>SSH服务是OpenSSH，它几乎安装在所有Linux发行版上，包括Kali。</p>
@@ -2533,13 +2133,13 @@
 <h4 id="配置相机"><a href="#配置相机" class="headerlink" title="配置相机"></a><em>配置相机</em></h4><p>接下来，我们需要配置相机。为此，请输入以下命令启动Raspberry Pi配置工具：</p>
 <p>pi &gt;sudo raspi-config</p>
 <p>这应该启动一个图形菜单，如图12-3所示。</p>
-<p><img src="/media/efa0e6d9bf0b8a01574a2cf7da697c5f.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/efa0e6d9bf0b8a01574a2cf7da697c5f.jpg"></p>
 <p><em>图123：Raspberry Pi配置工具</em></p>
 <p>向下滚动至6启用相机（<strong>Enable<br>Camera</strong>），然后按ENTER。现在，滚动到此菜单的底部并选择<strong>Finish</strong>并按<strong>ENTER</strong>，如图12-4所示。</p>
-<p><img src="/media/4e0701d4b1ec450ebfe1954a1aa19c61.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/4e0701d4b1ec450ebfe1954a1aa19c61.jpg"></p>
 <p><em>图12-4：完成配置</em></p>
 <p>当配置工具询问您是否要重新启动时，如图12-5所示，选择<strong>Yes</strong>，然后再次按<strong>ENTER</strong>。</p>
-<p><img src="/media/abccd38d4674a7264a0c5970a8fa2ae9.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/abccd38d4674a7264a0c5970a8fa2ae9.jpg"></p>
 <p><em>图12-5：重新启动Pi以启用更改。</em></p>
 <p>现在你的Raspberry Spy Pi相机应该启用并准备好进行间谍活动了！</p>
 <h4 id="启动Spy"><a href="#启动Spy" class="headerlink" title="启动Spy"></a><em>启动Spy</em></h4><p>一旦您的Raspberry Spy<br>Pi重新启动并且您已经从Kali终端通过SSH登录，您就可以开始使用它来拍摄静态照片了。</p>
@@ -2629,7 +2229,7 @@
 <ul>
 <li>原生（MySQL Workbench）和第三方（Navicat和TOAD for<br>MySQL）。作为一名黑客，命令行界面可能是利用MySQL数据库的最佳机会，因此我们将重点关注这一点。作为未经授权的数据库参与者，您将不可能获得易于使用的<br>GUI。</li>
 </ul>
-<p><img src="/media/10c395fb7ebf0b01de589ae8c97efc9f.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/10c395fb7ebf0b01de589ae8c97efc9f.png"></p>
 <p>现在我们以系统管理员身份登录，我们可以畅通无阻地浏览数据库。如果我们以普通用户身份登录，则我们的导航将受到系统管理员为该用户提供的权限的限制。</p>
 <h4 id="连接到数据库"><a href="#连接到数据库" class="headerlink" title="连接到数据库"></a><em>连接到数据库</em></h4><p>通过访问系统，我们想要一探究竟。我们的下一步是找出是否有值得访问的数据库。以下是查找所访问系统上的数据库的命令：</p>
 <p>mysql &gt;show databases;</p>
@@ -2742,7 +2342,7 @@
 <p>如您所见，Metasploit响应返回PostgreSQL数据库已连接并可以使用。现在，当我们使用Metasploit进行系统扫描或运行漏洞时，结果将存储在PostgreSQL数据库中。此外，Metasploit现在将其模块存储在Postgres数据库中，使得搜索正确的模块变得更加容易和快捷！</p>
 <h3 id="总结-10"><a href="#总结-10" class="headerlink" title="总结"></a>总结</h3><p>Linux有许多服务在后台运行，直到用户需要它们 Apache Web<br>Server是使用最广泛的，但是黑客也应该熟悉MySQL，SSH和PostgreSQL来完成各种任务。在本章中，我们介绍了开始使用这些服务的绝对基础知识。一旦您对Linux系统感到满意，我建议您进一步探索这些服务。</p>
 <h2 id="13"><a href="#13" class="headerlink" title="13"></a>13</h2><h2 id="安全和匿名"><a href="#安全和匿名" class="headerlink" title="安全和匿名"></a>安全和匿名</h2><p>BECOMING SECURE AND ANONYMOUS</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>今天，几乎我们在互联网上做的一切都被跟踪。无论是谷歌跟踪我们的在线搜索、网站访问和电子邮件，还是美国国家安全局(NSA)对我们的所有活动进行编目，无论谁在跟踪我们，我们的每一次在线活动都会被记录、编入索引，然后被挖掘出来，以造福他人。普通个人，尤其是黑客，需要了解如何限制这种跟踪，并在网上保持相对匿名，以限制这种无处不在的监视。</p>
 <p>在本章中，我们将介绍如何使用以下四种方法匿名(或尽可能接近)浏览互联网：</p>
 <ul>
@@ -2774,16 +2374,16 @@
 <h3 id="洋葱路由系统"><a href="#洋葱路由系统" class="headerlink" title="洋葱路由系统"></a>洋葱路由系统</h3><p>上世纪90年代，美国海军研究办公室(ONR)着手开发一种匿名浏览互联网进行间谍活动的方法。该计划是建立一个路由器网络，它与互联网的路由器是分开的，可以加密流量，并且只存储前一个路由器的未加密IP地址-这意味着一路上所有其他路由器地址都加密了。他们的想法是，任何观察流量的人都无法确定数据的来源或目的地。</p>
 <p>这项研究在2002年被称为“洋葱路由器(Tor)项目”，现在任何人都可以使用它在web上进行相对安全且匿名的导航。</p>
 <h4 id="Tor是如何工作的"><a href="#Tor是如何工作的" class="headerlink" title="Tor是如何工作的"></a><em>Tor是如何工作的</em></h4><p>通过Tor发送的数据包不是通过常规路由器发送的，而是通过全世界7000多台路由器组成的网络发送的，这要感谢志愿者们允许Tor使用他们的计算机。在使用完全独立的路由器网络的基础上，Tor加密每个数据包的数据、目的地和发送方IP地址。在每一跳，接收到的信息被加密，然后在下一跳被解密。这样，每个包只包含关于路径上的前一跳的信息，而不包含源的IP地址。如果有人拦截流量，他们只能看到上一跳的IP地址，网站所有者只能看到发送流量的最后一个路由器的IP地址(参见图13-1)，这确保在互联网上的相对匿名性。</p>
-<p><img src="/media/e32e433a357ea259e281139cd66a5d4f.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/e32e433a357ea259e281139cd66a5d4f.jpg"></p>
 <p><em>图13-1：Tor如何使用加密流量数据</em></p>
 <p>要启用Tor，只需从<a target="_blank" rel="noopener" href="https://www.torproject.org/%E5%AE%89%E8%A3%85Tor%E6%B5%8F%E8%A7%88%E5%99%A8%E3%80%82%E4%B8%80%E6%97%A6%E5%AE%89%E8%A3%85%E5%AE%8C%E6%AF%95%EF%BC%8C%E5%AE%83%E5%B0%86%E5%A6%82%E5%9B%BE13">https://www.torproject.org/安装Tor浏览器。一旦安装完毕，它将如图13</a><br>-2所示，您可以像使用任何老式互联网浏览器一样使用它。通过使用这个浏览器，您将通过一组单独的路由器来浏览互联网，并且能够在不被“老大哥”（隐喻某超级大国）跟踪的情况下访问站点。不幸的是，权衡的结果是通过Tor浏览器浏览会慢得多，因为没有那么多路由器，网络带宽有限。</p>
-<p><img src="/media/0e0e922081017058045dc34ab4846c5e.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/0e0e922081017058045dc34ab4846c5e.jpg"></p>
 <p><em>图13-2：Tor浏览器的登录页面</em></p>
 <p>除了能够访问传统互联网上几乎任何网站外，Tor浏览器还能够访问暗网。构成暗网的网站需要匿名，因此它们只允许通过Tor浏览器访问，并且它们的地址以.onion结尾用于其顶级域名（TLD）。暗网因非法活动而臭名昭着，但也有一些合法的服务。但请注意：在访问暗网时，您可能会遇到很多人会觉得冒犯的内容。</p>
 <h4 id="安全问题"><a href="#安全问题" class="headerlink" title="安全问题"></a><em>安全问题</em></h4><p>美国和其他国家的情报和间谍机构认为Tor网络是对国家安全的威胁，认为这样一个匿名网络可以让外国政府和恐怖分子在不被监视的情况下进行交流。因此，许多强大的、雄心勃勃的研究项目正在努力打破Tor的匿名性。</p>
 <p>Tor的匿名曾经被这些当局破坏过，而且很可能会再次被破坏。例如，NSA运行自己的Tor路由器，这意味着当您使用Tor时，您的流量可能正在通过NSA的路由器。如果您的流量正在退出NSA的路由器，那就更糟了，因为退出路由器总是知道您的目的地。NSA还有一种被称为“流量关联”(traffic<br>correlation)的方法，该方法涉及寻找进出流量的模式，能够打破Tor的匿名性。虽然这些破解Tor的尝试不会影响Tor在商业服务(如Google)中隐藏您身份的有效性，但它们可能会限制浏览器在间谍机构中保持匿名的有效性。</p>
 <h3 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h3><p>在互联网上实现匿名的另一种策略是使用代理，代理是充当流量中间商的中间系统：用户连接到代理，并在传递代理之前向其提供流量的IP地址(参见图13-3)。当流量从目标返回时，代理将流量发送回源IP。通过这种方式，流量似乎来自代理，而不是原始IP地址。</p>
-<p><img src="/media/c7e4d75f4a42b35b995a2f59f2682623.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/c7e4d75f4a42b35b995a2f59f2682623.jpg"></p>
 <p><em>图13-3:通过代理服务器运行流量</em></p>
 <p>当然，代理可能会记录您的流量，但调查人员必须获得传票或搜查令才能获得这些日志。为了使您的流量更加难以跟踪，您可以在称为代理链的策略中使用多个代理，这一策略我们将在本章稍后讨论。</p>
 <p>Kali<br>Linux有一个优秀的代理工具，称为proxychain，您可以设置它来隐藏您的流量。proxychain命令的语法很简单，如下所示:</p>
@@ -2821,7 +2421,7 @@
 <p>socks4 127.0.0.1 9050</p>
 <p><em>清单13-2：用于添加代理的配置文件部分</em></p>
 <p>我们可以通过输入要在此列表中使用的代理的IP地址和端口来添加代理。现在，我们将使用一些免费代理。你可以通过谷歌搜索“免费代理”或使用网站<a target="_blank" rel="noopener" href="http://www.hidemy.name找到免费代理,如图3-4./">http://www.hidemy.name找到免费代理，如图3-4。</a><br>但请注意，在现实黑客活动中使用免费代理并不是一个好主意。我将在本章后面详细介绍这一点。这里使用的示例仅用于教育目的。</p>
-<p><img src="/media/d9fd4fbea84c6ed281a27256b370943a.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/d9fd4fbea84c6ed281a27256b370943a.jpg"></p>
 <p><em>图13-4：<a target="_blank" rel="noopener" href="http://www.hidemy.name中的免费代理/">http://www.hidemy.name中的免费代理</a></em></p>
 <p>填写表单中的详细信息或单击搜索，然后使用以下格式将其中一个生成的代理添加到proxychains.conf文件中：</p>
 <p>Type IPaddress Port</p>
@@ -2916,11 +2516,11 @@
 <h3 id="加密的电子邮件"><a href="#加密的电子邮件" class="headerlink" title="加密的电子邮件"></a>加密的电子邮件</h3><p>免费的商业电子邮件服务，如Gmail，雅虎!，Outlook Web<br>Mail(前身为Hotmail)的免费是有原因的：它们是追踪你的兴趣和提供广告的工具。如前所述，如果服务是免费的，那么您就是产品，而不是客户。此外，电子邮件提供者的服务器(例如谷歌)可以访问电子邮件的未加密内容，即使您使用HTTPS。</p>
 <p>防止窃听你的电子邮件的一个方法是使用加密的电子邮件。ProtonMail，如图13-5所示，从一端加密到另一端或从一个浏览器加密到另一个浏览器。这意味着您的电子邮件是在ProtonMail服务器上加密的，即使是ProtonMail管理员也无法读取您的电子邮件。</p>
 <p>ProtonMail是由一群年轻的科学家在瑞士欧洲核子研究中心（CERN）的超级对撞机设施工厂建立的。瑞士在保护机密方面有着悠久而传奇的历史(还记得你经常听说的那些瑞士银行账户吗?)<br>ProtonMail的服务器位于欧盟，该网络在分享个人数据方面有着比美国法律更为严格的法律规定。ProtonMail不收取基本帐户，但提供保费帐户象征性的费用。需要注意的是，在与非protonmail用户交换电子邮件时，可能有部分或全部电子邮件没有加密。有关详细信息，请参见ProtonMail支持知识库。</p>
-<p><img src="/media/daed19a4c3611d9c919ee79c3922e106.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/daed19a4c3611d9c919ee79c3922e106.jpg"></p>
 <p><em>图13-5：ProtonMail登录界面</em></p>
 <h3 id="总结-11"><a href="#总结-11" class="headerlink" title="总结"></a>总结</h3><p>我们不断受到商业公司和国家情报机构的监视。为了保证数据和web传输的安全性，您需要实现本章中讨论的至少一种安全措施。通过组合使用它们，您可以最大限度地减少在Web上的占用空间并使数据更加安全。</p>
 <h2 id="14"><a href="#14" class="headerlink" title="14"></a>14</h2><h2 id="理解和检查无线网络"><a href="#理解和检查无线网络" class="headerlink" title="理解和检查无线网络"></a>理解和检查无线网络</h2><p>UNDERSTANDING AND INSPECTING WIRELESS NETWORKS</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>从你的系统扫描和连接到其他网络设备的能力对于成为一名成功的黑客至关重要，并且随着WiFi（IEEE<br>802.1）和蓝牙等无线技术成为标准，寻找和控制WiFi和蓝牙连接是关键。如果有人可以破解无线连接，他们可以进入设备并访问机密信息。当然，第一步是学习如何找到这些设备。</p>
 <p>在第3章中，我们研究了Linux中的一些基本网络命令，包括无线网络的一些基本原理，并承诺在第14章中提供更多的无线网络知识。正如所承诺的，这里我们将研究两种Linux最常见的无线技术：WiFi和蓝牙。</p>
 <h3 id="WI-FI-网络"><a href="#WI-FI-网络" class="headerlink" title="WI-FI 网络"></a>WI-FI 网络</h3><p>我们先从Wi-Fi开始。在本节中，我将向您展示如何查找、检查和连接Wi-Fi接入点。在进行此操作之前，让我们花点时间了解一些基本的Wi-Fi术语和技术，以帮助您更好地了解我们将在本章中进行的大量查询的输出：</p>
@@ -3125,7 +2725,7 @@
 <p>　　此输出表示MAC地址为76:6e:46:63:72:66的设备在范围内且可访问。这是有用的知识，因为在我们考虑黑客攻击之前，我们必须知道设备是否可以访问。</p>
 <h3 id="总结-12"><a href="#总结-12" class="headerlink" title="总结"></a>总结</h3><p>无线设备代表未来的网络连通和黑客入侵攻击的核心。Linux已经开发了专门的命令来扫描和连接Wi-Fi接入点，这是黑客攻击这些系统的第一步。aircrack-ng无线黑客工具套件包括airmon-ng和airodump-ng，使我们能够从远程无线设备。Bluez套件包括hciconfig、hcitool和其他能够扫描和收集信息的工具，这些工具是在一定范围内对蓝牙设备进行黑客攻击所必需的。它还包括许多其他值得探索的工具。</p>
 <h2 id="15"><a href="#15" class="headerlink" title="15"></a>15</h2><h2 id="管理LINUX内核和可加载内核模块"><a href="#管理LINUX内核和可加载内核模块" class="headerlink" title="管理LINUX内核和可加载内核模块"></a>管理LINUX内核和可加载内核模块</h2><p>MANAGING THE LINUX KERNEL AND LOADABLE KERNEL MODULES</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>所有操作系统至少由两个主要组件组成。其中第一个也是最重要的是内核。<br>内核位于操作系统的中心，控制着操作系统所做的一切，包括管理内存，控制CPU，甚至控制用户在屏幕上看到的内容。操作系统的第二个元素通常被称为用户区域，几乎包括其他所有元素。</p>
 <p>内核被设计成一个受保护或特权的区域，只能由root帐户或其他特权帐户访问。这是有充分理由的，因为对内核的访问几乎可以提供对操作系统的自由访问。因此，大多数操作系统只向用户和服务提供对用户区域内的访问，用户可以在不控制操作系统的情况下访问几乎任何他们需要的内容。</p>
 <p>访问内核允许用户更改操作系统的工作方式，外观和感觉。它还允许它们使操作系统崩溃，使其无法工作。<br>尽管存在这种风险，但在某些情况下，出于操作和安全原因，系统管理员必须非常谨慎地访问内核。</p>
@@ -3236,7 +2836,7 @@
 <p>LKM使系统管理员能够将模块直接添加到内核中，而不必每次添加模块时都重新构建整个内核。</p>
 <p>如果黑客可以诱使系统管理员添加恶意LKM，则黑客可以完全控制系统，通常这不会让系统管理员意识到。</p>
 <h2 id="16"><a href="#16" class="headerlink" title="16"></a>16</h2><h2 id="使用作业调度自动化任务"><a href="#使用作业调度自动化任务" class="headerlink" title="使用作业调度自动化任务"></a>使用作业调度自动化任务</h2><p>AUTOMATING TASKS WITH JOB SCHEDULING</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>像任何使用Linux的人一样，黑客经常有他们想要定期运行的任务、脚本或其他任务。例如，你可能希望为你的系统设置一个自动文件备份，<br>或者你希望像我们在第11章做的那样转存日志文件。另一方面，黑客可能希望每天晚上或者在他们工作或上学的时候让他们的系统运行第8章里的<br>MySQLscanner.sh脚本。这些都是调度自动化作业的例子。调度任务允许你在无须考虑的情况下运行任务，并且你可以在不使用系统的时候运行调度任务，这样你就有了大量的空闲资源。</p>
 <p>Linux系统管理员，或者是黑客，可能希望在系统启动时自动启动特定的脚本或服务。在第12章，我们讲述了使用PostgreSQL<br>数据库和黑客&#x2F;渗透测试框架 Metasploit 关联。比起每次启动Metasploit<br>前手动启动PostgreSQL数据库，你可以让PostgreSQL（或者是任何服务或脚本）在系统启动时自动启动。</p>
 <p>在本章节，你将学到如何使用<strong>cron</strong>守护进程和<strong>crontab</strong>设置一个脚本，让其甚至在系统无人操作时自动运行。你还将学到如何设置开机时自启动脚本，从而为你提供运行黑客攻击时所需的必要服务。</p>
@@ -3414,19 +3014,19 @@
 <p>安装完成后，可以通过输入以下内容启动rcconf：</p>
 <p>kali &gt;rcconf</p>
 <p>这会打开一个GUI，像图16­1中的那样。你可以滑动查看可用的服务，选择一个你希望开机启动的，然后点OK。</p>
-<p><img src="/media/d42a93e0f3382ba2f04fdfc835c17eed.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/d42a93e0f3382ba2f04fdfc835c17eed.jpg"></p>
 <p><em>图16­1: rcconf GUI 添加开机启动服务</em></p>
 <p>在图中，你可以看到PostgreSQL<br>服务在倒数第二个。按空格键选择这个服务，按TAB键高亮&lt;Ok&gt;，然后按ENTER键。下次启动Kali时，PostgreSQL将会自动启动。</p>
 <h3 id="总结-14"><a href="#总结-14" class="headerlink" title="总结"></a>总结</h3><p>系统管理员和黑客都经常需要计划服务，脚本和工具有间隔地运行。Linux<br>允许你使用cron守护进程计划几乎任何脚本或工具，就是从crontab运行这些任务。并且，你可以让使用命令<br>update-rc.d或基于GUI的工具rcconf 更新 rc.d 脚本来让服务开机自动启动。</p>
 <h2 id="17"><a href="#17" class="headerlink" title="17"></a>17</h2><h2 id="黑客的PYTHON脚本基础"><a href="#黑客的PYTHON脚本基础" class="headerlink" title="黑客的PYTHON脚本基础"></a>黑客的PYTHON脚本基础</h2><p>PYTHON SCRIPTING BASICS FOR HACKERS</p>
-<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/451fdbee142e8cd4684d71b24707d050.jpg"></p>
 <p>基本的脚本编程能力对于黑客来说是十分必要的。如果没有学习基本的脚本编程技能，一个只会用别人开发的工具的新手黑客会被骂成脚本小子。这意味着你只能使用别人开发的工具，这降低了你成功的可能性，并且增加了你被反病毒软件、入侵检测系统和执法部门检测到的可能性。如果你有脚本编程技能，你可以将你的黑客水平提升一个层次！</p>
 <p>在第8章节，我们讲述了bash脚本基础和编写一些基本脚本，包括MySQLScanner.sh，这是用来寻找运行常见的MySQL数据库的系统。在这一章节，我们会讲述被黑客使用最广泛的脚本语言：Python。很多最受欢迎的黑客工具是用Python编写的，包括sqlmap，scapy，Social-Engineer<br>Toolkit（SET），w3af，等。</p>
 <p>Python<br>有一些重要的功能，这使它特别适合黑客行为，但是最重要的是它有一个种类繁多的库（可以被从外部导入和重复使用的预编译代码模块）它提供了一些强大的功能。Python<br>包括超过1000多内置模块，其他代码仓库里还有更多。</p>
 <p>开发黑客工具也可以使用其他编程语言，例如bash，Perl和Ruby，但是Python的模块让开发这些工具变得特别简单。</p>
 <h3 id="添加PYTHON模块"><a href="#添加PYTHON模块" class="headerlink" title="添加PYTHON模块"></a>添加PYTHON模块</h3><p>安装Python时，还要安装一组标准库和模块，这些库和模块提供广泛的功能，包括内置数据类型，异常处理，数字和数学模块，文件处理，加密服务，网络数据处理以及与Internet的交互协议（IP）。</p>
 <p>先不提标准库和模块提供的强大功能，你可能需要或想要额外的第三方模块。Python的第三方模块多种多样，并且可能是多数黑客选择使用Python编写脚本的原因。你可以在PyPI<br>(the Python Package Index, 图17­1)<br><a target="_blank" rel="noopener" href="http://www.pypi.org/">http://www.pypi.org/</a>里找到全面的第三方模块列表。</p>
-<p><img src="/media/5359668eb1c6683ced7efbe70e4ad829.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/5359668eb1c6683ced7efbe70e4ad829.jpg"></p>
 <p><em>图17-1：Python包索引</em></p>
 <h4 id="使用pip"><a href="#使用pip" class="headerlink" title="使用pip"></a><em>使用pip</em></h4><p>Python 有一个专门用于安装和管理Python包的包管理软件叫pip (Pip Installs<br>Packages)。由于我们在这使用Python 3，你需要Python 3<br>的pip来下载和安装包。你可以从Kali源上下载pip，输入这条命令：</p>
 <p>kali &gt;apt-get install python3-pip</p>
@@ -3512,7 +3112,7 @@
 <p>kali &gt;.&#x2F;secondpythonscript.py</p>
 <p>Hackers­Arise Is the Best Place to Learn Hacking 12</p>
 <p>3.1415</p>
-<p><img src="/media/dbe9da136b68e46a69a46917a5877cf1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/dbe9da136b68e46a69a46917a5877cf1.png"></p>
 <h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a><em>注释</em></h4><p>与任何其他编程和脚本语言一样，Python也可以添加注释。注释是代码的一部分—单词，句子甚至段落—用来解释代码作用。<br>Python将识别代码中的注释并忽略它们。尽管不需要注释，但是当你两年后回到代码中并且不记得它应该做什么时，注释会非常有用。程序员经常使用注释来解释某个代码块是用来做什么的，或者解释选择特定方法背后的逻辑。</p>
 <p>注释会被解释器忽略。这意味着任何注释行会被解释器跳过，直到遇到合法行。Python使用#符号表示单行注释的开头。如果你想要编写多行注释，你可以在注释段的开头和结尾使用三个双引号（”””）。</p>
 <p>你可以看到下面的脚本，我已经在我们的hackers­arise_greetings.py脚本中添加了简短的多行注释。</p>
@@ -3570,15 +3170,15 @@
 <p>在本章后面，我们将使用两个非常有用的模块：socket和ftplib。</p>
 <h3 id="面向对象编程（OOP）"><a href="#面向对象编程（OOP）" class="headerlink" title="面向对象编程（OOP）"></a>面向对象编程（<em>OOP</em>）</h3><p>在深入研究Python之前，可能需要花几分钟时间来讨论面向对象编程的概念（OOP）。Python与当今大多数编程语言（C++、Java和Ruby）一样，遵循OOP模型。</p>
 <p>图<br>17­2展示了OOP背后的基本概念：编程语言的主要工具是对象，它具有属性和状态形式的属性，以及由对象执行或在对象上执行的操作的方法。</p>
-<p><img src="/media/4084b66ecfbd01a7de38db1280dfb2ae.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/4084b66ecfbd01a7de38db1280dfb2ae.jpg"></p>
 <p><em>图 17­2: 面向对象编程</em></p>
 <p>OOP编程语言背后的思想是创建与现实世界中的事物类似的对象。例如，汽车是一个具有诸如轮子、颜色、大小和发动机类型等属性的对象；它也有一些方法，例如加速和锁门，这些方法就是汽车所采取的行动。从人类的自然语言来看，对象是名词，属性是形容词，方法一般是动词。</p>
 <p>对象是类的成员，类基本上是用于创建具有共享初始变量、属性和方法的对象的模板。例如，假设我们有一个叫car的类；我们的车（宝马）将成为car类的一员。该类还包括其他对象&#x2F;汽车，如奔驰和奥迪，如图17­3所示。</p>
-<p><img src="/media/3d8bbfe4ed6e81e998728cae3cba1a94.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/3d8bbfe4ed6e81e998728cae3cba1a94.jpg"></p>
 <p><em>图 17­3: OOP 类和对象</em></p>
 <p>类也可以有子类。我们的Car类有一个BMW子类，该子类的对象可能是320i。</p>
 <p>每个对象都有属性（品牌、型号、年份和颜色）和方法（开始、驾驶和停车），如图<br>17­4所示。</p>
-<p><img src="/media/a92812faed6dd13528ac35ae9a98e7c0.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/a92812faed6dd13528ac35ae9a98e7c0.jpg"></p>
 <p><em>图 17­4: OOP 属性和方法</em></p>
 <p>在OOP语言中，对象继承了类的特性，因此BMW320i将从car类继承启动、驱动和驻车方法。</p>
 <p>这些OOP概念对于理解Python和其他OOP语言的工作方式至关重要，正如你将在下面的部分的脚本中看到的那样。</p>
@@ -3737,7 +3337,7 @@
 <p>如你所见，ftpcracker.py 成功找到了root 用户的密码，并把她展示到屏幕上。</p>
 <h3 id="总结-15"><a href="#总结-15" class="headerlink" title="总结"></a>总结</h3><p>要想从脚本小子毕业，黑客必须掌握一种脚本语言，而python通常是良好首选，因为其通用性和相对较小的学习曲线。大多数黑客工具都是用python编写的，包括sqlmap、scapy和其他许多工具。在这里，你学习了一些可以用来构建一些简单但有用的黑客工具的Python基础知识，包括一个banner抓取器和一个ftp密码破解器。如果想要学习更多Python知识，我强烈推荐由Al<br>Sweigart 编写的 No Starch Press出版社的优秀书籍《Automate the Boring Stuff with<br>Python (2015)》。</p>
 <h2 id="顶级黑客？从这开始"><a href="#顶级黑客？从这开始" class="headerlink" title="顶级黑客？从这开始"></a>顶级黑客？从这开始</h2><p>SPIRING HACKER? START HERE.</p>
-<p><img src="/media/9d7ab233cc99bc8f5afb6fd5e9ca3491.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/9d7ab233cc99bc8f5afb6fd5e9ca3491.jpg"></p>
 <p><strong>COVERS KALI LINUX AND PYTHON 3</strong></p>
 <p>如果你开始沿着黑客、网络安全和渗透测试的这条激动人心的道路开始，Linux Basics for<br>Hackers是一个很好的第一步。使用Linux的高级渗透测试版Kali<br>Linux，您将学习使用Linux操作系统的基础知识，并获得控制Linux环境所需的工具和技术。</p>
 <p>首先，您将学习如何在虚拟机上安装Kali并了解基本的Linux概念。接下来，您将处理更广泛的Linux主题，如操作文本、控制文件和目录权限以及管理用户环境变量。然后，您将专注于基础黑客概念，如安全性和匿名性，并使用bash和Python学习脚本技能。</p>
@@ -3756,14 +3356,14 @@
 </ul>
 <p>黑客攻击很复杂，而且没有单一的方法。为什么不从一开始就使用Linux Basics for<br>Hackers？</p>
 <h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><p>OccupyTheWeb是一名信息安全顾问，调查取证专家和培训师，拥有超过20年的行业经验。他负责维护HackersArise培训网站（<a target="_blank" rel="noopener" href="https://www.hackers-arise.com/">https://www.hackers-arise.com</a>），并培训美国军方人员、国防部承包商和联邦员工进行信息安全和黑客攻击。</p>
-<p><img src="/media/6335bdbe17999e1b2b49960b180e1046.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/6335bdbe17999e1b2b49960b180e1046.jpg"></p>
 <p><strong>THE FINEST IN GEEK ENTERTAINMENT™</strong></p>
 <p><a href="../TP1_backup/www.nostarch.com">www.nostarch.com</a></p>
-<h2 id="关于译者"><a href="#关于译者" class="headerlink" title="关于译者"></a>关于译者</h2><p><img src="/media/25f4621a2daaf57f0032e7fc863e6779.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="关于译者"><a href="#关于译者" class="headerlink" title="关于译者"></a>关于译者</h2><p><img src="/media/25f4621a2daaf57f0032e7fc863e6779.png"></p>
 <p>汉武安全实验室专注国际范围内主流数据库安全漏洞和数据安全攻防技术研究，是杭州汉领信息科技有限公司（<a target="_blank" rel="noopener" href="http://www.leadsino.com)旗下数据安全防护与综合安全解决方案能力研究团队,同时是一支独立的、持久的针对数据库安全漏洞、攻击技术模拟和数据库安全防护技术进行研究的专业队伍./">http://www.leadsino.com）旗下数据安全防护与综合安全解决方案能力研究团队，同时是一支独立的、持久的针对数据库安全漏洞、攻击技术模拟和数据库安全防护技术进行研究的专业队伍。</a></p>
 <p><a href="../TP1_backup/www.hawoo.net">www.hawoo.net</a></p>
-<p><img src="/media/0d9b3cd46385f1cdf932cbe16ef808f9.jpg" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/media/54f1386e92dc8a3b1c43371a4bf2c175.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/media/0d9b3cd46385f1cdf932cbe16ef808f9.jpg"></p>
+<p><img src="/media/54f1386e92dc8a3b1c43371a4bf2c175.jpg"></p>
 <ul>
 <li><p><a target="_blank" rel="noopener" href="https://github.com/byr0nchan">byr0nchan</a>（两块，网络信息数据安全研究从业者，研究合规、风险评估及攻防，RHCE&#x2F;RHCA(Cloud)&#x2F;DJCP&#x2F;CISP&#x2F;CISSP，超级影迷）</p>
 </li>
@@ -3777,573 +3377,64 @@
 </li>
 </ul>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%94%B5%E5%AD%90%E4%B9%A6/" class="category-chain-item">电子书</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%94%B5%E5%AD%90%E4%B9%A6/Linux%E5%9F%BA%E7%A1%80/" class="category-chain-item">Linux基础</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
     </div>
-  
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>Linux Basics for Hackers （中文版）</div>
-      <div>https://liuqinchun.github.io/2026/09/18/ebook/Linux Basics for Hackers （中文版）/</div>
-    </div>
-    <div class="license-meta">
+    <nav class="qc-post-nav">
+      <span></span>
       
-        <div class="license-meta-item">
-          <div>Author</div>
-          <div>John Doe</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>September 18, 2026</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>Licensed under</div>
-          <div>
-            
-              
-              
-                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-cc-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2026/09/13/Blog/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="计算机操作系统">
-                        <span class="hidden-mobile">计算机操作系统</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-actions" id="toc-actions" aria-label="目录操作">
-    <button type="button" class="toc-action" data-toc-action="expand">展开全部</button>
-    <button type="button" class="toc-action" data-toc-action="collapse">收起全部</button>
-  </div>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      <a class="qc-post-nav-item next" href="/2026/09/13/Blog/%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+        <span class="qc-post-nav-label">下一篇 →</span>
+        <span class="qc-post-nav-title">脚本语言基础</span>
       </a>
-    
+      
+    </nav>
+  </div>
+</article>
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+<aside class="qc-toc"><div class="qc-toc-head"><span>目录 · ON THIS PAGE</span><span class="qc-toc-actions"><button type="button" class="qc-toc-action" data-toc-action="expand" aria-label="展开全部目录" title="展开全部目录"><svg class="qc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4v16M4 7l3-3 3 3M4 17l3 3 3-3"/><path d="M17 4v16M14 7l3-3 3 3M14 17l3 3 3-3"/></svg><span>展开</span></button><button type="button" class="qc-toc-action" data-toc-action="collapse" aria-label="收缩目录层级" title="收缩目录层级"><svg class="qc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>收缩</span></button></span></div><div class="qc-toc-body"><nav class="qc-toc-nav"><a class="qc-toc-link lv2" data-level="2" href="#绪-论">绪 论</a><a class="qc-toc-link lv2" data-level="2" href="#这本书里有什么">这本书里有什么</a><a class="qc-toc-link lv3" data-level="3" href="#什么是道德黑客？">什么是道德黑客？</a><a class="qc-toc-link lv4" data-level="4" href="#渗透测试">渗透测试</a><a class="qc-toc-link lv4" data-level="4" href="#军事和间谍活动">军事和间谍活动</a><a class="qc-toc-link lv3" data-level="3" href="#为什么黑客使用LINUX">为什么黑客使用LINUX</a><a class="qc-toc-link lv4" data-level="4" href="#Linux是开源的">Linux是开源的</a><a class="qc-toc-link lv4" data-level="4" href="#Linux是透明的">Linux是透明的</a><a class="qc-toc-link lv4" data-level="4" href="#Linux提供粒度控制">Linux提供粒度控制</a><a class="qc-toc-link lv4" data-level="4" href="#多数黑客工具都是为Linux编写的">多数黑客工具都是为Linux编写的</a><a class="qc-toc-link lv4" data-level="4" href="#未来属于Linux-Unix">未来属于Linux&#x2F;Unix</a><a class="qc-toc-link lv3" data-level="3" href="#下载KALI-LINUX">下载KALI LINUX</a><a class="qc-toc-link lv3" data-level="3" href="#虚拟机">虚拟机</a><a class="qc-toc-link lv4" data-level="4" href="#安装VirtualBox">安装VirtualBox</a><a class="qc-toc-link lv4" data-level="4" href="#设置虚拟机">设置虚拟机</a><a class="qc-toc-link lv4" data-level="4" href="#在VM上安装Kali">在VM上安装Kali</a><a class="qc-toc-link lv4" data-level="4" href="#设置KALI">设置KALI</a><a class="qc-toc-link lv2" data-level="2" href="#1">1</a><a class="qc-toc-link lv2" data-level="2" href="#开始学习基础知识">开始学习基础知识</a><a class="qc-toc-link lv3" data-level="3" href="#介绍术语和概念">介绍术语和概念</a><a class="qc-toc-link lv3" data-level="3" href="#KALI之旅">KALI之旅</a><a class="qc-toc-link lv4" data-level="4" href="#终端">终端</a><a class="qc-toc-link lv4" data-level="4" href="#Linux文件系统">Linux文件系统</a><a class="qc-toc-link lv3" data-level="3" href="#LINUX基本命令">LINUX基本命令</a><a class="qc-toc-link lv4" data-level="4" href="#用pwd查看当前目录">用pwd查看当前目录</a><a class="qc-toc-link lv4" data-level="4" href="#使用whoami查看登录用户">使用whoami查看登录用户</a><a class="qc-toc-link lv4" data-level="4" href="#浏览Linux文件系统">浏览Linux文件系统</a><a class="qc-toc-link lv5" data-level="5" href="#使用cd更改目录">使用cd更改目录</a><a class="qc-toc-link lv5" data-level="5" href="#使用ls列出目录的内容">使用ls列出目录的内容</a><a class="qc-toc-link lv4" data-level="4" href="#获取帮助">获取帮助</a><a class="qc-toc-link lv5" data-level="5" href="#使用man引用手册页">使用man引用手册页</a><a class="qc-toc-link lv3" data-level="3" href="#搜索查找">搜索查找</a><a class="qc-toc-link lv4" data-level="4" href="#使用locate搜索">使用locate搜索</a><a class="qc-toc-link lv4" data-level="4" href="#用whereis查找二进制文件">用whereis查找二进制文件</a><a class="qc-toc-link lv4" data-level="4" href="#用which在PATH变量中查找二进制文件">用which在PATH变量中查找二进制文件</a><a class="qc-toc-link lv4" data-level="4" href="#使用find执行更强大的搜索">使用find执行更强大的搜索</a><a class="qc-toc-link lv4" data-level="4" href="#用grep过滤">用grep过滤</a><a class="qc-toc-link lv3" data-level="3" href="#修改文件和目录">修改文件和目录</a><a class="qc-toc-link lv4" data-level="4" href="#创建文件">创建文件</a><a class="qc-toc-link lv5" data-level="5" href="#使用cat连接">使用cat连接</a><a class="qc-toc-link lv5" data-level="5" href="#用touch创建文件">用touch创建文件</a><a class="qc-toc-link lv4" data-level="4" href="#创建目录">创建目录</a><a class="qc-toc-link lv4" data-level="4" href="#复制文件">复制文件</a><a class="qc-toc-link lv4" data-level="4" href="#重命名文件">重命名文件</a><a class="qc-toc-link lv4" data-level="4" href="#删除文件">删除文件</a><a class="qc-toc-link lv4" data-level="4" href="#删除目录">删除目录</a><a class="qc-toc-link lv3" data-level="3" href="#现在开始">现在开始!</a><a class="qc-toc-link lv2" data-level="2" href="#2">2</a><a class="qc-toc-link lv2" data-level="2" href="#文本操作">文本操作</a><a class="qc-toc-link lv3" data-level="3" href="#查看文件">查看文件</a><a class="qc-toc-link lv4" data-level="4" href="#查看开头">查看开头</a><a class="qc-toc-link lv4" data-level="4" href="#查看结尾">查看结尾</a><a class="qc-toc-link lv4" data-level="4" href="#标显行数">标显行数</a><a class="qc-toc-link lv3" data-level="3" href="#使用GREP过滤文本">使用GREP过滤文本</a><a class="qc-toc-link lv4" data-level="4" href="#挑战-使用grep，nl，tail，and-head">挑战: 使用grep，nl，tail，and head</a><a class="qc-toc-link lv5" data-level="5" href="#第一步">第一步</a><a class="qc-toc-link lv5" data-level="5" href="#第二步">第二步</a><a class="qc-toc-link lv3" data-level="3" href="#使用SED查找和替换">使用SED查找和替换</a><a class="qc-toc-link lv3" data-level="3" href="#使用MORE和LESS查看文件">使用MORE和LESS查看文件</a><a class="qc-toc-link lv4" data-level="4" href="#使用more控制显示文件">使用more控制显示文件</a><a class="qc-toc-link lv4" data-level="4" href="#使用less显示和过滤文件">使用less显示和过滤文件</a><a class="qc-toc-link lv3" data-level="3" href="#总结">总结</a><a class="qc-toc-link lv2" data-level="2" href="#3">3</a><a class="qc-toc-link lv2" data-level="2" href="#分析和管理网络">分析和管理网络</a><a class="qc-toc-link lv3" data-level="3" href="#使用IFCONFIG分析网络">使用IFCONFIG分析网络</a><a class="qc-toc-link lv3" data-level="3" href="#使用IWCONFIG检查无线网络设备">使用IWCONFIG检查无线网络设备</a><a class="qc-toc-link lv3" data-level="3" href="#更改你的网络信息">更改你的网络信息</a><a class="qc-toc-link lv4" data-level="4" href="#更改你的-IP地址">更改你的 IP地址</a><a class="qc-toc-link lv4" data-level="4" href="#更改你的子网掩码和广播地址">更改你的子网掩码和广播地址</a><a class="qc-toc-link lv4" data-level="4" href="#欺骗你的MAC地址">欺骗你的MAC地址</a><a class="qc-toc-link lv4" data-level="4" href="#从DHCP服务器分配新的IP地址">从DHCP服务器分配新的IP地址</a><a class="qc-toc-link lv3" data-level="3" href="#熟练控制你的域名系统">熟练控制你的域名系统</a><a class="qc-toc-link lv4" data-level="4" href="#使用dig检测DNS">使用dig检测DNS</a><a class="qc-toc-link lv4" data-level="4" href="#更改你的DNS服务器">更改你的DNS服务器</a><a class="qc-toc-link lv4" data-level="4" href="#映射您自己的-IP-地址">映射您自己的 IP 地址</a><a class="qc-toc-link lv3" data-level="3" href="#总结-1">总结</a><a class="qc-toc-link lv2" data-level="2" href="#4">4</a><a class="qc-toc-link lv2" data-level="2" href="#添加和删除软件">添加和删除软件</a><a class="qc-toc-link lv3" data-level="3" href="#使用APT处理软件">使用APT处理软件</a><a class="qc-toc-link lv4" data-level="4" href="#搜索软件包">搜索软件包</a><a class="qc-toc-link lv4" data-level="4" href="#添加软件">添加软件</a><a class="qc-toc-link lv4" data-level="4" href="#删除软件">删除软件</a><a class="qc-toc-link lv4" data-level="4" href="#更新软件">更新软件</a><a class="qc-toc-link lv4" data-level="4" href="#升级软件">升级软件</a><a class="qc-toc-link lv3" data-level="3" href="#添加软件仓库到SOURCES-LIST文件">添加软件仓库到SOURCES.LIST文件</a><a class="qc-toc-link lv3" data-level="3" href="#使用基于Gui的安装程序">使用基于Gui的安装程序</a><a class="qc-toc-link lv3" data-level="3" href="#使用GIT安装软件">使用GIT安装软件</a><a class="qc-toc-link lv3" data-level="3" href="#总结-2">总结</a><a class="qc-toc-link lv2" data-level="2" href="#5">5</a><a class="qc-toc-link lv2" data-level="2" href="#控制文件和目录权限">控制文件和目录权限</a><a class="qc-toc-link lv3" data-level="3" href="#多类型用户">多类型用户</a><a class="qc-toc-link lv3" data-level="3" href="#赋予权限">赋予权限</a><a class="qc-toc-link lv4" data-level="4" href="#赋予个人用户权限">赋予个人用户权限</a><a class="qc-toc-link lv4" data-level="4" href="#赋予用户组权限">赋予用户组权限</a><a class="qc-toc-link lv3" data-level="3" href="#检查权限">检查权限</a><a class="qc-toc-link lv2" data-level="2" href="#无论您正在查看哪一组三个字母，如果您首先看到r，该用户或用户组都有权打开和读取该文件或目录。作为中间字母的w意味着它们可以写入（修改）文件或目录，并且最后的x意味着它们可以执行（或运行）文件或目录。如果用短划线（">无论您正在查看哪一组三个字母，如果您首先看到r，该用户或用户组都有权打开和读取该文件或目录。作为中间字母的w意味着它们可以写入（修改）文件或目录，并且最后的x意味着它们可以执行（或运行）文件或目录。如果用短划线（</a><a class="qc-toc-link lv3" data-level="3" href="#改变用户权限">改变用户权限</a><a class="qc-toc-link lv4" data-level="4" href="#十进制权限改变法">十进制权限改变法</a><a class="qc-toc-link lv4" data-level="4" href="#UGO权限改变法">UGO权限改变法</a><a class="qc-toc-link lv4" data-level="4" href="#给新程序赋予root权限">给新程序赋予root权限</a><a class="qc-toc-link lv3" data-level="3" href="#赋予默认的安全级别权限">赋予默认的安全级别权限</a><a class="qc-toc-link lv3" data-level="3" href="#特别权限">特别权限</a><a class="qc-toc-link lv4" data-level="4" href="#使用SUID授予临时root权限">使用SUID授予临时root权限</a><a class="qc-toc-link lv4" data-level="4" href="#使用SGID授予Root用户组权限">使用SGID授予Root用户组权限</a><a class="qc-toc-link lv4" data-level="4" href="#过时的粘滞位">过时的粘滞位</a><a class="qc-toc-link lv4" data-level="4" href="#提权">提权</a><a class="qc-toc-link lv3" data-level="3" href="#总结-3">总结</a><a class="qc-toc-link lv2" data-level="2" href="#6">6</a><a class="qc-toc-link lv2" data-level="2" href="#进程管理">进程管理</a><a class="qc-toc-link lv3" data-level="3" href="#查看进程">查看进程</a><a class="qc-toc-link lv4" data-level="4" href="#通过进程名过滤进程">通过进程名过滤进程</a><a class="qc-toc-link lv4" data-level="4" href="#通过top命令查找资源占用率过高的进程">通过top命令查找资源占用率过高的进程</a><a class="qc-toc-link lv3" data-level="3" href="#管理进程">管理进程</a><a class="qc-toc-link lv4" data-level="4" href="#使用nice命令改变进程优先级">使用nice命令改变进程优先级</a><a class="qc-toc-link lv5" data-level="5" href="#在运行进程时设置优先级">在运行进程时设置优先级</a><a class="qc-toc-link lv4" data-level="4" href="#使用renice命令改变正在运行的进程优先级">使用renice命令改变正在运行的进程优先级</a><a class="qc-toc-link lv4" data-level="4" href="#终止进程">终止进程</a><a class="qc-toc-link lv4" data-level="4" href="#在后台运行进程">在后台运行进程</a><a class="qc-toc-link lv4" data-level="4" href="#把后台运行的进程移到前台">把后台运行的进程移到前台</a><a class="qc-toc-link lv3" data-level="3" href="#定时执行程序">定时执行程序</a><a class="qc-toc-link lv3" data-level="3" href="#总结-4">总结</a><a class="qc-toc-link lv2" data-level="2" href="#7">7</a><a class="qc-toc-link lv2" data-level="2" href="#管理用户环境变量">管理用户环境变量</a><a class="qc-toc-link lv3" data-level="3" href="#查看和修改环境变量">查看和修改环境变量</a><a class="qc-toc-link lv4" data-level="4" href="#查看所有环境变量">查看所有环境变量</a><a class="qc-toc-link lv4" data-level="4" href="#特定变量的过滤">特定变量的过滤</a><a class="qc-toc-link lv4" data-level="4" href="#更改会话的变量值">更改会话的变量值</a><a class="qc-toc-link lv4" data-level="4" href="#使变量值永久更改">使变量值永久更改</a><a class="qc-toc-link lv3" data-level="3" href="#更改SHELL提示符">更改SHELL提示符</a><a class="qc-toc-link lv3" data-level="3" href="#改变你的PATH">改变你的PATH</a><a class="qc-toc-link lv4" data-level="4" href="#添加到PATH变量">添加到PATH变量</a><a class="qc-toc-link lv4" data-level="4" href="#如何不添加PATH变量">如何不添加PATH变量</a><a class="qc-toc-link lv3" data-level="3" href="#创建用户定义的变量">创建用户定义的变量</a><a class="qc-toc-link lv3" data-level="3" href="#总结-5">总结</a><a class="qc-toc-link lv2" data-level="2" href="#8">8</a><a class="qc-toc-link lv2" data-level="2" href="#BASH脚本编程">BASH脚本编程</a><a class="qc-toc-link lv3" data-level="3" href="#BASH的速成班">BASH的速成班</a><a class="qc-toc-link lv3" data-level="3" href="#你的第一个脚本-“HELLO-HACKERS-ARISE-”">你的第一个脚本:“HELLO, HACKERS-ARISE!”</a><a class="qc-toc-link lv4" data-level="4" href="#设置执行权限">设置执行权限</a><a class="qc-toc-link lv4" data-level="4" href="#运行HelloHackersArise">运行HelloHackersArise</a><a class="qc-toc-link lv4" data-level="4" href="#添加带有变量和用户输入的功能">添加带有变量和用户输入的功能</a><a class="qc-toc-link lv3" data-level="3" href="#您的第一个黑客脚本-扫描打开的端口">您的第一个黑客脚本:扫描打开的端口</a><a class="qc-toc-link lv4" data-level="4" href="#我们的任务">我们的任务</a><a class="qc-toc-link lv4" data-level="4" href="#一个简单的扫描器">一个简单的扫描器</a><a class="qc-toc-link lv4" data-level="4" href="#改进MySQL扫描器">改进MySQL扫描器</a><a class="qc-toc-link lv5" data-level="5" href="#在黑客脚本中添加提示和变量">在黑客脚本中添加提示和变量</a><a class="qc-toc-link lv5" data-level="5" href="#一个运行示例">一个运行示例</a><a class="qc-toc-link lv3" data-level="3" href="#常用内置BASH命令">常用内置BASH命令</a><a class="qc-toc-link lv3" data-level="3" href="#总结-6">总结</a><a class="qc-toc-link lv2" data-level="2" href="#9">9</a><a class="qc-toc-link lv2" data-level="2" href="#压缩和归档">压缩和归档</a><a class="qc-toc-link lv3" data-level="3" href="#压缩是什么">压缩是什么?</a><a class="qc-toc-link lv3" data-level="3" href="#将文件存档在一起">将文件存档在一起</a><a class="qc-toc-link lv3" data-level="3" href="#压缩文件">压缩文件</a><a class="qc-toc-link lv4" data-level="4" href="#用gzip压缩">用gzip压缩</a><a class="qc-toc-link lv4" data-level="4" href="#用bzip2压缩">用bzip2压缩</a><a class="qc-toc-link lv4" data-level="4" href="#用compress压缩">用compress压缩</a><a class="qc-toc-link lv3" data-level="3" href="#创建存储设备的逐位或物理副本">创建存储设备的逐位或物理副本</a><a class="qc-toc-link lv3" data-level="3" href="#总结-7">总结</a><a class="qc-toc-link lv2" data-level="2" href="#10">10</a><a class="qc-toc-link lv2" data-level="2" href="#文件系统和存储设备管理">文件系统和存储设备管理</a><a class="qc-toc-link lv3" data-level="3" href="#设备目录-DEV">设备目录&#x2F;DEV</a><a class="qc-toc-link lv4" data-level="4" href="#Linux如何表示存储设备">Linux如何表示存储设备</a><a class="qc-toc-link lv4" data-level="4" href="#硬盘分区">硬盘分区</a><a class="qc-toc-link lv4" data-level="4" href="#字符和块设备">字符和块设备</a><a class="qc-toc-link lv4" data-level="4" href="#使用lsblk列出块设备和信息">使用lsblk列出块设备和信息</a><a class="qc-toc-link lv3" data-level="3" href="#安装和卸载">安装和卸载</a><a class="qc-toc-link lv4" data-level="4" href="#自己安装存储设备">自己安装存储设备</a><a class="qc-toc-link lv4" data-level="4" href="#卸载与umount">卸载与umount</a><a class="qc-toc-link lv3" data-level="3" href="#监控文件系统">监控文件系统</a><a class="qc-toc-link lv4" data-level="4" href="#获取挂载磁盘上的信息">获取挂载磁盘上的信息</a><a class="qc-toc-link lv4" data-level="4" href="#检查错误">检查错误</a><a class="qc-toc-link lv3" data-level="3" href="#总结-8">总结</a><a class="qc-toc-link lv2" data-level="2" href="#11">11</a><a class="qc-toc-link lv2" data-level="2" href="#日志系统">日志系统</a><a class="qc-toc-link lv3" data-level="3" href="#RSYSLOG日志记录守护进程">RSYSLOG日志记录守护进程</a><a class="qc-toc-link lv4" data-level="4" href="#rsyslog配置文件">rsyslog配置文件</a><a class="qc-toc-link lv4" data-level="4" href="#rsyslog日志记录规则">rsyslog日志记录规则</a><a class="qc-toc-link lv3" data-level="3" href="#使用LOGROTATE自动清理日志">使用LOGROTATE自动清理日志</a><a class="qc-toc-link lv3" data-level="3" href="#保持隐身">保持隐身</a><a class="qc-toc-link lv4" data-level="4" href="#删除证据">删除证据</a><a class="qc-toc-link lv4" data-level="4" href="#禁用日志记录">禁用日志记录</a><a class="qc-toc-link lv3" data-level="3" href="#总结-9">总结</a><a class="qc-toc-link lv2" data-level="2" href="#12">12</a><a class="qc-toc-link lv2" data-level="2" href="#熟练使用服务">熟练使用服务</a><a class="qc-toc-link lv3" data-level="3" href="#启动、停止和重新启动服务">启动、停止和重新启动服务</a><a class="qc-toc-link lv3" data-level="3" href="#使用APACHE-Web服务器创建HTTP-Web服务器">使用APACHE Web服务器创建HTTP Web服务器</a><a class="qc-toc-link lv4" data-level="4" href="#从Apache开始">从Apache开始</a><a class="qc-toc-link lv4" data-level="4" href="#编辑index-html文件">编辑index.html文件</a><a class="qc-toc-link lv4" data-level="4" href="#添加HTML">添加HTML</a><a class="qc-toc-link lv4" data-level="4" href="#看会发生什么">看会发生什么</a><a class="qc-toc-link lv3" data-level="3" href="#OPENSSH和树莓派">OPENSSH和树莓派</a><a class="qc-toc-link lv4" data-level="4" href="#设置Raspberry-Pi">设置Raspberry Pi</a><a class="qc-toc-link lv4" data-level="4" href="#构建Raspberry-Spy-Pi">构建Raspberry Spy Pi</a><a class="qc-toc-link lv4" data-level="4" href="#配置相机">配置相机</a><a class="qc-toc-link lv4" data-level="4" href="#启动Spy">启动Spy</a><a class="qc-toc-link lv3" data-level="3" href="#从MYSQL中获取信息">从MYSQL中获取信息</a><a class="qc-toc-link lv4" data-level="4" href="#启动MySQL">启动MySQL</a><a class="qc-toc-link lv4" data-level="4" href="#与MySQL交互">与MySQL交互</a><a class="qc-toc-link lv4" data-level="4" href="#设置MySQL密码">设置MySQL密码</a><a class="qc-toc-link lv4" data-level="4" href="#访问远程数据库">访问远程数据库</a><a class="qc-toc-link lv4" data-level="4" href="#连接到数据库">连接到数据库</a><a class="qc-toc-link lv4" data-level="4" href="#数据库表">数据库表</a><a class="qc-toc-link lv4" data-level="4" href="#查看数据">查看数据</a><a class="qc-toc-link lv4" data-level="4" href="#PostgreSQL与Metasploit">PostgreSQL与Metasploit</a><a class="qc-toc-link lv3" data-level="3" href="#总结-10">总结</a><a class="qc-toc-link lv2" data-level="2" href="#13">13</a><a class="qc-toc-link lv2" data-level="2" href="#安全和匿名">安全和匿名</a><a class="qc-toc-link lv3" data-level="3" href="#互联网是如何出卖我们的">互联网是如何出卖我们的</a><a class="qc-toc-link lv3" data-level="3" href="#洋葱路由系统">洋葱路由系统</a><a class="qc-toc-link lv4" data-level="4" href="#Tor是如何工作的">Tor是如何工作的</a><a class="qc-toc-link lv4" data-level="4" href="#安全问题">安全问题</a><a class="qc-toc-link lv3" data-level="3" href="#代理服务器">代理服务器</a><a class="qc-toc-link lv4" data-level="4" href="#在配置文件中设置代理">在配置文件中设置代理</a><a class="qc-toc-link lv4" data-level="4" href="#一些更有趣的选择">一些更有趣的选择</a><a class="qc-toc-link lv5" data-level="5" href="#添加更多的代理">添加更多的代理</a><a class="qc-toc-link lv5" data-level="5" href="#动态链接">动态链接</a><a class="qc-toc-link lv5" data-level="5" href="#随机链接">随机链接</a><a class="qc-toc-link lv4" data-level="4" href="#安全问题-1">安全问题</a><a class="qc-toc-link lv3" data-level="3" href="#虚拟专用网络">虚拟专用网络</a><a class="qc-toc-link lv3" data-level="3" href="#加密的电子邮件">加密的电子邮件</a><a class="qc-toc-link lv3" data-level="3" href="#总结-11">总结</a><a class="qc-toc-link lv2" data-level="2" href="#14">14</a><a class="qc-toc-link lv2" data-level="2" href="#理解和检查无线网络">理解和检查无线网络</a><a class="qc-toc-link lv3" data-level="3" href="#WI-FI-网络">WI-FI 网络</a><a class="qc-toc-link lv4" data-level="4" href="#基本无线网络命令">基本无线网络命令</a><a class="qc-toc-link lv4" data-level="4" href="#使用aircrack-ng进行Wi-Fi侦查">使用aircrack-ng进行Wi-Fi侦查</a><a class="qc-toc-link lv3" data-level="3" href="#检测并连接到蓝牙">检测并连接到蓝牙</a><a class="qc-toc-link lv4" data-level="4" href="#蓝牙的工作原理">蓝牙的工作原理</a><a class="qc-toc-link lv4" data-level="4" href="#蓝牙扫描与侦察">蓝牙扫描与侦察</a><a class="qc-toc-link lv5" data-level="5" href="#使用hcitool扫描蓝牙设备">使用hcitool扫描蓝牙设备</a><a class="qc-toc-link lv5" data-level="5" href="#使用sdptool扫描服务">使用sdptool扫描服务</a><a class="qc-toc-link lv5" data-level="5" href="#通过l2ping查看设备是否可以访问">通过l2ping查看设备是否可以访问</a><a class="qc-toc-link lv3" data-level="3" href="#总结-12">总结</a><a class="qc-toc-link lv2" data-level="2" href="#15">15</a><a class="qc-toc-link lv2" data-level="2" href="#管理LINUX内核和可加载内核模块">管理LINUX内核和可加载内核模块</a><a class="qc-toc-link lv3" data-level="3" href="#什么是内核模块？">什么是内核模块？</a><a class="qc-toc-link lv3" data-level="3" href="#检查内核版本">检查内核版本</a><a class="qc-toc-link lv3" data-level="3" href="#使用sysctl进行内核优化">使用sysctl进行内核优化</a><a class="qc-toc-link lv3" data-level="3" href="#管理内核模块">管理内核模块</a><a class="qc-toc-link lv4" data-level="4" href="#使用modinfo查找更多信息">使用modinfo查找更多信息</a><a class="qc-toc-link lv4" data-level="4" href="#使用modprobe添加和删除模块">使用modprobe添加和删除模块</a><a class="qc-toc-link lv4" data-level="4" href="#插入和删除内核模块">插入和删除内核模块</a><a class="qc-toc-link lv3" data-level="3" href="#总结-13">总结</a><a class="qc-toc-link lv2" data-level="2" href="#16">16</a><a class="qc-toc-link lv2" data-level="2" href="#使用作业调度自动化任务">使用作业调度自动化任务</a><a class="qc-toc-link lv3" data-level="3" href="#任务调度或使其自动运行">任务调度或使其自动运行</a><a class="qc-toc-link lv4" data-level="4" href="#设置一个备份计划任务">设置一个备份计划任务</a><a class="qc-toc-link lv4" data-level="4" href="#使用-crontab计划执行-MySQLscanner">使用 crontab计划执行 MySQLscanner</a><a class="qc-toc-link lv4" data-level="4" href="#crontab快捷方式">crontab快捷方式</a><a class="qc-toc-link lv3" data-level="3" href="#使用RC-脚本开机运行任务">使用RC 脚本开机运行任务</a><a class="qc-toc-link lv4" data-level="4" href="#Linux运行级别">Linux运行级别</a><a class="qc-toc-link lv4" data-level="4" href="#将服务添加到rc-d">将服务添加到rc.d</a><a class="qc-toc-link lv3" data-level="3" href="#通过GUI添加开机启动服务">通过GUI添加开机启动服务</a><a class="qc-toc-link lv3" data-level="3" href="#总结-14">总结</a><a class="qc-toc-link lv2" data-level="2" href="#17">17</a><a class="qc-toc-link lv2" data-level="2" href="#黑客的PYTHON脚本基础">黑客的PYTHON脚本基础</a><a class="qc-toc-link lv3" data-level="3" href="#添加PYTHON模块">添加PYTHON模块</a><a class="qc-toc-link lv4" data-level="4" href="#使用pip">使用pip</a><a class="qc-toc-link lv4" data-level="4" href="#安装第三方模块">安装第三方模块</a><a class="qc-toc-link lv3" data-level="3" href="#开始使用Python编写脚本">开始使用Python编写脚本</a><a class="qc-toc-link lv4" data-level="4" href="#变量">变量</a><a class="qc-toc-link lv4" data-level="4" href="#注释">注释</a><a class="qc-toc-link lv4" data-level="4" href="#函数">函数</a><a class="qc-toc-link lv4" data-level="4" href="#列表">列表</a><a class="qc-toc-link lv4" data-level="4" href="#模块">模块</a><a class="qc-toc-link lv3" data-level="3" href="#面向对象编程（OOP）">面向对象编程（OOP）</a><a class="qc-toc-link lv3" data-level="3" href="#PYTHON网络通信">PYTHON网络通信</a><a class="qc-toc-link lv4" data-level="4" href="#建立TCP-客户端">建立TCP 客户端</a><a class="qc-toc-link lv4" data-level="4" href="#创建TCP-监听器">创建TCP 监听器</a><a class="qc-toc-link lv3" data-level="3" href="#字典，循环，和控制语句">字典，循环，和控制语句</a><a class="qc-toc-link lv4" data-level="4" href="#字典">字典</a><a class="qc-toc-link lv4" data-level="4" href="#控制语句">控制语句</a><a class="qc-toc-link lv5" data-level="5" href="#If语句">If语句</a><a class="qc-toc-link lv5" data-level="5" href="#if…else">if…else</a><a class="qc-toc-link lv4" data-level="4" href="#循环">循环</a><a class="qc-toc-link lv5" data-level="5" href="#While循环">While循环</a><a class="qc-toc-link lv5" data-level="5" href="#For循环">For循环</a><a class="qc-toc-link lv3" data-level="3" href="#改进我们的黑客脚本">改进我们的黑客脚本</a><a class="qc-toc-link lv3" data-level="3" href="#异常和密码破解">异常和密码破解</a><a class="qc-toc-link lv3" data-level="3" href="#总结-15">总结</a><a class="qc-toc-link lv2" data-level="2" href="#顶级黑客？从这开始">顶级黑客？从这开始</a><a class="qc-toc-link lv2" data-level="2" href="#关于作者">关于作者</a><a class="qc-toc-link lv2" data-level="2" href="#关于译者">关于译者</a></nav><div class="qc-toc-track" aria-hidden="true"><div class="qc-toc-thumb"></div></div></div></aside>
+
+
+  <footer class="qc-footer">
+  <div class="qc-footer-inner">
+    <div class="qc-footer-left">
+      <div class="qc-footer-brand">Qinchun</div>
+      <div class="qc-footer-role">Cybersecurity learner / penetration testing beginner</div>
+      <div class="qc-footer-copy">© 2026 QINCHUN · OPEN KNOWLEDGE, RESPONSIBLE PRACTICE</div>
+    </div>
+    <div class="qc-footer-right">
+      <nav class="qc-footer-links">
+        
+        <a href="/archives/">文档索引</a>
+        
+        <a href="/#workflow">学习路径</a>
+        
+        <a href="/#tools">工具参考</a>
+        
+        <a href="mailto:ZORVIANEX@protonmail.com">联系</a>
+        
+      </nav>
+      <div class="qc-footer-status"><span class="qc-dot qc-dot-green"></span>ALL DOCUMENTS AVAILABLE</div>
+    </div>
+  </div>
+</footer>
+
+</main>
+<div class="qc-modal" id="qc-search-modal" hidden>
+  <div class="qc-modal-mask" data-qc-close></div>
+  <div class="qc-modal-panel" role="dialog" aria-label="站内搜索">
+    <div class="qc-modal-head">
+      <svg class="qc-icon qc-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="text" id="qc-search-input" placeholder="搜索文档、命令与工具..." autocomplete="off" spellcheck="false">
+      <span class="qc-kbd">ESC</span>
+    </div>
+    <div class="qc-modal-results" id="qc-search-results">
+      <div class="qc-modal-empty" id="qc-search-empty">输入关键词,按 Enter 打开第一条结果</div>
+    </div>
+    <div class="qc-modal-foot">
+      <span><b>↑↓</b> 选择</span><span><b>Enter</b> 打开</span><span><b>ESC</b> 关闭</span>
     </div>
   </div>
 </div>
 
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <span>LiuQinchun</span> <span class="footer-divider">&amp;</span> <span>Change World</span> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-    var tocManuallyCollapsed = false;
-
-    function isExpandAllEnabled() {
-      return CONFIG.toc && CONFIG.toc.expand_all === true;
-    }
-    function expandAllToc(force) {
-      if (!force && (!isExpandAllEnabled() || tocManuallyCollapsed)) { return; }
-      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
-    }
-    function collapseAllToc() {
-      tocManuallyCollapsed = true;
-      jQuery('#toc-body .toc-list-item > ol').addClass('tocbot-is-collapsed');
-      jQuery('#toc-body .toc-list-item').each(function() {
-        var $li = jQuery(this);
-        var $childList = $li.children('ol');
-        if ($childList.length > 0) {
-          updateTocToggle($li, $childList);
-        }
-      });
-    }
-    function bindTocActions() {
-      jQuery('#toc-actions')
-        .off('click.tocActions')
-        .on('click.tocActions', '.toc-action', function() {
-          var action = jQuery(this).data('toc-action');
-          if (action === 'expand') {
-            tocManuallyCollapsed = false;
-            expandAllToc(true);
-            jQuery('#toc-body .toc-list-item > ol').each(function() {
-              updateTocToggle(jQuery(this).parent('.toc-list-item'), jQuery(this));
-            });
-            return;
-          }
-          if (action === 'collapse') {
-            collapseAllToc();
-          }
-        });
-    }
-    function updateTocToggle($li, $childList) {
-      var $toggle = $li.children('.toc-toggle');
-      if ($toggle.length === 0) { return; }
-      var collapsed = $childList.hasClass('tocbot-is-collapsed');
-      $toggle
-        .toggleClass('toc-toggle-collapsed', collapsed)
-        .toggleClass('toc-toggle-expanded', !collapsed);
-    }
-    function bindTocToggle() {
-      if (!isExpandAllEnabled()) { return; }
-      jQuery('#toc-body .toc-list-item').each(function() {
-        var $li = jQuery(this);
-        var $childList = $li.children('ol');
-        if ($childList.length === 0) {
-          if ($li.children('.toc-toggle').length === 0) {
-            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
-          }
-          return;
-        }
-
-        if ($li.children('.toc-toggle').length === 0) {
-          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
-        }
-        updateTocToggle($li, $childList);
-      });
-      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var $li = jQuery(this).parent('.toc-list-item');
-        var $childList = $li.children('ol');
-        if ($childList.length === 0) { return; }
-        $childList.toggleClass('tocbot-is-collapsed');
-        updateTocToggle($li, $childList);
-      });
-      if (!window.__tocToggleObserver) {
-        window.__tocToggleObserver = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
-            var $list = jQuery(mutation.target);
-            var $li = $list.parent('.toc-list-item');
-            if ($li.length === 0) { return; }
-            updateTocToggle($li, $list);
-          });
-        });
-        jQuery('#toc-body ol').each(function() {
-          window.__tocToggleObserver.observe(this, { attributes: true });
-        });
-      }
-    }
-    function locateActiveTocItem() {
-      var tocBody = document.getElementById('toc-body');
-      if (!tocBody) { return; }
-
-      var activeTimer = null;
-      var pendingLink = null;
-      var pendingHref = '';
-      var pendingUntil = 0;
-      var findTocLink = function(href) {
-        if (!href) { return null; }
-        var links = tocBody.querySelectorAll('.tocbot-link');
-        for (var i = 0; i < links.length; i++) {
-          if (links[i].getAttribute('href') === href) {
-            return links[i];
-          }
-        }
-        return null;
-      };
-      var getCurrentLink = function() {
-        if (Date.now() < pendingUntil) {
-          if (pendingLink && tocBody.contains(pendingLink)) {
-            return pendingLink;
-          }
-          return findTocLink(pendingHref);
-        }
-        return tocBody.querySelector('.tocbot-active-link');
-      };
-      var scrollLinkIntoView = function(link, behavior) {
-        if (!link || !tocBody.contains(link)) { return; }
-        expandAllToc();
-
-        var bodyRect = tocBody.getBoundingClientRect();
-        var linkRect = link.getBoundingClientRect();
-        var linkTop = linkRect.top - bodyRect.top + tocBody.scrollTop;
-        var linkHeight = linkRect.height || link.offsetHeight;
-        var targetScrollTop = linkTop - ((tocBody.clientHeight - linkHeight) / 2);
-
-        targetScrollTop = Math.max(0, Math.min(targetScrollTop, tocBody.scrollHeight - tocBody.clientHeight));
-        if (Math.abs(targetScrollTop - tocBody.scrollTop) < 1) { return; }
-        tocBody.scrollTo({ top: targetScrollTop, behavior: behavior || 'auto' });
-      };
-      var scheduleActiveLink = function(link, behavior) {
-        if (!link) { return; }
-        if (activeTimer) {
-          clearInterval(activeTimer);
-          activeTimer = null;
-        }
-
-        var start = Date.now();
-        var duration = 1400;
-        var sync = function() {
-          expandAllToc();
-          scrollLinkIntoView(link, behavior);
-          if (Date.now() - start >= duration) {
-            clearInterval(activeTimer);
-            activeTimer = null;
-          }
-        };
-
-        sync();
-        window.requestAnimationFrame(sync);
-        activeTimer = setInterval(sync, 80);
-      };
-
-      jQuery('#toc-body')
-        .off('click.tocActivePosition')
-        .on('click.tocActivePosition', '.tocbot-link', function() {
-          pendingLink = this;
-          pendingHref = this.getAttribute('href') || '';
-          pendingUntil = Date.now() + 3000;
-          scheduleActiveLink(this, 'auto');
-        });
-
-      if (window.__tocActivePositionObserver) {
-        window.__tocActivePositionObserver.disconnect();
-      }
-      window.__tocActivePositionObserver = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
-          var link = mutation.target;
-          if (link.classList.contains('tocbot-active-link')) {
-            scheduleActiveLink(link, 'auto');
-          }
-        });
-      });
-      window.__tocActivePositionObserver.observe(tocBody, {
-        attributes: true,
-        attributeFilter: ['class'],
-        subtree: true
-      });
-
-      var activeLink = tocBody.querySelector('.tocbot-active-link');
-      if (activeLink) {
-        scheduleActiveLink(activeLink, 'auto');
-      }
-
-      if (window.__tocActivePositionScrollListener) {
-        Fluid.utils.unlistenScroll(window.__tocActivePositionScrollListener);
-      }
-      window.__tocActivePositionScrollListener = Fluid.utils.listenScroll(function() {
-        scheduleActiveLink(getCurrentLink(), 'auto');
-      });
-    }
-    var tocConfig = Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc);
-    if (isExpandAllEnabled()) {
-      tocConfig.collapseDepth = 6;
-    }
-    // Tocbot uses a nested item's local offsetTop for scroll sync, which
-    // sends deep headings back to the top of the scroll container.
-    tocConfig.disableTocScrollSync = true;
-    window.tocbot.init(tocConfig);
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-    expandAllToc();
-    bindTocActions();
-    bindTocToggle();
-    locateActiveTocItem();
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-        expandAllToc();
-        bindTocActions();
-        bindTocToggle();
-        locateActiveTocItem();
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
+<script src="/js/main.js" defer></script>
 </body>
 </html>
