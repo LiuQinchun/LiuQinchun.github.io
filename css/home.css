@@ -60,6 +60,8 @@
 .qc-domain-card:nth-child(n + 4) { border-top: 0; }
 .qc-domain-card:hover { border-color: var(--faint); box-shadow: var(--shadow-card); transform: translateY(-2px); }
 .qc-domain-card.active { border-color: rgba(23, 107, 255, .55); background: #F5F9FF; }
+.qc-domain-card-empty { cursor: default; pointer-events: none; }
+.qc-domain-card-empty:hover { border-color: var(--border); box-shadow: none; transform: none; }
 .qc-icon-chip {
   width: 36px;
   height: 36px;

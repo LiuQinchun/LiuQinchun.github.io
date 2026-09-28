@@ -132,11 +132,10 @@
     var track = toc.querySelector('.qc-toc-track');
     var thumb = toc.querySelector('.qc-toc-thumb');
     var links = Array.prototype.slice.call(toc.querySelectorAll('.qc-toc-link'));
+    var nodes = Array.prototype.slice.call(toc.querySelectorAll('.qc-toc-node'));
+    var toggles = Array.prototype.slice.call(toc.querySelectorAll('.qc-toc-toggle'));
     var expandButton = toc.querySelector('[data-toc-action="expand"]');
     var collapseButton = toc.querySelector('[data-toc-action="collapse"]');
-    var minLevel = links.reduce(function (min, link) {
-      return Math.min(min, Number(link.getAttribute('data-level')) || 6);
-    }, 6);
     var heads = links.map(function (a) {
       return document.getElementById(a.getAttribute('href').slice(1));
     }).filter(Boolean);
@@ -150,12 +149,39 @@
     var lastThumbH = null;
     var currentIdx = -1;
 
+    function childContainer(node) {
+      var children = Array.prototype.slice.call(node.children);
+      return children.filter(function (child) { return child.classList.contains('qc-toc-children'); })[0] || null;
+    }
+
+    function setNodeExpanded(node, expanded, recursive) {
+      var children = childContainer(node);
+      var button = node.querySelector('.qc-toc-toggle');
+      if (!children || !button) return;
+      children.hidden = !expanded;
+      node.classList.toggle('is-collapsed', !expanded);
+      button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      if (recursive) {
+        Array.prototype.forEach.call(children.querySelectorAll('.qc-toc-node'), function (child) {
+          setNodeExpanded(child, expanded, false);
+        });
+      }
+    }
+
+    function parentNode(node) {
+      var parent = node.parentElement;
+      while (parent && !parent.classList.contains('qc-toc-node')) parent = parent.parentElement;
+      return parent;
+    }
+
+    function ownLink(node) {
+      var row = node.firstElementChild;
+      return row ? row.querySelector('.qc-toc-link') : null;
+    }
+
     function setTocMode(mode) {
       var expanded = mode === 'expanded';
-      links.forEach(function (link) {
-        var level = Number(link.getAttribute('data-level')) || minLevel;
-        link.hidden = !expanded && level !== minLevel;
-      });
+      nodes.forEach(function (node) { setNodeExpanded(node, expanded, false); });
       if (expandButton) expandButton.setAttribute('aria-pressed', expanded ? 'true' : 'false');
       if (collapseButton) collapseButton.setAttribute('aria-pressed', expanded ? 'false' : 'true');
       currentIdx = -1;
@@ -164,6 +190,14 @@
 
     if (expandButton) expandButton.addEventListener('click', function () { setTocMode('expanded'); });
     if (collapseButton) collapseButton.addEventListener('click', function () { setTocMode('collapsed'); });
+    toggles.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var node = button.closest('.qc-toc-node');
+        setNodeExpanded(node, button.getAttribute('aria-expanded') !== 'true', false);
+        currentIdx = -1;
+        apply();
+      });
+    });
     setTocMode('expanded');
 
     function syncGeometry() {
@@ -191,9 +225,13 @@
 
     function setActive(idx) {
       if (!links.length) return;
-      var visibleIdx = idx;
-      while (visibleIdx > 0 && links[visibleIdx].hidden) visibleIdx -= 1;
-      if (links[visibleIdx] && links[visibleIdx].hidden) visibleIdx = -1;
+      var activeLink = links[idx];
+      var activeNode = activeLink ? activeLink.closest('.qc-toc-node') : null;
+      while (activeLink && activeLink.closest('[hidden]')) {
+        activeNode = activeNode ? parentNode(activeNode) : null;
+        activeLink = activeNode ? ownLink(activeNode) : null;
+      }
+      var visibleIdx = links.indexOf(activeLink);
       if (visibleIdx === currentIdx || visibleIdx < 0) return;
       currentIdx = visibleIdx;
       links.forEach(function (a, j) { a.classList.toggle('active', j === visibleIdx); });
