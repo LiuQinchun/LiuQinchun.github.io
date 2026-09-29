@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireshark · Qinchun</title>
+
+<meta name="description" content="面向网络安全与渗透测试初学者的技术知识库">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='10' fill='%2307111F'/%3E%3Ctext x='17' y='23' font-family='monospace' font-size='13' font-weight='bold' fill='%2322D3EE' text-anchor='middle'%3EQ_%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/prose.css">
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body class="qc-body qc-page-post">
+<header class="qc-navbar">
+  <div class="qc-navbar-inner">
+    <a class="qc-brand" href="/">
+      <span class="qc-brand-logo">Q_</span>
+      <span class="qc-brand-text">
+        <span class="qc-brand-name">Qinchun</span>
+        <span class="qc-brand-tagline">SECURITY KNOWLEDGE BASE</span>
+      </span>
+    </a>
+    <div class="qc-navbar-right">
+      <button type="button" class="qc-search-trigger" id="qc-search-trigger" aria-label="搜索">
+        <svg class="qc-icon qc-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="qc-search-placeholder">搜索文档、命令与工具...</span>
+        <span class="qc-kbd">⌘ K</span>
+      </button>
+      <a class="qc-docs-link" href="/archives/">Docs</a>
+      <span class="qc-lang"><b>ZH</b><i>/</i><span>EN</span></span>
+    </div>
+  </div>
+</header>
+
+<aside class="qc-sidebar">
+  <div class="qc-sidebar-status"><span class="qc-dot qc-dot-green"></span>DOCS ONLINE</div>
+  <nav class="qc-side-nav">
+    
+    
+    <a class="qc-side-link qc-side-shortcut " href="/">回到首页</a>
+    
+    <a class="qc-side-link qc-side-shortcut qc-side-shortcut-last " href="/archives/">展开所有文档</a>
+    
+    <div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>Blog</span></div><div class="qc-side-branch"><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>编程语言</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/09/13/Blog/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">脚本语言基础</a></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>工具使用方法</span></div><div class="qc-side-branch"><a class="qc-side-post active" href="/2026/09/13/Blog/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/%E5%88%A9%E7%94%A8Wireshark%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">Wireshark</a><a class="qc-side-post" href="/2026/09/13/Blog/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">脚本工具使用方式</a></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>计算机操作系统</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/09/13/Blog/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>计算机网络</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/09/13/Blog/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>实践记录</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/01/01/Blog/%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">实践笔记</a></div></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>Ebook</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/09/18/Ebook/Linux%20Basics%20for%20Hackers%20%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88%EF%BC%89/">Linux Basics for Hackers （中文版）</a></div><div class="qc-side-dir"><svg class="qc-icon qc-side-dir-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span>hands-on</span></div><div class="qc-side-branch"><a class="qc-side-post" href="/2026/09/13/hands-on/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/">网络渗透技术</a></div><a class="qc-side-post" href="/2026/09/11/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">技术实践记录</a><a class="qc-side-post" href="/2026/09/11/hello-world/">Hello World</a><a class="qc-side-post" href="/2026/09/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">计算机网络基础</a>
+  </nav>
+</aside>
+
+<main class="qc-main">
+  
+<article class="qc-article">
+  <div class="qc-container qc-article-container">
+    <nav class="qc-breadcrumb">
+      <a href="/">DOCS</a>
+      <i>/</i><a href="/categories/Blog/">Blog</a><i>/</i><a href="/categories/Blog/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">工具使用方法</a>
+      <i>/</i><span>当前</span>
+    </nav>
+    <header class="qc-article-head">
+      <h1 class="qc-article-title">Wireshark</h1>
+      <div class="qc-article-meta">
+        <span><svg class="qc-icon qc-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>2026-09-13</span>
+        <i>·</i>
+        <span>2219 字</span>
+        
+        <i>·</i><span>更新 2026-09-28</span>
+        
+        
+        <span class="qc-article-tags">
+          
+          <a class="qc-chip" href="/tags/Wireshark/">Wireshark</a>
+          
+          <a class="qc-chip" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">网络流量分析</a>
+          
+        </span>
+        
+      </div>
+    </header>
+    <div class="qc-prose">
+      <h1 id="1-Wireshark抓包分析"><a href="#1-Wireshark抓包分析" class="headerlink" title="1 Wireshark抓包分析"></a>1 Wireshark抓包分析</h1><p>实验环境介绍：</p>
+<p>    <strong>192.168.9.209</strong>是kali客户机，<strong>192.168.9.76</strong>是ubuntu服务器，服务端口8081搭载的DVWA靶场。</p>
+<h2 id="1-1-DNS"><a href="#1-1-DNS" class="headerlink" title="1.1 DNS"></a>1.1 DNS</h2><p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/DNS.png" alt="DNS"></p>
+<p>DNS总计查询了三次，也响应了三次：</p>
+<ul>
+<li><p>No.880报文中客户机向默认网关发送了dns请求，事务ID 0x5dc1查询google.com的HTTPS记录。对应着No.884报文的默认网关响应报文，告知HTTPS等记录。</p>
+</li>
+<li><p>No.881报文中客户机向默认网关发送了dns请求，事务ID 0xfabd 查询google.com的IPv4地址。对应着No.883响应报文。</p>
+</li>
+<li><p>No.882报文中客户机向默认网关发送了dns请求，事务ID 033bf 查询google.com的IPv6地址。对应着No.885响应宝宝问，响应SOA表示未启动IPv6。</p>
+</li>
+</ul>
+<h2 id="1-2-TCP连接全流程"><a href="#1-2-TCP连接全流程" class="headerlink" title="1.2 TCP连接全流程"></a>1.2 TCP连接全流程</h2><p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/1.2.1%20TCP.png" alt="1.2.1 TCP"></p>
+<h3 id="1-2-1-TCP三次握手"><a href="#1-2-1-TCP三次握手" class="headerlink" title="1.2.1 TCP三次握手"></a>1.2.1 TCP三次握手</h3><img title="" src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="TCP三次握手" style="zoom:80%;">
+
+<p>由1.2中的图可知</p>
+<ol>
+<li><p>No.3 报文段中，客户端向服务器的 8081 端口发送 TCP SYN 报文段，请求建立 TCP 连接。由于 Wireshark 启用了相对序列号显示，此时 Seq&#x3D;0。TCP Window接收窗口为 64240 字节，MSS 最大报文段为 1460 字节。</p>
+</li>
+<li><p>随后No.4报文段中服务端8081端口向客户端60798临时端口返回了SYN和ACK的Flags，Seq序列号为0，ACK确认号为No.3报文段中Seq值+1。表示我已收到客户端的同步请求，并且我同意你的连接。服务器通过 Ack&#x3D;1 表示：客户端发送的 SYN（Seq&#x3D;0）已经收到，我期望从客户端的 Seq&#x3D;1 开始接收后续数据。</p>
+</li>
+<li><p>最终No.5报文段中，客户端向服务器8081端口发送ACK的Flags，Seq&#x3D;1，Ack&#x3D;1。客户端已经收到服务器的 SYN（服务器 Seq&#x3D;0），因此期望服务器下一次发送的数据序列号为 1。Ack&#x3D;1表示确认号值在No.4报文段中Seq&#x3D;0+1得到。</p>
+</li>
+</ol>
+<p>就此TCP三次握手成功建立，可以开始传输数据。</p>
+<blockquote>
+<p>TCB    传输控制块，打开后服务器&#x2F;客户端进入监听（LISTEN）状态</p>
+<p>SYN    TCP报文标志位，该位为1时表示发起一个新连接<br>ACK    TCP报文标志位，该位为1时，确认序号有效,确认接收到消息。TCP规定，在连接建立后所有报文的传输都必须把ACK置1<br>seq    sequence number，报文初始序列号，代表发送的第一个字节的序号<br>ack    acknowledgement number，报文确认序号，代表希望收到的下一个数据的第一个字节的序号</p>
+</blockquote>
+<h3 id="1-2-2-TCP四次挥手"><a href="#1-2-2-TCP四次挥手" class="headerlink" title="1.2.2 TCP四次挥手"></a>1.2.2 TCP四次挥手</h3><p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="TCP四次挥手"></p>
+<p>由1.2中的图可知：</p>
+<p>No.10 报文段中，客户端向服务器发送 FIN+ACK 报文段，Seq&#x3D;407，Ack&#x3D;1051，表示客户端已经没有更多数据需要发送，并请求关闭客户端到服务器方向的 TCP 数据流。</p>
+<p>No.11 是服务器发送 FIN+ACK，既确认客户端的 FIN，又主动关闭服务器 → 客户端方向的数据发送。</p>
+<p>No.12 客户端确认服务器发送的 FIN。服务器的 FIN 已经收到，我确认服务器不会再发送数据,客户端断连。</p>
+<p>No.13 报文中，服务器向客户机发送了ACK的确认Flags，表示服务端无数据传递，服务器断连。</p>
+<h2 id="1-3-HTTP"><a href="#1-3-HTTP" class="headerlink" title="1.3 HTTP"></a>1.3 HTTP</h2><p>这是用Wireshark拦截到的http报文</p>
+<p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/HTTP.png" alt="HTTP"></p>
+<p>在下图中，由于我对8081端口上的网站进行了登录操作，由于网站使用的是http通信，我的用户名，密码，甚至由cookie都暴露了，如果此时有个黑客在网关进行了监听，可以拿着我的cookie冒充身份直接访问目标网站。</p>
+<p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/HTTP1.png" alt="HTTP1"></p>
+<h3 id="1-3-1-登录原理解析"><a href="#1-3-1-登录原理解析" class="headerlink" title="1.3.1 登录原理解析"></a>1.3.1 登录原理解析</h3><p>    下图是登录DVWA靶场时抓取到的数据报文，前三次使用了不同的错误密码登录，最后一次是正确的登录（至于我为什么知道，当然是因为密码是我输入的啦，hhh~）</p>
+<p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/HTTP_test1.png" alt="HTTP_test1"></p>
+<p>下面将会仔细的解释数据报文（三次错误密码登录，四个数据报文为一次登录周期，这里只仔细讲解第一次登录周期，为啥不讲完，当然是太麻烦了，哈哈，反正原理都一样的啦，喵~~~）：</p>
+<p>概括：No.6、8、10、11是第一次错误登录周期，No.13、14、16、17是第二次错误登录周期，No.21、22、24、25是第三次错误登录周期。</p>
+<p>No.36、38、40、44、53是成功登录周期，不同的是，No.38数据报文中身份认证通过，302临时重定向到index.php的网页。并向服务端提交GET请求报文，No.44就是服务端的响应报文。</p>
+<h4 id="（一）客户机发起POST登录请求"><a href="#（一）客户机发起POST登录请求" class="headerlink" title="（一）客户机发起POST登录请求"></a>（一）客户机发起POST登录请求</h4><p>由下图可知，192.168.9.209客户机向192.168.9.76服务器发送POST请求，请求登录:192.168.9.76:8081&#x2F;login.php页面，在这里，我刻意的使用了错误的登录密码向服务器发送了请求登录的<strong>数据报文</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/HTTP_test2.png" alt="HTTP_test2"></p>
+<h4 id="（二）服务器发送302临时重定向"><a href="#（二）服务器发送302临时重定向" class="headerlink" title="（二）服务器发送302临时重定向"></a>（二）服务器发送302临时重定向</h4><p>    服务端校验了用户名和密码发现对不上后就使用“302临时重定向“指向了\longin.php页面，指示客户端重新登录。</p>
+<p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/HTTP_test3.png" alt="HTTP_test3"></p>
+<h4 id="（三）客户机重新发送GET请求"><a href="#（三）客户机重新发送GET请求" class="headerlink" title="（三）客户机重新发送GET请求"></a>（三）客户机重新发送GET请求</h4><p>    客户机响应服务端的302临时重定向，对服务端指定的URL页面发送GET请求。</p>
+<p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/HTTP_test4.png" alt="HTTP_test3"></p>
+<h4 id="（四）服务器响应客户机GET请求"><a href="#（四）服务器响应客户机GET请求" class="headerlink" title="（四）服务器响应客户机GET请求"></a>（四）服务器响应客户机GET请求</h4><p>    到了这一步，基本上密码登录失败的情况就结束了，服务端重新响应\login.php的登录页面，客户端重新输入用户名密码进行身份认证登录。</p>
+<p><img src="https://raw.githubusercontent.com/LiuQinchun/images-Blog/main/Wireshark-images/HTTP_test5.png" alt="HTTP_test3"></p>
+<h3 id="HTTP实验报告"><a href="#HTTP实验报告" class="headerlink" title="HTTP实验报告"></a>HTTP实验报告</h3><p><strong>实验时间：</strong> 2026年9月28日<br><strong>客户端：</strong> 192.168.9.209<br><strong>服务器：</strong> 192.168.9.76<br><strong>服务器端口：</strong> 8081</p>
+<p>正常登录：</p>
+<ul>
+<li><strong>请求方法和路径：</strong> POST方法，对8081\login.php请求登录</li>
+<li><strong>是否出现用户名和密码：</strong> 由于网站是HTTP协议，所以明文暴露用户名和密码</li>
+<li><strong>是否携带 Cookie：</strong> 每次客户机向服务发送请求都会携带Cookie，并且Cookie值始终相同。</li>
+<li><strong>服务器返回的关键内容：</strong> POST登录身份认证通过后，服务端返回302临时重定向，随后客户端下次向index页面发送了GET请求报文</li>
+<li><strong>登录成功的证据：</strong> 客户端向index.php页面发送GET请求后，服务端返回的响应报文状态码200，页面成功加载</li>
+</ul>
+<p>错误登录：</p>
+<ul>
+<li><p><strong>请求和正常登录相比改变了什么：</strong> 302临时重定向指向login.php页面，准备重新登录</p>
+</li>
+<li><p><strong>是否使用了相同 Cookie：</strong> Cookie值始终相同</p>
+<blockquote>
+<p>“Cookie 值始终相同”不等于“Cookie 就是登录状态”。它可能只是 PHP 的会话标识。你还需要做三次对比：</p>
+<ol>
+<li>登录前访问页面</li>
+<li>登录成功后访问受保护页面</li>
+<li>删除 Cookie 后再次访问受保护页面</li>
+</ol>
+<p>只有这样才能确认该 Cookie 是否真正决定登录状态。</p>
+</blockquote>
+</li>
+<li><p><strong>服务器返回的关键内容：</strong> 返回302临时重定向</p>
+</li>
+<li><p><strong>能否从抓包判断登录失败：</strong> 可以，抓包后观察是否有服务端的响应报文，状态码是否是HTTP 200 OK。或者观察302临时重定向指向哪里。</p>
+</li>
+</ul>
+<p>登录后访问：</p>
+<ul>
+<li><p><strong>请求是否携带登录状态：</strong> 是，携带</p>
+</li>
+<li><p><strong>登录状态具体保存在哪里：</strong> 保存在Cookie</p>
+</li>
+<li><p><strong>不带该状态时会发生什么：</strong> 返回401未授权，302临时重定向指向login.php（根据理论，我猜的）</p>
+<blockquote>
+<p>错误登录不能只靠 <code>302</code> 判断。<code>302</code> 只是重定向，具体是成功还是失败，要看：</p>
+<ul>
+<li><code>Location</code> 指向 <code>index.php</code> 还是 <code>login.php</code></li>
+<li>后续客户端请求了哪个页面</li>
+<li>后续请求是否成功访问受保护资源</li>
+<li>响应内容是否包含登录成功或失败信息</li>
+</ul>
+<p>失败登录后登录页也可能返回 <code>200</code>，所以“是否 200”不能单独作为登录成功标准。</p>
+</blockquote>
+</li>
+</ul>
+<p>安全结论：</p>
+<ul>
+<li><strong>HTTP 明文暴露了什么：</strong> 暴露了整个请求体和响应体，以及Cookie值，相当于裸奔。</li>
+<li><strong>如果攻击者只能监听流量，能否复用登录状态：</strong> 直接套用Cookie，冒用身份，甚至还可以数据重发</li>
+<li><strong>服务器应该如何降低风险：</strong> HTTPS 可以保护客户端到服务器之间的传输内容，降低网络监听导致的账号和 Cookie 泄露风险，但不能单独解决身份认证、权限控制和终端被入侵等问题。</li>
+</ul>
+<h2 id="显示过滤器字段（Wireshark-Display-Filter-Fields）"><a href="#显示过滤器字段（Wireshark-Display-Filter-Fields）" class="headerlink" title="显示过滤器字段（Wireshark Display Filter Fields）"></a>显示过滤器字段（Wireshark Display Filter Fields）</h2><h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><h3 id="TLS"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</h3><h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3>
+    </div>
+    <nav class="qc-post-nav">
+      
+      <a class="qc-post-nav-item prev" href="/2026/09/18/Ebook/Linux%20Basics%20for%20Hackers%20%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88%EF%BC%89/">
+        <span class="qc-post-nav-label">← 上一篇</span>
+        <span class="qc-post-nav-title">Linux Basics for Hackers （中文版）</span>
+      </a>
+      
+      
+      <a class="qc-post-nav-item next" href="/2026/09/13/hands-on/%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/">
+        <span class="qc-post-nav-label">下一篇 →</span>
+        <span class="qc-post-nav-title">网络渗透技术</span>
+      </a>
+      
+    </nav>
+  </div>
+</article>
+
+<aside class="qc-toc"><div class="qc-toc-head"><span>目录 · ON THIS PAGE</span><span class="qc-toc-actions"><button type="button" class="qc-toc-action" data-toc-action="expand" aria-label="展开全部目录" title="展开全部目录"><svg class="qc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4v16M4 7l3-3 3 3M4 17l3 3 3-3"/><path d="M17 4v16M14 7l3-3 3 3M14 17l3 3 3-3"/></svg><span>展开</span></button><button type="button" class="qc-toc-action" data-toc-action="collapse" aria-label="收缩目录层级" title="收缩目录层级"><svg class="qc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>收缩</span></button></span></div><div class="qc-toc-body"><nav class="qc-toc-nav"><div class="qc-toc-node" data-level="1"><div class="qc-toc-row"><button type="button" class="qc-toc-toggle" aria-expanded="true" aria-label="切换子标题"><span aria-hidden="true">›</span></button><a class="qc-toc-link lv1" data-level="1" href="#1-Wireshark抓包分析">1 Wireshark抓包分析</a></div><div class="qc-toc-children"><div class="qc-toc-node" data-level="2"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv2" data-level="2" href="#1-1-DNS">1.1 DNS</a></div></div><div class="qc-toc-node" data-level="2"><div class="qc-toc-row"><button type="button" class="qc-toc-toggle" aria-expanded="true" aria-label="切换子标题"><span aria-hidden="true">›</span></button><a class="qc-toc-link lv2" data-level="2" href="#1-2-TCP连接全流程">1.2 TCP连接全流程</a></div><div class="qc-toc-children"><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#1-2-1-TCP三次握手">1.2.1 TCP三次握手</a></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#1-2-2-TCP四次挥手">1.2.2 TCP四次挥手</a></div></div></div></div><div class="qc-toc-node" data-level="2"><div class="qc-toc-row"><button type="button" class="qc-toc-toggle" aria-expanded="true" aria-label="切换子标题"><span aria-hidden="true">›</span></button><a class="qc-toc-link lv2" data-level="2" href="#1-3-HTTP">1.3 HTTP</a></div><div class="qc-toc-children"><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><button type="button" class="qc-toc-toggle" aria-expanded="true" aria-label="切换子标题"><span aria-hidden="true">›</span></button><a class="qc-toc-link lv3" data-level="3" href="#1-3-1-登录原理解析">1.3.1 登录原理解析</a></div><div class="qc-toc-children"><div class="qc-toc-node" data-level="4"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv4" data-level="4" href="#（一）客户机发起POST登录请求">（一）客户机发起POST登录请求</a></div></div><div class="qc-toc-node" data-level="4"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv4" data-level="4" href="#（二）服务器发送302临时重定向">（二）服务器发送302临时重定向</a></div></div><div class="qc-toc-node" data-level="4"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv4" data-level="4" href="#（三）客户机重新发送GET请求">（三）客户机重新发送GET请求</a></div></div><div class="qc-toc-node" data-level="4"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv4" data-level="4" href="#（四）服务器响应客户机GET请求">（四）服务器响应客户机GET请求</a></div></div></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#HTTP实验报告">HTTP实验报告</a></div></div></div></div><div class="qc-toc-node" data-level="2"><div class="qc-toc-row"><button type="button" class="qc-toc-toggle" aria-expanded="true" aria-label="切换子标题"><span aria-hidden="true">›</span></button><a class="qc-toc-link lv2" data-level="2" href="#显示过滤器字段（Wireshark-Display-Filter-Fields）">显示过滤器字段（Wireshark Display Filter Fields）</a></div><div class="qc-toc-children"><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#物理层">物理层</a></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#数据链路层">数据链路层</a></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#网络层">网络层</a></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#TCP">TCP</a></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#UDP">UDP</a></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#DNS">DNS</a></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#HTTP">HTTP</a></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#TLS">TLS</a></div></div><div class="qc-toc-node" data-level="3"><div class="qc-toc-row"><span class="qc-toc-toggle-placeholder" aria-hidden="true"></span><a class="qc-toc-link lv3" data-level="3" href="#DHCP">DHCP</a></div></div></div></div></div></div></nav><div class="qc-toc-track" aria-hidden="true"><div class="qc-toc-thumb"></div></div></div></aside>
+
+
+  <footer class="qc-footer">
+  <div class="qc-footer-inner">
+    <div class="qc-footer-left">
+      <div class="qc-footer-brand">Qinchun</div>
+      <div class="qc-footer-role">Cybersecurity learner / penetration testing beginner</div>
+      <div class="qc-footer-copy">© 2026 QINCHUN · OPEN KNOWLEDGE, RESPONSIBLE PRACTICE</div>
+    </div>
+    <div class="qc-footer-right">
+      <nav class="qc-footer-links">
+        
+        <a href="/archives/">文档索引</a>
+        
+        <a href="/#workflow">学习路径</a>
+        
+        <a href="/#tools">工具参考</a>
+        
+        <a href="mailto:ZORVIANEX@protonmail.com">联系</a>
+        
+      </nav>
+      <div class="qc-footer-status"><span class="qc-dot qc-dot-green"></span>ALL DOCUMENTS AVAILABLE</div>
+    </div>
+  </div>
+</footer>
+
+</main>
+<div class="qc-modal" id="qc-search-modal" hidden>
+  <div class="qc-modal-mask" data-qc-close></div>
+  <div class="qc-modal-panel" role="dialog" aria-label="站内搜索">
+    <div class="qc-modal-head">
+      <svg class="qc-icon qc-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="text" id="qc-search-input" placeholder="搜索文档、命令与工具..." autocomplete="off" spellcheck="false">
+      <span class="qc-kbd">ESC</span>
+    </div>
+    <div class="qc-modal-results" id="qc-search-results">
+      <div class="qc-modal-empty" id="qc-search-empty">输入关键词,按 Enter 打开第一条结果</div>
+    </div>
+    <div class="qc-modal-foot">
+      <span><b>↑↓</b> 选择</span><span><b>Enter</b> 打开</span><span><b>ESC</b> 关闭</span>
+    </div>
+  </div>
+</div>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>
